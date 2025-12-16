@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Le But — founder hacks</title>
+    <meta name="description" content="Le But par Eliyahu M. Goldratt - Un processus de progrès permanent." />
+    <link rel="icon" type="image/png" href="img/founder_hacks_compass_refined_v2_1024.png" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <style>
+      .bookDetail {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .bookDetailHeader {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        align-items: flex-start;
+      }
+      .bookDetailCover {
+        flex-shrink: 0;
+        margin-top: 0.75rem;
+      }
+      .bookDetailCover img {
+        width: 180px;
+        height: 270px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        object-fit: cover;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+      .bookDetailInfo {
+        flex: 1;
+      }
+      .bookDetailInfo .author {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 1rem;
+      }
+      .bookDetailInfo .tagsRow {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      .bookDetailInfo .tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .bookDetailInfo .tag {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.875rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .bookDetailInfo .amazonLink {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.9);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.875rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: background 0.2s;
+        margin-left: auto;
+      }
+      .bookDetailInfo .amazonLink:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .bookDetailContent {
+        margin-bottom: 2rem;
+      }
+      .bookDetailContent p {
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .bdSection {
+        margin-top: 3rem;
+        margin-left: calc(-1 * var(--container-padding, 2rem));
+        margin-right: calc(-1 * var(--container-padding, 2rem));
+        width: calc(100% + 2 * var(--container-padding, 2rem));
+      }
+      .bdGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        width: 100%;
+        padding: 0 1rem;
+      }
+      .bdGrid img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      @media (max-width: 768px) {
+        .bookDetailHeader {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .bookDetailInfo .tagsRow {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .bookDetailInfo .tags {
+          justify-content: center;
+        }
+        .bookDetailInfo .amazonLink {
+          margin-left: 0;
+        }
+        .bdGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body data-page="lebut">
+    <a class="skipLink" href="#contenu">Aller au contenu</a>
+
+    <header class="siteHeader" data-surface="page">
+      <nav class="nav" aria-label="Menu principal">
+        <a class="brand" href="index.html" aria-label="founder hacks (Accueil)">
+          <img
+            class="brandMark"
+            src="img/founder_hacks_compass_refined_v4_1024.png"
+            alt=""
+            width="34"
+            height="34"
+            loading="eager"
+          />
+          <span class="brandText">founder hacks</span>
+        </a>
+
+        <button class="navToggle" type="button" aria-expanded="false" aria-controls="navPanel">
+          <span class="navToggleIcon" aria-hidden="true"></span>
+          <span class="srOnly">Ouvrir le menu</span>
+        </button>
+
+        <div class="navPanel" id="navPanel">
+          <a class="navLink" href="index.html">Accueil</a>
+          <a class="navLink" href="assistant-ia.html">Assistant IA</a>
+          <a class="navLink" href="conseils.html">Conseils</a>
+          <a class="navLink" href="bibliotheque.html">Bibliothèque</a>
+          <a class="navLink" href="a-propos.html">À propos</a>
+        </div>
+      </nav>
+
+      <section class="pageHero" id="contenu" style="padding: 1rem 0;">
+        <div class="container">
+        </div>
+      </section>
+    </header>
+
+    <main class="main">
+      <section class="section" style="padding-top: 1rem;">
+        <div class="container">
+          <div class="bookDetail">
+            <div class="bookDetailHeader">
+              <div class="bookDetailCover">
+                <img src="img/books/le-but.jpg" alt="Couverture du livre Le But" />
+              </div>
+              <div class="bookDetailInfo">
+                <p class="author">Le But — Eliyahu M. Goldratt</p>
+                <div class="tagsRow">
+                  <div class="tags">
+                    <span class="tag">management</span>
+                    <span class="tag">théorie des contraintes</span>
+                    <span class="tag">production</span>
+                  </div>
+                  <a class="amazonLink" href="https://www.amazon.fr/but-processus-progr%C3%A8s-permanent/dp/2124654047" target="_blank" rel="noopener noreferrer">
+                    Voir sur Amazon
+                  </a>
+                </div>
+                <p style="margin-bottom: 1.5rem;">Un processus de progrès permanent. La Théorie des Contraintes appliquée à la production.</p>
+                <p>Le But est un roman de management qui remet en cause ce que nous avons appris en matière de gestion et place au centre de son intrigue la recherche permanente de progrès et d'équilibre. Le livre incite les managers à se poser les bonnes questions, notamment 'Quel est le but de votre entreprise ?'. À travers l'histoire d'Alex Rogo, directeur d'usine qui doit sauver son site de la fermeture en trois mois, Goldratt introduit sa célèbre Théorie des Contraintes (TOC). Cette édition inclut un texte inédit où l'auteur explique que toutes les entreprises sont différentes et qu'il faut s'appuyer sur les règles sous-jacentes pour relever le défi du progrès permanent. Traduit en 27 langues, figure dans la liste du Times des 25 livres de management les plus influents.</p>
+              </div>
+            </div>
+
+            <div class="bdSection">
+              <div class="bdGrid">
+                <img src="BD/but11.png" alt="Le But - Planche 1, case 1" />
+                <img src="BD/but12.png" alt="Le But - Planche 1, case 2" />
+                <img src="BD/but13.png" alt="Le But - Planche 1, case 3" />
+                <img src="BD/but21.png" alt="Le But - Planche 2, case 1" />
+                <img src="BD/but22.png" alt="Le But - Planche 2, case 2" />
+                <img src="BD/but23.png" alt="Le But - Planche 2, case 3" />
+                <img src="BD/but31.png" alt="Le But - Planche 3, case 1" />
+                <img src="BD/but32.png" alt="Le But - Planche 3, case 2" />
+                <img src="BD/but33.png" alt="Le But - Planche 3, case 3" />
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+              <a href="bibliotheque.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">
+                ← Retour à la bibliothèque
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footerRow">
+        <p class="muted">© <span data-year></span> founder hacks</p>
+        <a class="footerLegal" href="mentions-legales.html">Mentions légales</a>
+      </div>
+    </footer>
+
+    <script src="assets/main.js" defer></script>
+  </body>
+</html>

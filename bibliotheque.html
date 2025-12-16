@@ -54,15 +54,10 @@
           <div class="toolbar">
             <label class="srOnly" for="bookSearch">Rechercher un livre</label>
             <input id="bookSearch" class="searchInput" type="search" placeholder="Rechercher un livre (ex: pricing, produit…)" />
-            <div class="filters" role="group" aria-label="Catégories">
+            <div class="filters" id="bookFilters" role="group" aria-label="Catégories">
               <button class="chip isActive" type="button" data-filter="all">Tous</button>
-              <button class="chip" type="button" data-filter="hasard">Hasard & Incertitude</button>
-              <button class="chip" type="button" data-filter="humanite">Humanité</button>
-              <button class="chip" type="button" data-filter="sociologie">Sociologie</button>
-              <button class="chip" type="button" data-filter="semiotique">Sémiotique</button>
-              <button class="chip" type="button" data-filter="psychologie">Psychologie</button>
-              <button class="chip" type="button" data-filter="philosophie">Philosophie</button>
             </div>
+            <p class="muted tiny" id="bookCount" aria-live="polite"></p>
           </div>
 
           <div class="bookGrid" id="bookGrid" aria-label="Liste des livres"></div>

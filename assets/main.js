@@ -392,270 +392,150 @@ function setupBibliothequePage() {
 
   const grid = $("#bookGrid");
   const search = $("#bookSearch");
-  const chips = $$(".filters [data-filter]");
-  if (!grid || !search || chips.length === 0) return;
-
-  const books = [
-    // Nassim Nicholas Taleb - Hasard & Incertitude
-    {
-      category: "hasard",
-      title: "Antifragile",
-      author: "Nassim Nicholas Taleb",
-      why: "Comment tirer profit du chaos et de l'incertitude. Les choses qui gagnent au désordre.",
-      cover: "img/books/antifragile.jpg",
-    },
-    {
-      category: "hasard",
-      title: "Le Cygne Noir",
-      author: "Nassim Nicholas Taleb",
-      why: "La puissance de l'imprévisible. Comprendre les événements rares à fort impact.",
-      cover: "img/books/cygne-noir.jpg",
-    },
-    {
-      category: "hasard",
-      title: "Le Hasard sauvage",
-      author: "Nassim Nicholas Taleb",
-      why: "Comment la chance nous trompe. Les pièges de l'aléatoire dans nos vies.",
-      cover: "img/books/hasard-sauvage.jpg",
-    },
-    {
-      category: "hasard",
-      title: "Jouer sa peau",
-      author: "Nassim Nicholas Taleb",
-      why: "Asymétries cachées dans la vie quotidienne. L'importance d'avoir du skin in the game.",
-      cover: "img/books/jouer-sa-peau.jpg",
-    },
-
-    // Yuval Noah Harari - Humanité
-    {
-      category: "humanite",
-      title: "Sapiens",
-      author: "Yuval Noah Harari",
-      why: "Une brève histoire de l'humanité, de la révolution cognitive à nos jours.",
-      cover: "img/books/sapiens.jpg",
-    },
-    {
-      category: "humanite",
-      title: "Homo Deus",
-      author: "Yuval Noah Harari",
-      why: "Une brève histoire de l'avenir. Que deviendra l'humanité à l'ère des algorithmes?",
-      cover: "img/books/homo-deus.jpg",
-    },
-    {
-      category: "humanite",
-      title: "21 Leçons pour le XXIème siècle",
-      author: "Yuval Noah Harari",
-      why: "Les grands défis contemporains : technologie, politique, spiritualité.",
-      cover: "img/books/21-lecons.jpg",
-    },
-    {
-      category: "humanite",
-      title: "Nexus",
-      author: "Yuval Noah Harari",
-      why: "Histoire des réseaux d'information et leur impact sur les civilisations.",
-      cover: "img/books/nexus.jpg",
-    },
-
-    // Pierre Bourdieu - Sociologie
-    {
-      category: "sociologie",
-      title: "Sociologie générale Vol. 1",
-      author: "Pierre Bourdieu",
-      why: "Cours au Collège de France. Les fondements de la sociologie bourdieusienne.",
-      cover: "img/books/sociologie-generale.jpg",
-    },
-    {
-      category: "sociologie",
-      title: "Language and Symbolic Power",
-      author: "Pierre Bourdieu",
-      why: "Le langage comme instrument de pouvoir et de domination symbolique.",
-      cover: "img/books/language-symbolic-power.jpg",
-    },
-    {
-      category: "sociologie",
-      title: "Le vocabulaire de Bourdieu",
-      author: "Christiane Chauviré, Olivier Fontaine",
-      why: "Guide des concepts clés : habitus, capital, champ, violence symbolique.",
-      cover: "img/books/vocabulaire-bourdieu.jpg",
-    },
-
-    // Sémiotique
-    {
-      category: "semiotique",
-      title: "La Sémiotique du langage",
-      author: "Joseph Courtés",
-      why: "Introduction à la sémiotique structurale et à l'analyse du discours.",
-      cover: "img/books/semiotique-langage.jpg",
-    },
-    {
-      category: "semiotique",
-      title: "Sémiotique des passions",
-      author: "Jacques Fontanille, Algirdas J. Greimas",
-      why: "Des états de choses aux états d'âme. La dimension affective du sens.",
-      cover: "img/books/semiotique-passions.jpg",
-    },
-    {
-      category: "semiotique",
-      title: "Introduction à la Sémiologie",
-      author: "Georges Mounin",
-      why: "Les bases de la science des signes et de la communication.",
-      cover: "img/books/intro-semiologie.jpg",
-    },
-    {
-      category: "semiotique",
-      title: "La Sémiologie",
-      author: "Luis J. Prieto",
-      why: "Traité fondamental sur les systèmes de signification.",
-      cover: "img/books/la-semiologie.jpg",
-    },
-    {
-      category: "semiotique",
-      title: "Sémiologie du langage visuel",
-      author: "Fernande Saint-Martin",
-      why: "Comprendre les mécanismes de signification dans l'image.",
-      cover: "img/books/semiologie-visuel.jpg",
-    },
-
-    // Psychologie
-    {
-      category: "psychologie",
-      title: "Intuition",
-      author: "Malcolm Gladwell",
-      why: "Le pouvoir de penser sans penser. La force des décisions instantanées.",
-      cover: "img/books/intuition-gladwell.jpg",
-    },
-    {
-      category: "psychologie",
-      title: "Petit traité de manipulation",
-      author: "Robert-Vincent Joule, Jean-Léon Beauvois",
-      why: "À l'usage des honnêtes gens. 30+ techniques d'influence scientifiquement prouvées.",
-      cover: "img/books/petit-traite-manipulation.jpg",
-    },
-    {
-      category: "psychologie",
-      title: "Intuitions",
-      author: "David O'Hare",
-      why: "Apprendre à écouter sa voix intérieure pour de meilleures décisions.",
-      cover: "img/books/intuitions-ohare.jpg",
-    },
-
-    // Philosophie
-    {
-      category: "philosophie",
-      title: "L'épistémologie",
-      author: "Robert Blanché",
-      why: "Introduction à la théorie de la connaissance et à la philosophie des sciences.",
-      cover: "img/books/epistemologie.jpg",
-    },
-    {
-      category: "philosophie",
-      title: "Le rasoir d'Occam",
-      author: "David Duncan",
-      why: "Le principe de parcimonie : préférer l'explication la plus simple.",
-      cover: "img/books/rasoir-occam.jpg",
-    },
-    {
-      category: "philosophie",
-      title: "Le principe de subsidiarité",
-      author: "Chantal Millon-Delsol",
-      why: "Répartition des pouvoirs et autonomie des niveaux de décision.",
-      cover: "img/books/subsidiarite.jpg",
-    },
-
-    // Hasard & Incertitude (suite)
-    {
-      category: "hasard",
-      title: "Bienvenue en incertitude",
-      author: "Philippe Silberzahn",
-      why: "Stratégie d'entreprise et effectuation face à l'imprévisible.",
-      cover: "img/books/bienvenue-incertitude.jpg",
-    },
-    {
-      category: "hasard",
-      title: "La Synchronicité",
-      author: "Kirby Surprise",
-      why: "Les coïncidences significatives et leur rôle dans nos vies.",
-      cover: "img/books/synchronicite.jpg",
-    },
-    {
-      category: "hasard",
-      title: "La voie de la synchronicité",
-      author: "Allan G. Hunter",
-      why: "Comprendre et utiliser les synchronicités pour trouver sa voie.",
-      cover: "img/books/voie-synchronicite.jpg",
-    },
-    {
-      category: "hasard",
-      title: "Sérendipité",
-      author: "Sylvie Catellin",
-      why: "Du conte au concept. L'art de faire des découvertes par hasard.",
-      cover: "img/books/serendipite-catellin.jpg",
-    },
-    {
-      category: "hasard",
-      title: "C'est quoi la sérendipité?",
-      author: "Danièle Bourcier, Pek van Andel",
-      why: "Histoire et applications d'un concept fascinant.",
-      cover: "img/books/cest-quoi-serendipite.jpg",
-    },
-
-    // Marketing & Marques
-    {
-      category: "psychologie",
-      title: "La Vache pourpre",
-      author: "Seth Godin",
-      why: "Rendez votre marque, vos produits remarquables dans un monde saturé.",
-      cover: "img/books/vache-pourpre.jpg",
-    },
-    {
-      category: "psychologie",
-      title: "La Marque",
-      author: "Benoît Heilbrunn",
-      why: "Comprendre les mécanismes profonds de la construction des marques.",
-      cover: "img/books/la-marque.jpg",
-    },
-  ];
+  const filters = $("#bookFilters");
+  const count = $("#bookCount");
+  if (!grid || !search || !filters) return;
 
   let activeFilter = "all";
+  let books = [];
+
+  const normalizeCategory = (category) =>
+    String(category || "")
+      .trim()
+      .toLowerCase()
+      .replaceAll(" ", "-");
+
+  const labelizeCategory = (category) => {
+    const c = String(category || "").trim();
+    if (!c) return "Autre";
+    return c.charAt(0).toUpperCase() + c.slice(1);
+  };
+
+  const renderFilters = () => {
+    const categories = [...new Set(books.map((b) => b.categorie).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    filters.innerHTML = [
+      `<button class="chip ${activeFilter === "all" ? "isActive" : ""}" type="button" data-filter="all">Tous</button>`,
+      ...categories.map((c) => {
+        const key = normalizeCategory(c);
+        const isActive = activeFilter === key;
+        return `<button class="chip ${isActive ? "isActive" : ""}" type="button" data-filter="${escapeHtml(
+          key
+        )}">${escapeHtml(labelizeCategory(c))}</button>`;
+      }),
+    ].join("");
+  };
 
   const render = () => {
     const q = String(search.value || "").trim().toLowerCase();
     const filtered = books.filter((b) => {
-      const matchesFilter = activeFilter === "all" ? true : b.category === activeFilter;
-      const hay = `${b.title} ${b.author} ${b.why} ${b.category}`.toLowerCase();
+      const matchesFilter = activeFilter === "all" ? true : normalizeCategory(b.categorie) === activeFilter;
+      const hay = `${b.titre} ${b.auteur} ${b.resume_court} ${(b.tags || []).join(" ")} ${b.categorie}`.toLowerCase();
       const matchesQuery = !q ? true : hay.includes(q);
       return matchesFilter && matchesQuery;
     });
 
+    if (count) count.textContent = `${filtered.length} livre${filtered.length > 1 ? "s" : ""}`;
+
     grid.innerHTML = filtered
-      .map(
-        (b) => `
-        <article class="book">
-          <div class="bookCover" aria-hidden="true" style="background-image: url('${escapeHtml(b.cover || "")}'); background-size: cover; background-position: center;"></div>
-          <div>
-            <div class="tagRow">
-              <span class="tag">${escapeHtml(b.category)}</span>
+      .map((b) => {
+        const tags =
+          Array.isArray(b.tags) && b.tags.length > 0
+            ? b.tags
+                .slice(0, 3)
+                .map((t) => `<span class="tag" style="opacity:.86">${escapeHtml(String(t))}</span>`)
+                .join("")
+            : "";
+        const amazonHref = b.url_amazon ? escapeHtml(b.url_amazon) : "";
+        const amazonAttrs = amazonHref ? `href="${amazonHref}" target="_blank" rel="noopener noreferrer"` : "";
+        const amazon = amazonHref ? `<a class="bookLink" ${amazonAttrs} onclick="event.stopPropagation()">Amazon</a>` : "";
+
+        const coverInner = b.image
+          ? `<img class="bookCoverImg" src="${escapeHtml(b.image)}" alt="Couverture : ${escapeHtml(
+              b.titre || "Livre"
+            )}" loading="lazy" />`
+          : `<div class="bookCover" aria-hidden="true"></div>`;
+
+        const detailPage = b.bd ? escapeHtml(b.bd) : "";
+        const bookClass = detailPage ? "book clickable" : "book";
+        const bookAttrs = detailPage ? `role="button" tabindex="0" style="cursor: pointer;"` : "";
+
+        return `
+          <article class="${bookClass}" ${bookAttrs} ${detailPage ? `data-detail="${detailPage}"` : ""}>
+            ${coverInner}
+            <div>
+              <div class="tagRow">
+                <span class="tag">${escapeHtml(normalizeCategory(b.categorie) || "autre")}</span>
+                ${tags}
+              </div>
+              <h3>${escapeHtml(b.titre)}</h3>
+              <p class="bookMeta">${escapeHtml(b.auteur)} — ${escapeHtml(b.resume_court || "")}</p>
+              ${amazon}
             </div>
-            <h3>${escapeHtml(b.title)}</h3>
-            <p class="bookMeta">${escapeHtml(b.author)} — ${escapeHtml(b.why)}</p>
-          </div>
-        </article>
-      `
-      )
+          </article>
+        `;
+      })
       .join("");
   };
 
-  chips.forEach((chip) => {
-    chip.addEventListener("click", () => {
-      chips.forEach((c) => c.classList.remove("isActive"));
-      chip.classList.add("isActive");
-      activeFilter = chip.getAttribute("data-filter") || "all";
-      render();
-    });
+  filters.addEventListener("click", (event) => {
+    const btn = event.target instanceof HTMLElement ? event.target.closest("[data-filter]") : null;
+    if (!btn) return;
+    activeFilter = btn.getAttribute("data-filter") || "all";
+    renderFilters();
+    render();
   });
+
   search.addEventListener("input", render);
 
-  render();
+  grid.addEventListener("click", (event) => {
+    const book = event.target instanceof HTMLElement ? event.target.closest("[data-detail]") : null;
+    if (!book) return;
+    const detailPage = book.getAttribute("data-detail");
+    if (detailPage) window.location.href = detailPage;
+  });
+
+  grid.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const book = event.target instanceof HTMLElement ? event.target.closest("[data-detail]") : null;
+    if (!book) return;
+    event.preventDefault();
+    const detailPage = book.getAttribute("data-detail");
+    if (detailPage) window.location.href = detailPage;
+  });
+
+  (async () => {
+    try {
+      const resp = await fetch("data/bibliotheque.json", { cache: "no-store" });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const data = await resp.json();
+      const livres = Array.isArray(data?.livres) ? data.livres : [];
+      books = livres.map((b) => ({
+        titre: String(b.titre || ""),
+        auteur: String(b.auteur || ""),
+        resume_court: String(b.resume_court || ""),
+        tags: Array.isArray(b.tags) ? b.tags : [],
+        categorie: String(b.categorie || ""),
+        url_amazon: b.url_amazon ? String(b.url_amazon) : "",
+        image: b.image ? String(b.image) : "",
+        bd: b.bd ? String(b.bd) : "",
+      }));
+    } catch {
+      books = [];
+    }
+
+    renderFilters();
+    render();
+
+    if (books.length === 0) {
+      grid.innerHTML = `
+        <article class="infoCard">
+          <h3>Bibliothèque indisponible</h3>
+          <p>Impossible de charger <code>data/bibliotheque.json</code>.</p>
+          <p class="muted tiny">Astuce : lancez le site via <code>python3 -m http.server 8080</code>.</p>
+        </article>
+      `;
+    }
+  })();
 }
 
 function setupPlayPlaceholder() {
