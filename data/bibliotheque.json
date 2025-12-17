@@ -151,6 +151,16 @@
       "categorie": "psychologie"
     },
     {
+      "titre": "Système 1 / Système 2",
+      "auteur": "Daniel Kahneman",
+      "image": "",
+      "resume_court": "Pensée rapide vs pensée lente : comprendre nos biais et mieux décider.",
+      "tags": ["biais cognitifs", "décision", "heuristiques", "psychologie"],
+      "resume_long": "Daniel Kahneman, prix Nobel d'économie, décrit deux modes de pensée : le Système 1 (rapide, intuitif, automatique) et le Système 2 (lent, analytique, effortful). Le livre montre comment le Système 1 nous aide au quotidien, mais nous piège aussi via des biais cognitifs (ancrage, excès de confiance, disponibilité, etc.). En comprenant ces mécanismes, on apprend à repérer les situations à risque et à mettre en place des garde-fous pour prendre de meilleures décisions.",
+      "url_amazon": "https://www.amazon.fr/dp/2290054011",
+      "categorie": "psychologie"
+    },
+    {
       "titre": "Petit traité de manipulation",
       "auteur": "Robert-Vincent Joule, Jean-Léon Beauvois",
       "image": "../img/books/petit-traite-manipulation.jpg",
