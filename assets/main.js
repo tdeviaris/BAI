@@ -191,200 +191,154 @@ function setupConseilsPage() {
 
   const grid = $("#conseilsGrid");
   const search = $("#search");
-  const chips = $$("[data-filter]");
-  const modal = $("#conseilModal");
-  const modalTheme = $("#modalTheme");
-  const modalTitle = $("#modalTitle");
-  const modalBody = $("#modalBody");
-  const comic = $("#comic");
-  const speakBtn = $("#speakBtn");
-  const stopSpeakBtn = $("#stopSpeakBtn");
-
-  if (!grid || !search) return;
-
-  const staticCards = $$(".conseil-card", grid);
-  if (staticCards.length > 0) {
-    const applySearch = () => {
-      const q = String(search.value || "").trim().toLowerCase();
-      for (const card of staticCards) {
-        const hay = (card.textContent || "").toLowerCase();
-        const isMatch = !q ? true : hay.includes(q);
-        card.style.display = isMatch ? "" : "none";
-      }
-    };
-    search.addEventListener("input", applySearch);
-    applySearch();
-    return;
-  }
-
-  if (chips.length === 0 || !modal || !modalTheme || !modalTitle || !modalBody || !comic) return;
-
-  const conseils = [
-    {
-      id: "scope",
-      theme: "execution",
-      title: "Réduis le scope jusqu’à ce que ça fasse peur",
-      body: "Un MVP n’est pas ‘la version 1’. C’est le plus petit paquet qui teste ton hypothèse. Tout le reste est une distraction.",
-      tags: ["mvp", "focus", "priorisation"],
-    },
-    {
-      id: "pricing-anchor",
-      theme: "vente",
-      title: "Ancre ton pricing avec une offre premium",
-      body: "3 niveaux suffisent. La premium sert d’ancre, la core devient la décision par défaut. Ton job : clarifier la différence de valeur.",
-      tags: ["pricing", "offres", "valeur"],
-    },
-    {
-      id: "user-interviews",
-      theme: "produit",
-      title: "10 interviews avant 10 features",
-      body: "Cherche les phrases exactes du client (douleur, contexte, alternative). Ce vocabulaire est ton meilleur copy marketing.",
-      tags: ["interviews", "discovery", "copy"],
-    },
-    {
-      id: "cadence",
-      theme: "vente",
-      title: "Cadence de prospection : courte, mesurée, itérée",
-      body: "Teste un message, une cible, un CTA. Mesure les réponses avant d’augmenter le volume. La qualité du ciblage bat la quantité.",
-      tags: ["prospection", "b2b", "copy"],
-    },
-    {
-      id: "rituals",
-      theme: "equipe",
-      title: "Rituels d’équipe : moins, mais nets",
-      body: "Une weekly (priorités), un review (apprentissage), un 1:1 (frictions). Si un rituel n’aide pas une décision, supprime-le.",
-      tags: ["management", "rituels", "decision"],
-    },
-    {
-      id: "roadmap",
-      theme: "produit",
-      title: "Roadmap : écris des outcomes, pas des features",
-      body: "Remplace ‘build X’ par ‘augmenter Y’. Tu libères l’équipe pour trouver la meilleure solution, et tu peux dire non plus facilement.",
-      tags: ["roadmap", "metrics", "priorisation"],
-    },
-  ];
+  const filtersContainer = $(".filters");
+  if (!grid || !search || !filtersContainer) return;
 
   let activeFilter = "all";
-  let speechUtterance = null;
+  let conseils = [];
+
+  // Create and insert the count element
+  const count = document.createElement("p");
+  count.className = "muted tiny";
+  count.id = "conseilsCount";
+  count.setAttribute("aria-live", "polite");
+  search.parentElement.insertBefore(count, filtersContainer.nextSibling);
+
+  const searchConseil = (conseil, words) => {
+    const fields = {
+      primary: [conseil.titre, ...(conseil.tags || [])],
+      secondary: [conseil.resume_court, conseil.resume_long, conseil.descriptif_long]
+    };
+
+    let score = 0;
+    
+    // All words must be present ("AND" logic)
+    for (const word of words) {
+        let wordFound = false;
+        let wordScore = 0;
+
+        for (const field of fields.primary) {
+            if (String(field).toLowerCase().includes(word)) {
+                wordScore = Math.max(wordScore, 3);
+                wordFound = true;
+            }
+        }
+        for (const field of fields.secondary) {
+            if (String(field).toLowerCase().includes(word)) {
+                wordScore = Math.max(wordScore, 1);
+                wordFound = true;
+            }
+        }
+        if (!wordFound) return { matches: false, score: 0 };
+        score += wordScore;
+    }
+
+    return { matches: true, score };
+  };
 
   const render = () => {
     const q = String(search.value || "").trim().toLowerCase();
-    const filtered = conseils.filter((c) => {
-      const matchesFilter = activeFilter === "all" ? true : c.theme === activeFilter;
-      const hay = `${c.title} ${c.body} ${c.tags.join(" ")}`.toLowerCase();
-      const matchesQuery = !q ? true : hay.includes(q);
-      return matchesFilter && matchesQuery;
-    });
+    const words = q ? q.split(/\s+/).filter(Boolean) : [];
+
+    const filtered = conseils
+      .map((c) => {
+        const uniqueTags = [...new Set((c.tags || []).map(tag => tag.toLowerCase()))];
+        const matchesFilter = activeFilter === "all" ? true : uniqueTags.includes(activeFilter);
+        if (!matchesFilter) return null;
+        
+        if (words.length === 0) {
+          return { conseil: c, score: 0 };
+        }
+
+        const result = searchConseil(c, words);
+        return result.matches ? { conseil: c, score: result.score } : null;
+      })
+      .filter(Boolean);
+
+    filtered.sort((a, b) => b.score - a.score);
+    
+    count.textContent = `${filtered.length} conseil${filtered.length > 1 ? "s" : ""}`;
 
     grid.innerHTML = filtered
-      .map(
-        (c) => `
-        <article class="card" data-id="${escapeHtml(c.id)}" tabindex="0" role="button" aria-label="Ouvrir : ${escapeHtml(
-          c.title
-        )}">
-          <div class="tagRow">
-            <span class="tag">${escapeHtml(c.theme)}</span>
-            ${c.tags
-              .slice(0, 2)
-              .map((t) => `<span class="tag" style="opacity:.86">${escapeHtml(t)}</span>`)
-              .join("")}
-          </div>
-          <h3>${escapeHtml(c.title)}</h3>
-          <p>${escapeHtml(c.body)}</p>
-        </article>
-      `
-      )
+      .map(({ conseil: c }) => {
+        const tags = (c.tags || [])
+          .slice(0, 3)
+          .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
+          .join("");
+
+        const imageSrc = c.nom_image ? `../${escapeHtml(c.nom_image)}` : '';
+        const audioSrc = c.nom_fichier_audio ? `../${escapeHtml(c.nom_fichier_audio)}` : '';
+
+        return `
+          <article class="card" tabindex="0" role="button" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3>${escapeHtml(c.titre)}</h3>
+              ${imageSrc ? `<img src="${imageSrc}" alt="Visual for ${escapeHtml(c.titre)}" width="300" style="margin-top: 8px; margin-bottom: 16px; border-radius: 8px; max-width: 100%;">` : ''}
+              <p>${escapeHtml(c.resume_court)}</p>
+            </div>
+            <div>
+              ${audioSrc ? `<audio controls preload="none" style="width: 100%; margin-top: 16px;"><source src="${audioSrc}" type="audio/mpeg">Your browser does not support the audio element.</audio>` : ''}
+              <div class="tagRow" style="margin-top: 8px;">${tags}</div>
+            </div>
+          </article>
+        `;
+      })
       .join("");
   };
+  
+  const updateFilters = () => {
+    const allTags = [...new Set(conseils.flatMap(c => c.tags))];
+    allTags.sort();
+    const currentActive = activeFilter;
+    
+    let filterHtml = `<button class="chip ${currentActive === "all" ? "isActive" : ""}" type="button" data-filter="all">Tous</button>`;
+    
+    // Use the hardcoded filters from the HTML first
+    const existingFilters = $$("button[data-filter]", filtersContainer);
+    const existingFilterKeys = existingFilters.map(ef => ef.dataset.filter).filter(f => f !== 'all');
+    
+    for(const key of existingFilterKeys) {
+        const label = key.charAt(0).toUpperCase() + key.slice(1);
+        filterHtml += `<button class="chip ${currentActive === key ? "isActive" : ""}" type="button" data-filter="${escapeHtml(key)}">${escapeHtml(label)}</button>`;
+    }
+    
+    filtersContainer.innerHTML = filterHtml;
+  }
 
-  const openModal = (id) => {
-    const c = conseils.find((x) => x.id === id);
-    if (!c) return;
-
-    modalTheme.textContent = c.theme;
-    modalTitle.textContent = c.title;
-    modalBody.textContent = c.body;
-    comic.innerHTML = makeComicPanels(c);
-    modal.showModal();
-  };
-
-  const stopSpeech = () => {
-    if (!("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
-    speechUtterance = null;
-  };
-
-  const speak = () => {
-    stopSpeech();
-    if (!("speechSynthesis" in window)) return;
-    const text = `${modalTitle.textContent}. ${modalBody.textContent}`;
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "fr-FR";
-    u.rate = 1.02;
-    u.pitch = 1.0;
-    speechUtterance = u;
-    window.speechSynthesis.speak(u);
-  };
-
-  const makeComicPanels = (c) => {
-    const captions = [
-      `“On fait tout ça ?”`,
-      `“Non. On choisit l’essentiel.”`,
-      `“Ok. Et on mesure.”`,
-    ];
-    const themeAccent =
-      c.theme === "vente"
-        ? "rgba(244, 63, 94, 0.35)"
-        : c.theme === "produit"
-          ? "rgba(56, 189, 248, 0.35)"
-          : c.theme === "equipe"
-            ? "rgba(168, 85, 247, 0.35)"
-            : "rgba(34, 197, 94, 0.35)";
-
-    return captions
-      .map(
-        (caption, i) => `
-        <div class="panel">
-          <div class="panelArt" style="background:
-            radial-gradient(240px 120px at 30% 30%, ${themeAccent}, rgba(0,0,0,0) 70%),
-            radial-gradient(220px 120px at 80% 20%, rgba(255, 0, 153, 0.22), rgba(0,0,0,0) 70%),
-            radial-gradient(220px 120px at 55% 90%, rgba(56, 189, 248, 0.18), rgba(0,0,0,0) 70%);">
-          </div>
-          <div class="panelCaption">${escapeHtml(caption)}</div>
-        </div>
-      `
-      )
-      .join("");
-  };
-
-  chips.forEach((chip) => {
-    chip.addEventListener("click", () => {
-      chips.forEach((c) => c.classList.remove("isActive"));
-      chip.classList.add("isActive");
-      activeFilter = chip.getAttribute("data-filter") || "all";
-      render();
-    });
+  filtersContainer.addEventListener("click", (event) => {
+    const btn = event.target instanceof HTMLElement ? event.target.closest("[data-filter]") : null;
+    if (!btn) return;
+    activeFilter = btn.getAttribute("data-filter") || "all";
+    $$("button", filtersContainer).forEach(b => b.classList.remove("isActive"));
+    btn.classList.add("isActive");
+    render();
   });
+
   search.addEventListener("input", render);
 
-  grid.addEventListener("click", (event) => {
-    const card = event.target instanceof HTMLElement ? event.target.closest("[data-id]") : null;
-    if (!card) return;
-    openModal(card.getAttribute("data-id"));
-  });
-  grid.addEventListener("keydown", (event) => {
-    if (event.key !== "Enter" && event.key !== " ") return;
-    const card = event.target instanceof HTMLElement ? event.target.closest("[data-id]") : null;
-    if (!card) return;
-    event.preventDefault();
-    openModal(card.getAttribute("data-id"));
-  });
+  (async () => {
+    try {
+      const resp = await fetch("../data/conseils.json", { cache: "no-store" });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const data = await resp.json();
+      conseils = Array.isArray(data?.conseils) ? data.conseils : [];
+    } catch(e) {
+      console.error(e);
+      conseils = [];
+    }
+    // Don't auto-update filters, use the ones from the HTML
+    // updateFilters(); 
+    render();
 
-  modal.addEventListener("close", stopSpeech);
-  if (speakBtn) speakBtn.addEventListener("click", speak);
-  if (stopSpeakBtn) stopSpeakBtn.addEventListener("click", stopSpeech);
-
-  render();
+    if (conseils.length === 0) {
+      grid.innerHTML = `
+        <article class="infoCard">
+          <h3>Conseils indisponibles</h3>
+          <p>Impossible de charger <code>data/conseils.json</code>.</p>
+        </article>
+      `;
+    }
+  })();
 }
 
 function setupBibliothequePage() {
@@ -425,18 +379,113 @@ function setupBibliothequePage() {
     ].join("");
   };
 
+  const matchesWord = (text, word) => {
+    const textLower = text.toLowerCase();
+    const wordLower = word.toLowerCase();
+
+    // Match exact
+    if (textLower === wordLower) return "exact";
+
+    // Match au début du texte
+    if (textLower.startsWith(wordLower)) return "start";
+
+    // Match au début d'un mot (après espace, tiret, apostrophe)
+    const regex = new RegExp(`(^|\\s|-|')${wordLower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i');
+    if (regex.test(text)) return "word-start";
+
+    return null;
+  };
+
+  const searchBook = (book, words) => {
+    const fields = {
+      primary: [book.titre, book.auteur],
+      secondary: [
+        book.resume_court,
+        book.resume_long,
+        ...(book.tags || []),
+        book.categorie
+      ]
+    };
+
+    let primaryScore = 0;
+    let secondaryScore = 0;
+
+    for (const word of words) {
+      let foundInPrimary = false;
+      let foundInSecondary = false;
+
+      // Cherche dans les champs primaires (titre, auteur)
+      for (const field of fields.primary) {
+        const match = matchesWord(field, word);
+        if (match === "exact") {
+          primaryScore += 100;
+          foundInPrimary = true;
+          break;
+        } else if (match === "start") {
+          primaryScore += 50;
+          foundInPrimary = true;
+          break;
+        } else if (match === "word-start") {
+          primaryScore += 30;
+          foundInPrimary = true;
+          break;
+        }
+      }
+
+      // Si pas trouvé dans primaire, cherche dans secondaire
+      if (!foundInPrimary) {
+        for (const field of fields.secondary) {
+          const match = matchesWord(String(field), word);
+          if (match === "exact") {
+            secondaryScore += 20;
+            foundInSecondary = true;
+            break;
+          } else if (match === "start") {
+            secondaryScore += 10;
+            foundInSecondary = true;
+            break;
+          } else if (match === "word-start") {
+            secondaryScore += 5;
+            foundInSecondary = true;
+            break;
+          }
+        }
+      }
+
+      // Si le mot n'est trouvé ni en primaire ni en secondaire, échec
+      if (!foundInPrimary && !foundInSecondary) {
+        return { matches: false, score: 0 };
+      }
+    }
+
+    return { matches: true, score: primaryScore * 10 + secondaryScore };
+  };
+
   const render = () => {
-    const q = String(search.value || "").trim().toLowerCase();
-    const filtered = books.filter((b) => {
-      const matchesFilter = activeFilter === "all" ? true : normalizeCategory(b.categorie) === activeFilter;
-      const hay = `${b.titre} ${b.auteur} ${b.resume_court} ${(b.tags || []).join(" ")} ${b.categorie}`.toLowerCase();
-      const matchesQuery = !q ? true : hay.includes(q);
-      return matchesFilter && matchesQuery;
-    });
+    const q = String(search.value || "").trim();
+    const words = q ? q.split(/\s+/).filter(Boolean) : [];
+
+    let filtered = books
+      .map((b) => {
+        const matchesFilter = activeFilter === "all" ? true : normalizeCategory(b.categorie) === activeFilter;
+        if (!matchesFilter) return null;
+
+        if (words.length === 0) {
+          return { book: b, score: 0 };
+        }
+
+        const result = searchBook(b, words);
+        return result.matches ? { book: b, score: result.score } : null;
+      })
+      .filter(Boolean);
+
+    // Trier par score décroissant
+    filtered.sort((a, b) => b.score - a.score);
 
     if (count) count.textContent = `${filtered.length} livre${filtered.length > 1 ? "s" : ""}`;
 
     grid.innerHTML = filtered
+      .map(({ book: b }) => b)
       .map((b) => {
         const tags =
           Array.isArray(b.tags) && b.tags.length > 0
@@ -447,7 +496,7 @@ function setupBibliothequePage() {
             : "";
         const amazonHref = b.url_amazon ? escapeHtml(b.url_amazon) : "";
         const amazonAttrs = amazonHref ? `href="${amazonHref}" target="_blank" rel="noopener noreferrer"` : "";
-        const amazon = amazonHref ? `<a class="bookLink" ${amazonAttrs} onclick="event.stopPropagation()">Amazon</a>` : "";
+        const amazon = amazonHref ? `<a class="bookLink" ${amazonAttrs} onclick="event.stopPropagation()">amazon</a>` : "";
 
         const coverInner = b.image
           ? `<img class="bookCoverImg" src="${escapeHtml(b.image)}" alt="Couverture : ${escapeHtml(
@@ -461,7 +510,10 @@ function setupBibliothequePage() {
 
         return `
           <article class="${bookClass}" ${bookAttrs} ${detailPage ? `data-detail="${detailPage}"` : ""}>
-            ${coverInner}
+            <div class="bookCoverColumn">
+              ${coverInner}
+              ${amazon}
+            </div>
             <div>
               <div class="tagRow">
                 <span class="tag">${escapeHtml(normalizeCategory(b.categorie) || "autre")}</span>
@@ -469,7 +521,6 @@ function setupBibliothequePage() {
               </div>
               <h3>${escapeHtml(b.titre)}</h3>
               <p class="bookMeta">${escapeHtml(b.auteur)} — ${escapeHtml(b.resume_court || "")}</p>
-              ${amazon}
             </div>
           </article>
         `;
@@ -505,7 +556,7 @@ function setupBibliothequePage() {
 
   (async () => {
     try {
-      const resp = await fetch("data/bibliotheque.json", { cache: "no-store" });
+      const resp = await fetch("../data/bibliotheque.json", { cache: "no-store" });
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       const livres = Array.isArray(data?.livres) ? data.livres : [];
@@ -513,13 +564,15 @@ function setupBibliothequePage() {
         titre: String(b.titre || ""),
         auteur: String(b.auteur || ""),
         resume_court: String(b.resume_court || ""),
+        resume_long: String(b.resume_long || ""),
         tags: Array.isArray(b.tags) ? b.tags : [],
         categorie: String(b.categorie || ""),
         url_amazon: b.url_amazon ? String(b.url_amazon) : "",
         image: b.image ? String(b.image) : "",
         bd: b.bd ? String(b.bd) : "",
       }));
-    } catch {
+    } catch (e) {
+      console.error(e);
       books = [];
     }
 
@@ -530,8 +583,8 @@ function setupBibliothequePage() {
       grid.innerHTML = `
         <article class="infoCard">
           <h3>Bibliothèque indisponible</h3>
-          <p>Impossible de charger <code>data/bibliotheque.json</code>.</p>
-          <p class="muted tiny">Astuce : lancez le site via <code>python3 -m http.server 8080</code>.</p>
+          <p>Impossible de charger <code>../data/bibliotheque.json</code>.</p>
+          <p class="muted tiny">Astuce : vérifiez que vous servez le dossier du projet (pas seulement <code>pages/</code>).</p>
         </article>
       `;
     }

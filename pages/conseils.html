@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conseils — founder hacks</title>
+    <meta
+      name="description"
+      content="Bonnes pratiques par thèmes avec recherche. Chaque entrée a un format audio et une mini bande dessinée."
+    />
+    <link rel="icon" type="image/png" href="../img/founder_hacks_compass_refined_v2_1024.png" />
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body data-page="conseils">
+    <a class="skipLink" href="#contenu">Aller au contenu</a>
+
+    <header class="siteHeader" data-surface="page">
+      <nav class="nav" aria-label="Menu principal">
+        <a class="brand" href="../index.html" aria-label="founder hacks (Accueil)">
+          <img
+            class="brandMark"
+            src="../img/founder_hacks_compass_refined_v4_1024.png"
+            alt=""
+            width="34"
+            height="34"
+            loading="eager"
+          />
+          <span class="brandText">founder hacks</span>
+        </a>
+
+        <button class="navToggle" type="button" aria-expanded="false" aria-controls="navPanel">
+          <span class="navToggleIcon" aria-hidden="true"></span>
+          <span class="srOnly">Ouvrir le menu</span>
+        </button>
+
+        <div class="navPanel" id="navPanel">
+          <a class="navLink" href="../index.html">Accueil</a>
+          <a class="navLink" href="assistant-ia.html">Assistant IA</a>
+          <a class="navLink isActive" href="conseils.html">Conseils</a>
+          <a class="navLink" href="bibliotheque.html">Bibliothèque</a>
+          <a class="navLink" href="a-propos.html">À propos</a>
+        </div>
+      </nav>
+
+      <section class="pageHero" id="contenu">
+        <div class="container">
+          <p class="pill">Bonnes pratiques</p>
+          <h1>Conseils</h1>
+          <p class="lead">Recherche par thèmes. Chaque entrée se lit, s’écoute (voix), et se retient (mini BD).</p>
+        </div>
+      </section>
+    </header>
+
+    <main class="main">
+      <section class="section">
+        <div class="container">
+          <div class="toolbar">
+            <label class="srOnly" for="search">Rechercher</label>
+            <input id="search" class="searchInput" type="search" placeholder="Rechercher un conseil (ex: pricing, focus…)" />
+            <div class="filters" role="group" aria-label="Filtres">
+              <button class="chip isActive" type="button" data-filter="all">Tous</button>
+              <button class="chip" type="button" data-filter="produit">Produit</button>
+              <button class="chip" type="button" data-filter="vente">Vente</button>
+              <button class="chip" type="button" data-filter="execution">Exécution</button>
+              <button class="chip" type="button" data-filter="equipe">Équipe</button>
+            </div>
+          </div>
+
+          <div class="cardGrid" id="conseilsGrid" aria-label="Liste des conseils">
+            <!-- Les conseils seront chargés ici par le script principal -->
+          </div>
+        </div>
+      </section>
+
+      <dialog class="modal" id="conseilModal" aria-label="Détail du conseil">
+        <form method="dialog" class="modalShell">
+          <div class="modalHeader">
+            <div>
+              <p class="pill small" id="modalTheme"></p>
+              <h2 class="modalTitle" id="modalTitle"></h2>
+            </div>
+            <button class="iconButton" value="close" aria-label="Fermer">
+              <span aria-hidden="true">✕</span>
+            </button>
+          </div>
+          <div class="modalBody">
+            <p class="muted" id="modalBody"></p>
+            <div class="twoCol">
+              <section class="audioBox" aria-label="Podcast audio">
+                <h3>Podcast audio (voix)</h3>
+                <p class="muted tiny">Lecture via synthèse vocale du navigateur.</p>
+                <div class="audioActions">
+                  <button class="button primary" type="button" id="speakBtn">Lire</button>
+                  <button class="button" type="button" id="stopSpeakBtn">Stop</button>
+                </div>
+              </section>
+              <section class="comicBox" aria-label="Bande dessinée">
+                <h3>Mini BD</h3>
+                <div class="comic" id="comic"></div>
+              </section>
+            </div>
+          </div>
+        </form>
+      </dialog>
+    </main>
+
+    <footer class="footer">
+      <div class="container footerRow">
+        <p class="muted">© <span data-year></span> founder hacks</p>
+        <a class="footerLegal" href="mentions-legales.html">Mentions légales</a>
+      </div>
+    </footer>
+
+    <script src="../assets/main.js" defer></script>
+  </body>
+</html>
