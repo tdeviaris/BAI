@@ -320,6 +320,16 @@
       "resume_long": "Hors piste ! démonte une série d'idées reçues sur l'entrepreneuriat et propose une lecture plus réaliste du terrain : ce qui compte vraiment quand on lance, pilote et fait grandir un projet. L'ouvrage met l'accent sur la clarté des choix, la compréhension des contraintes, et la capacité à arbitrer sans se laisser guider par les clichés (startup, levée, \"passion\", etc.). Un livre utile pour revenir au concret et prendre de meilleures décisions d'exécution.",
       "url_amazon": "https://www.amazon.fr/Hors-piste-Entreprendre-id%C3%A9es-re%C3%A7ues-ebook/dp/B0093QGY6G",
       "categorie": "management"
+    },
+    {
+      "titre": "La soumission librement consentie",
+      "auteur": "Jean-Léon Beauvois",
+      "image": "../img/books/la-soumission-librement-consentie.jpg",
+      "resume_court": "Pourquoi nous obéissons et consentons : les mécanismes de l’influence et de la manipulation au quotidien.",
+      "tags": ["influence", "manipulation", "psychologie sociale", "biais cognitifs"],
+      "resume_long": "La soumission librement consentie explore les mécanismes qui nous amènent à dire oui, à obéir, et à nous engager sans contrainte apparente. Jean‑Léon Beauvois décrit comment des dispositifs d’influence (engagement, rationalisations, contexte social) produisent du consentement et renforcent l’adhésion, y compris quand cela va contre nos intérêts. Un livre utile pour reconnaître ces situations, se protéger, et concevoir des interactions plus éthiques (vente, management, politique, vie quotidienne).",
+      "url_amazon": "https://www.amazon.fr/soumission-librement-consentie-Robert-Vincent-Joule/dp/2130794491",
+      "categorie": "psychologie"
     }
   ]
 }
