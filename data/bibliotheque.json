@@ -310,6 +310,16 @@
       "resume_long": "La Chaîne Critique (Critical Chain) est un roman de management aussi captivant que Le But et Ce n'était pas le hasard. Dans un environnement industriel où le progrès est une question de survie, trois jeunes cadres d'une entreprise technologique ont pour mission de réduire le time-to-market de leurs nouvelles machines, avec la fortune en jeu s'ils réussissent. Un brillant professeur doit attirer de nouveaux managers dans son université pour enfin obtenir sa titularisation. Ces personnages se rencontrent dans un prestigieux Executive MBA où ils développent une nouvelle méthode gagnante de gestion de projet basée sur l'expérience terrain. Le livre présente et illustre une nouvelle méthode de gestion de projet et de production basée sur la Théorie des Contraintes (TOC) appliquée au management de projet, révolutionnant la façon de gérer les délais et les ressources.",
       "url_amazon": "https://www.amazon.fr/Critical-Chain-critique-Eliyahu-Goldratt/dp/2124656139",
       "categorie": "management"
+    },
+    {
+      "titre": "Hors piste ! Entreprendre sans idées reçues",
+      "auteur": "Véronique Pidancet-Barrière",
+      "image": "../img/books/hors-piste-entreprendre-sans-idees-recues.jpg",
+      "resume_court": "Un antidote aux mythes de l’entrepreneuriat : lucidité, terrain, et décisions concrètes.",
+      "tags": ["entrepreneuriat", "idées reçues", "business", "stratégie"],
+      "resume_long": "Hors piste ! démonte une série d'idées reçues sur l'entrepreneuriat et propose une lecture plus réaliste du terrain : ce qui compte vraiment quand on lance, pilote et fait grandir un projet. L'ouvrage met l'accent sur la clarté des choix, la compréhension des contraintes, et la capacité à arbitrer sans se laisser guider par les clichés (startup, levée, \"passion\", etc.). Un livre utile pour revenir au concret et prendre de meilleures décisions d'exécution.",
+      "url_amazon": "https://www.amazon.fr/Hors-piste-Entreprendre-id%C3%A9es-re%C3%A7ues-ebook/dp/B0093QGY6G",
+      "categorie": "management"
     }
   ]
 }
