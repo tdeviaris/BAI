@@ -12,6 +12,18 @@ import urllib.request
 from pathlib import Path
 
 
+def resolve_image_path(raw: str, project_root: Path) -> Path:
+    p = Path(str(raw or ""))
+    if not p.as_posix():
+        return project_root / "img" / "books" / "unknown.jpg"
+    if p.is_absolute():
+        return p
+    parts = p.parts
+    if parts and parts[0] == "..":
+        p = Path(*parts[1:])
+    return (project_root / p).resolve()
+
+
 def extract_isbn_from_amazon_url(url: str) -> str | None:
     m = re.search(r"/dp/([A-Z0-9]{10})", url)
     if m:
@@ -149,6 +161,7 @@ def main(argv: list[str]) -> int:
     if not data_path.exists():
         print(f"Erreur: fichier introuvable: {data_path}", file=sys.stderr)
         return 2
+    project_root = data_path.resolve().parent.parent
 
     raw = json.loads(data_path.read_text(encoding="utf-8"))
     books = raw.get("livres")
@@ -162,7 +175,7 @@ def main(argv: list[str]) -> int:
 
     for b in books:
         title = str(b.get("titre") or "").strip() or "(sans titre)"
-        dest = Path(str(b.get("image") or "")).resolve()
+        dest = resolve_image_path(str(b.get("image") or ""), project_root)
         if not str(dest).endswith((".jpg", ".jpeg", ".png", ".webp")):
             failed += 1
             print(f"[skip] {title}: champ 'image' invalide ({b.get('image')})")

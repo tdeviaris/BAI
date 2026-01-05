@@ -5,331 +5,1137 @@
       "auteur": "Nassim Nicholas Taleb",
       "image": "../img/books/antifragile.jpg",
       "resume_court": "Comment tirer profit du chaos et de l'incertitude. Les choses qui gagnent au désordre.",
-      "tags": ["incertitude", "résilience", "chaos"],
+      "tags": [
+        "incertitude"
+      ],
       "resume_long": "Nassim Nicholas Taleb propose un enseignement révolutionnaire pour non seulement surmonter les catastrophes de notre temps - ces Cygnes Noirs qui frappent une personne, une culture ou une civilisation - mais en faire une source de bienfaits. Tout comme le corps humain se renforce lorsqu'il est soumis au stress et à l'effort, que les mouvements populaires grandissent lorsqu'ils sont réprimés, les choses vivantes en général se développent mieux lorsqu'elles sont confrontées à des facteurs de désordre, de volatilité ou à tout ce qui les perturbe. Cette capacité de non seulement profiter du chaos mais d'en avoir besoin pour devenir meilleur est l'antifragilité, comme l'Hydre de Lerne dont les têtes se multipliaient à mesure qu'on les coupait.",
       "url_amazon": "https://www.amazon.fr/Antifragile-bienfaits-Nassim-Nicholas-Taleb/dp/2251444769",
-      "categorie": "hasard"
+      "categorie": "hasard",
+      "bd": "antifragile.html",
+      "url_wikipedia": "https://en.wikipedia.org/wiki/Antifragile_(book)",
+      "pourquoi_entrepreneur": [
+        "Mieux décider quand l'incertitude domine : protéger le downside, éviter les paris irréversibles.",
+        "Raisonner en probabilités (plutôt qu'en histoires) pour prioriser, investir, et mesurer.",
+        "Construire des systèmes et des habitudes qui résistent aux chocs et tirent parti de la volatilité."
+      ]
     },
     {
       "titre": "Le Cygne Noir",
       "auteur": "Nassim Nicholas Taleb",
       "image": "../img/books/cygne-noir.jpg",
       "resume_court": "La puissance de l'imprévisible. Comprendre les événements rares à fort impact.",
-      "tags": ["imprévisibilité", "risque", "événements rares"],
+      "tags": [
+        "incertitude"
+      ],
       "resume_long": "Le Cygne Noir révèle la nature des Cygnes Noirs - événements hautement improbables, aléatoires, qui ponctuent notre vie : ils ont un impact énorme, sont presque impossibles à prévoir et pourtant, après coup, nous essayons toujours de leur trouver une explication rationnelle. Selon la théorie du Cygne Noir développée par Taleb, un Cygne Noir est un événement imprévisible ayant une faible probabilité de se réaliser qui, s'il se produit, a des conséquences d'une portée considérable et exceptionnelle. Ils sont totalement inattendus et leur impact est gigantesque, mais notre cerveau trouvera des raisons logiques pour les expliquer après coup.",
       "url_amazon": "https://www.amazon.fr/Cygne-noir-puissance-limpr%C3%A9visible/dp/225144436X",
-      "categorie": "hasard"
+      "categorie": "hasard",
+      "bd": "le-cygne-noir.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Le_Cygne_noir_(livre)",
+      "pourquoi_entrepreneur": [
+        "Mieux décider quand l'incertitude domine : protéger le downside, éviter les paris irréversibles.",
+        "Raisonner en probabilités (plutôt qu'en histoires) pour prioriser, investir, et mesurer.",
+        "Construire des systèmes et des habitudes qui résistent aux chocs et tirent parti de la volatilité."
+      ]
     },
     {
       "titre": "Le Hasard sauvage",
       "auteur": "Nassim Nicholas Taleb",
       "image": "../img/books/hasard-sauvage.jpg",
       "resume_court": "Comment la chance nous trompe. Les pièges de l'aléatoire dans nos vies.",
-      "tags": ["hasard", "chance", "probabilités"],
+      "tags": [
+        "incertitude"
+      ],
       "resume_long": "Fooled by Randomness explore comment nous sommes trompés par le hasard dans tous les aspects de notre vie. Nassim Taleb examine comment les humains confondent chance et compétence, et pourquoi nous sous-estimons systématiquement le rôle du hasard dans nos succès et échecs. À travers des exemples tirés de la finance, de la science et de la vie quotidienne, il démontre comment notre incapacité à comprendre la nature aléatoire des événements nous conduit à de mauvaises décisions et à des conclusions erronées sur les causes du succès.",
       "url_amazon": "https://www.amazon.fr/dp/2251451390",
-      "categorie": "hasard"
+      "categorie": "hasard",
+      "bd": "le-hasard-sauvage.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Le_Hasard_sauvage",
+      "pourquoi_entrepreneur": [
+        "Mieux décider quand l'incertitude domine : protéger le downside, éviter les paris irréversibles.",
+        "Raisonner en probabilités (plutôt qu'en histoires) pour prioriser, investir, et mesurer.",
+        "Construire des systèmes et des habitudes qui résistent aux chocs et tirent parti de la volatilité."
+      ]
     },
     {
       "titre": "Jouer sa peau",
       "auteur": "Nassim Nicholas Taleb",
       "image": "../img/books/jouer-sa-peau.jpg",
       "resume_court": "Asymétries cachées dans la vie quotidienne. L'importance d'avoir du skin in the game.",
-      "tags": ["responsabilité", "risque", "éthique"],
+      "tags": [
+        "éthique",
+        "incertitude"
+      ],
       "resume_long": "Skin in the Game explore le concept selon lequel ceux qui prennent des décisions doivent en assumer les conséquences. Taleb démontre que les asymétries cachées - où certains ont le pouvoir sans la responsabilité - sont à l'origine de nombreux dysfonctionnements de notre société. Avoir 'la peau dans le jeu' signifie être exposé aux risques réels de ses décisions, un principe qui s'applique à tous les domaines : finance, politique, santé, relations personnelles. Ce livre est une exploration profonde de la justice, du courage et de la vraie expertise.",
       "url_amazon": "https://www.amazon.fr/dp/2251447598",
-      "categorie": "hasard"
+      "categorie": "hasard",
+      "bd": "jouer-sa-peau.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Jouer_sa_peau",
+      "pourquoi_entrepreneur": [
+        "Mieux décider quand l'incertitude domine : protéger le downside, éviter les paris irréversibles.",
+        "Raisonner en probabilités (plutôt qu'en histoires) pour prioriser, investir, et mesurer.",
+        "Construire des systèmes et des habitudes qui résistent aux chocs et tirent parti de la volatilité."
+      ]
     },
     {
       "titre": "Sapiens",
       "auteur": "Yuval Noah Harari",
       "image": "../img/books/sapiens.jpg",
       "resume_court": "Une brève histoire de l'humanité, de la révolution cognitive à nos jours.",
-      "tags": ["histoire", "humanité", "évolution"],
+      "tags": [
+        "société"
+      ],
       "resume_long": "Sapiens propose une vue d'ensemble de l'histoire de l'humanité et de son évolution depuis le début du Pléistocène supérieur jusqu'au XXIe siècle. Le principal argument avancé par l'auteur est qu'Homo sapiens doit son statut d'espèce dominante au fait qu'il est le seul animal capable de coopérer efficacement avec un grand nombre de ses semblables. Yuval Noah Harari découpe l'évolution humaine en 4 grandes phases : révolution cognitive, révolution agricole, unification de l'humanité et révolution industrielle. Il poursuit son analyse en expliquant la naissance de concepts tels que la religion, la nation, les droits de l'homme.",
       "url_amazon": "https://www.amazon.fr/Sapiens-Une-brève-histoire-lhumanité/dp/2226257012",
-      "categorie": "humanite"
+      "categorie": "humanite",
+      "bd": "sapiens.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Sapiens_%3A_Une_br%C3%A8ve_histoire_de_l'humanit%C3%A9",
+      "pourquoi_entrepreneur": [
+        "Prendre de la hauteur sur les dynamiques humaines et technologiques qui transforment les marchés.",
+        "Éclairer des choix produit/positionnement en comprenant les forces sociales (récits, croyances, institutions).",
+        "Développer une pensée stratégique long-terme (au-delà de l'exécution court-terme)."
+      ]
     },
     {
       "titre": "Homo Deus",
       "auteur": "Yuval Noah Harari",
       "image": "../img/books/homo-deus.jpg",
       "resume_court": "Une brève histoire de l'avenir. Que deviendra l'humanité à l'ère des algorithmes?",
-      "tags": ["futur", "technologie", "transhumanisme"],
+      "tags": [
+        "technologie"
+      ],
       "resume_long": "Homo Deus traite des capacités acquises par les humains (Homo sapiens) tout au long de leur existence, et de leur évolution en tant qu'espèce dominante dans le monde. La prémisse souligne que durant le 21ème siècle, l'humanité tentera probablement d'obtenir le bonheur, l'immortalité et des pouvoirs divins. Yuval Noah Harari envisage un avenir dans lequel la technologie remplace les idéaux humanistes et le gouvernement libéral, arguant que le monde du futur pourrait être géré par des algorithmes avancés et l'intelligence artificielle, et non par des êtres humains.",
       "url_amazon": "https://www.amazon.fr/Homo-Deus-brève-histoire-lavenir/dp/2226393870",
-      "categorie": "humanite"
+      "categorie": "humanite",
+      "bd": "homo-deus.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Homo_Deus_%3A_Une_br%C3%A8ve_histoire_de_l'avenir",
+      "pourquoi_entrepreneur": [
+        "Prendre de la hauteur sur les dynamiques humaines et technologiques qui transforment les marchés.",
+        "Éclairer des choix produit/positionnement en comprenant les forces sociales (récits, croyances, institutions).",
+        "Développer une pensée stratégique long-terme (au-delà de l'exécution court-terme)."
+      ]
     },
     {
       "titre": "21 Leçons pour le XXIème siècle",
       "auteur": "Yuval Noah Harari",
       "image": "../img/books/21-lecons.jpg",
       "resume_court": "Les grands défis contemporains : technologie, politique, spiritualité.",
-      "tags": ["actualité", "défi", "société"],
+      "tags": [
+        "société"
+      ],
       "resume_long": "Après Sapiens qui explorait le passé de notre humanité et Homo Deus la piste d'un avenir gouverné par l'intelligence artificielle, 21 leçons pour le XXIème siècle nous confronte aux grands défis contemporains. Pourquoi la démocratie libérale est-elle en crise ? Sommes-nous à l'aube d'une nouvelle guerre mondiale ? Que faire devant l'épidémie de fake news ? Quelle civilisation domine le monde ? Que pouvons-nous faire face au terrorisme ? Devons-nous nous préparer à une guerre nucléaire ? Harari nous livre ses réflexions sur les défis de notre époque avec clarté et profondeur.",
       "url_amazon": "https://www.amazon.fr/21-Leçons-pour-XXIème-siècle/dp/2226436030",
-      "categorie": "humanite"
+      "categorie": "humanite",
+      "bd": "21-lecons-pour-le-xxieme-siecle.html",
+      "pourquoi_entrepreneur": [
+        "Prendre de la hauteur sur les dynamiques humaines et technologiques qui transforment les marchés.",
+        "Éclairer des choix produit/positionnement en comprenant les forces sociales (récits, croyances, institutions).",
+        "Développer une pensée stratégique long-terme (au-delà de l'exécution court-terme)."
+      ]
     },
     {
       "titre": "Nexus",
       "auteur": "Yuval Noah Harari",
       "image": "../img/books/nexus.jpg",
       "resume_court": "Histoire des réseaux d'information et leur impact sur les civilisations.",
-      "tags": ["information", "réseaux", "civilisation"],
+      "tags": [
+        "technologie",
+        "société"
+      ],
       "resume_long": "Nexus explore comment les réseaux d'information ont façonné l'histoire humaine et continuent de transformer nos sociétés. Yuval Noah Harari examine l'évolution des systèmes d'information, de l'écriture aux algorithmes d'intelligence artificielle, et analyse leur impact sur le pouvoir, la connaissance et la vérité. Le livre explore comment ces réseaux ont permis aux humains de coopérer à grande échelle tout en créant de nouvelles formes de contrôle et de manipulation. Une réflexion essentielle sur notre ère numérique.",
       "url_amazon": "https://www.amazon.fr/Nexus-version-fran%C3%A7aise-histoire-dinformation/dp/B0D53LK7MV",
-      "categorie": "humanite"
+      "categorie": "humanite",
+      "bd": "nexus.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Nexus",
+      "pourquoi_entrepreneur": [
+        "Prendre de la hauteur sur les dynamiques humaines et technologiques qui transforment les marchés.",
+        "Éclairer des choix produit/positionnement en comprenant les forces sociales (récits, croyances, institutions).",
+        "Développer une pensée stratégique long-terme (au-delà de l'exécution court-terme)."
+      ]
     },
     {
       "titre": "Sociologie générale Vol. 1",
       "auteur": "Pierre Bourdieu",
       "image": "../img/books/sociologie-generale.jpg",
       "resume_court": "Cours au Collège de France. Les fondements de la sociologie bourdieusienne.",
-      "tags": ["sociologie", "théorie", "champ social"],
+      "tags": [
+        "société"
+      ],
       "resume_long": "Sociologie générale propose les cours dispensés par Pierre Bourdieu au Collège de France entre 1981 et 1983. Ces cours constituent une introduction magistrale à la pensée sociologique de Bourdieu. Il y développe ses concepts fondamentaux : habitus, capital, champ, violence symbolique. À travers des exemples concrets et des analyses de cas, Bourdieu démontre comment les structures sociales se reproduisent et comment les dominants maintiennent leur position. Un texte essentiel pour comprendre la sociologie contemporaine.",
       "url_amazon": "https://www.amazon.fr/Sociologie-g%C3%A9n%C3%A9rale-Coll%C3%A8ge-France-1981-1983/dp/2021279782/",
-      "categorie": "sociologie"
+      "categorie": "sociologie",
+      "bd": "sociologie-generale-vol-1.html",
+      "pourquoi_entrepreneur": [
+        "Mieux lire les jeux de pouvoir, de réputation et de légitimité (marchés, médias, organisations).",
+        "Comprendre comment se construit la valeur symbolique : utile pour le positionnement et la marque.",
+        "Éviter des erreurs d'organisation en distinguant règles affichées et incitations réelles."
+      ]
     },
     {
       "titre": "Language and Symbolic Power",
       "auteur": "Pierre Bourdieu",
       "image": "../img/books/language-symbolic-power.jpg",
       "resume_court": "Le langage comme instrument de pouvoir et de domination symbolique.",
-      "tags": ["langage", "pouvoir", "domination"],
+      "tags": [
+        "langage",
+        "influence"
+      ],
       "resume_long": "Language and Symbolic Power explore comment le langage fonctionne comme un instrument de pouvoir et de domination symbolique. Bourdieu démontre que le langage n'est pas simplement un moyen de communication, mais un système de classement et de hiérarchisation sociale. Il analyse comment les différentes formes de capital linguistique reproduisent les inégalités sociales et comment la légitimité linguistique est construite et maintenue. Une analyse profonde des mécanismes subtils de la domination par le verbe.",
       "url_amazon": "https://www.amazon.fr/Language-Symbolic-Power-Bourdieu/dp/0674510410/",
-      "categorie": "sociologie"
+      "categorie": "sociologie",
+      "bd": "language-and-symbolic-power.html",
+      "url_wikipedia": "https://en.wikipedia.org/wiki/Symbolic_power",
+      "pourquoi_entrepreneur": [
+        "Mieux lire les jeux de pouvoir, de réputation et de légitimité (marchés, médias, organisations).",
+        "Comprendre comment se construit la valeur symbolique : utile pour le positionnement et la marque.",
+        "Éviter des erreurs d'organisation en distinguant règles affichées et incitations réelles."
+      ]
     },
     {
       "titre": "Le vocabulaire de Bourdieu",
       "auteur": "Christiane Chauviré, Olivier Fontaine",
       "image": "../img/books/vocabulaire-bourdieu.jpg",
       "resume_court": "Guide des concepts clés : habitus, capital, champ, violence symbolique.",
-      "tags": ["théorie", "concepts", "introduction"],
+      "tags": [
+        "langage",
+        "société"
+      ],
       "resume_long": "Le vocabulaire de Bourdieu offre une introduction claire et systématique aux concepts fondamentaux de la sociologie de Pierre Bourdieu. Chaque entrée explicite un concept clé - habitus, capital (économique, culturel, social, symbolique), champ, illusio, violence symbolique, etc. - en en retraçant la genèse, les usages et les implications théoriques. Cet ouvrage constitue un outil indispensable pour tous ceux qui souhaitent s'initier à la pensée de Bourdieu ou approfondir leur compréhension de son œuvre.",
       "url_amazon": "https://www.amazon.fr/vocabulaire-Bourdieu-Christiane-Chauvir%C3%A9/dp/2729811729/",
-      "categorie": "sociologie"
+      "categorie": "sociologie",
+      "bd": "le-vocabulaire-de-bourdieu.html",
+      "pourquoi_entrepreneur": [
+        "Mieux lire les jeux de pouvoir, de réputation et de légitimité (marchés, médias, organisations).",
+        "Comprendre comment se construit la valeur symbolique : utile pour le positionnement et la marque.",
+        "Éviter des erreurs d'organisation en distinguant règles affichées et incitations réelles."
+      ]
     },
     {
       "titre": "La Sémiotique du langage",
       "auteur": "Joseph Courtés",
       "image": "../img/books/semiotique-langage.jpg",
       "resume_court": "Introduction à la sémiotique structurale et à l'analyse du discours.",
-      "tags": ["sémiotique", "langage", "discours"],
+      "tags": [
+        "langage"
+      ],
       "resume_long": "La Sémiotique du langage propose une introduction complète à la sémiotique structurale développée par l'école de Paris sous l'impulsion de A.J. Greimas. Joseph Courtés présente les outils et méthodes d'analyse du discours, depuis les structures narratives profondes jusqu'aux manifestations de surface. L'ouvrage couvre les concepts fondamentaux : carré sémiotique, schéma narratif, modalités, programmes narratifs. Une référence incontournable pour comprendre comment le sens se construit dans les textes.",
       "url_amazon": "https://www.amazon.fr/s%C3%A9miotique-du-langage-Joseph-Court%C3%A9s/dp/2200352794/",
-      "categorie": "semiotique"
+      "categorie": "semiotique",
+      "bd": "la-semiotique-du-langage.html",
+      "pourquoi_entrepreneur": [
+        "Clarifier le message : comprendre comment les signes, récits et codes produisent du sens.",
+        "Améliorer marketing/brand/UX en travaillant sur la perception, pas seulement sur les features.",
+        "Créer des communications plus cohérentes (promesse, preuves, ton, identité)."
+      ]
     },
     {
       "titre": "Sémiotique des passions",
       "auteur": "Jacques Fontanille, Algirdas Julien Greimas",
       "image": "../img/books/semiotique-passions.jpg",
       "resume_court": "Des états de choses aux états d'âme. La dimension affective du sens.",
-      "tags": ["passions", "émotions", "sens"],
+      "tags": [
+        "psychologie",
+        "synchronicité"
+      ],
       "resume_long": "Sémiotique des passions explore la dimension affective et passionnelle de la signification. Fontanille et Greimas développent une théorie permettant d'analyser comment les passions - jalousie, colère, avarice, amour - se manifestent dans les discours et structurent les récits. L'ouvrage propose une approche systématique des états d'âme et montre comment ils s'articulent avec les états de choses. Une contribution majeure à la compréhension de la dimension thymique du sens et de l'expérience humaine.",
       "url_amazon": "https://www.amazon.fr/S%C3%A9miotique-passions-%C3%A9tats-choses-d%C3%A2me/dp/2020128985/",
-      "categorie": "semiotique"
+      "categorie": "semiotique",
+      "bd": "semiotique-des-passions.html",
+      "pourquoi_entrepreneur": [
+        "Clarifier le message : comprendre comment les signes, récits et codes produisent du sens.",
+        "Améliorer marketing/brand/UX en travaillant sur la perception, pas seulement sur les features.",
+        "Créer des communications plus cohérentes (promesse, preuves, ton, identité)."
+      ]
     },
     {
       "titre": "Introduction à la Sémiologie",
       "auteur": "Georges Mounin",
       "image": "../img/books/intro-semiologie.jpg",
       "resume_court": "Les bases de la science des signes et de la communication.",
-      "tags": ["sémiologie", "signes", "communication"],
+      "tags": [
+        "langage"
+      ],
       "resume_long": "Introduction à la Sémiologie offre une présentation claire et accessible de la science des signes. Georges Mounin retrace l'histoire de la sémiologie, de Saussure à Peirce, et présente les concepts fondamentaux : signe, signifiant/signifié, syntagme/paradigme, dénotation/connotation. L'ouvrage explore les différents systèmes de signes - langage verbal, images, gestes, codes sociaux - et montre comment la sémiologie permet de déchiffrer les mécanismes de la communication humaine.",
       "url_amazon": "https://www.amazon.fr/Introduction-%C3%A0-s%C3%A9miologie-Georges-Mounin/dp/2707300187/",
-      "categorie": "semiotique"
+      "categorie": "semiotique",
+      "bd": "introduction-a-la-semiologie.html",
+      "pourquoi_entrepreneur": [
+        "Clarifier le message : comprendre comment les signes, récits et codes produisent du sens.",
+        "Améliorer marketing/brand/UX en travaillant sur la perception, pas seulement sur les features.",
+        "Créer des communications plus cohérentes (promesse, preuves, ton, identité)."
+      ]
     },
     {
       "titre": "La force de l'intuition",
       "auteur": "Malcolm Gladwell",
       "image": "../img/books/intuition-gladwell.jpg",
       "resume_court": "Le pouvoir de penser sans penser. La force des décisions instantanées.",
-      "tags": ["intuition", "décision", "cognition"],
+      "tags": [
+        "intuition",
+        "décision",
+        "biais cognitifs"
+      ],
       "resume_long": "Blink (Intuition) explore le pouvoir de la pensée intuitive et des décisions instantanées. Malcolm Gladwell démontre que notre capacité à faire des jugements rapides - qu'il appelle 'thin-slicing' - peut être étonnamment précise. À travers des exemples fascinants tirés de l'art, de la psychologie, de la médecine et du sport, il révèle comment notre inconscient adaptatif fonctionne. Le livre examine aussi les limites de l'intuition, notamment les préjugés inconscients. Une exploration captivante de la façon dont nous prenons réellement nos décisions.",
       "url_amazon": "https://www.amazon.fr/force-lintuition-Malcolm-GLADWELL/dp/2266168789/",
-      "categorie": "psychologie"
+      "categorie": "psychologie",
+      "bd": "la-force-de-l-intuition.html",
+      "pourquoi_entrepreneur": [
+        "Détecter biais cognitifs et angles morts : meilleur jugement en produit, recrutement, vente et stratégie.",
+        "Comprendre influence et persuasion (avec garde-fous éthiques) pour négocier et convaincre.",
+        "Mieux concevoir des processus de décision et des tests (moins d'intuition non vérifiée)."
+      ]
     },
     {
       "titre": "Système 1 / Système 2",
       "auteur": "Daniel Kahneman",
       "image": "../img/books/systeme-1-systeme-2.jpg",
       "resume_court": "Pensée rapide vs pensée lente : comprendre nos biais et mieux décider.",
-      "tags": ["biais cognitifs", "décision", "heuristiques", "psychologie"],
+      "tags": [
+        "biais cognitifs",
+        "décision",
+        "psychologie"
+      ],
       "resume_long": "Daniel Kahneman, prix Nobel d'économie, décrit deux modes de pensée : le Système 1 (rapide, intuitif, automatique) et le Système 2 (lent, analytique, effortful). Le livre montre comment le Système 1 nous aide au quotidien, mais nous piège aussi via des biais cognitifs (ancrage, excès de confiance, disponibilité, etc.). En comprenant ces mécanismes, on apprend à repérer les situations à risque et à mettre en place des garde-fous pour prendre de meilleures décisions.",
       "url_amazon": "https://www.amazon.fr/dp/2081211475",
-      "categorie": "psychologie"
+      "categorie": "psychologie",
+      "bd": "systeme-1-systeme-2.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Syst%C3%A8me_1_%2F_Syst%C3%A8me_2_%3A_Les_deux_vitesses_de_la_pens%C3%A9e",
+      "pourquoi_entrepreneur": [
+        "Détecter biais cognitifs et angles morts : meilleur jugement en produit, recrutement, vente et stratégie.",
+        "Comprendre influence et persuasion (avec garde-fous éthiques) pour négocier et convaincre.",
+        "Mieux concevoir des processus de décision et des tests (moins d'intuition non vérifiée)."
+      ]
     },
     {
       "titre": "Petit traité de manipulation",
       "auteur": "Robert-Vincent Joule, Jean-Léon Beauvois",
       "image": "../img/books/petit-traite-manipulation.jpg",
       "resume_court": "À l'usage des honnêtes gens. 30+ techniques d'influence scientifiquement prouvées.",
-      "tags": ["manipulation", "influence", "psychologie sociale"],
+      "tags": [
+        "influence"
+      ],
       "resume_long": "Petit traité de manipulation à l'usage des honnêtes gens présente une trentaine de techniques de manipulation dont l'efficacité est scientifiquement prouvée. Joule et Beauvois expliquent les mécanismes psychologiques qui sous-tendent des techniques comme le pied-dans-la-porte, la porte-au-nez, ou l'amorçage. À travers des exemples concrets et souvent amusants mettant en scène Madame O., les auteurs démontrent comment ces techniques fonctionnent dans la vie quotidienne. Un ouvrage de référence traduit en quinze langues avec 4 millions de lecteurs.",
       "url_amazon": "https://www.amazon.fr/Petit-traité-manipulation-lusage-honnêtes/dp/2706118857",
-      "categorie": "psychologie"
+      "categorie": "psychologie",
+      "bd": "petit-traite-de-manipulation.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Petit_trait%C3%A9_de_manipulation_%C3%A0_l'usage_des_honn%C3%AAtes_gens",
+      "pourquoi_entrepreneur": [
+        "Détecter biais cognitifs et angles morts : meilleur jugement en produit, recrutement, vente et stratégie.",
+        "Comprendre influence et persuasion (avec garde-fous éthiques) pour négocier et convaincre.",
+        "Mieux concevoir des processus de décision et des tests (moins d'intuition non vérifiée)."
+      ]
     },
     {
       "titre": "Intuitions",
       "auteur": "David O'Hare",
       "image": "../img/books/intuitions-ohare.jpg",
       "resume_court": "Apprendre à écouter sa voix intérieure pour de meilleures décisions.",
-      "tags": ["intuition", "décision", "coaching"],
+      "tags": [
+        "intuition",
+        "décision",
+        "psychologie"
+      ],
       "resume_long": "Intuitions propose une approche pratique pour développer et utiliser son intuition dans la prise de décision. David O'Hare, médecin et expert en cohérence cardiaque, explore les bases scientifiques de l'intuition et propose des exercices concrets pour apprendre à écouter sa voix intérieure. L'ouvrage montre comment l'intuition complète la raison et comment cultiver cette capacité pour prendre de meilleures décisions dans tous les domaines de la vie. Un guide accessible et pratique pour réconcilier tête et cœur.",
       "url_amazon": "https://www.amazon.fr/Intuitions-Apprenez-int%C3%A9rieure-meilleures-d%C3%A9cisions/dp/2916878688",
-      "categorie": "psychologie"
+      "categorie": "psychologie",
+      "bd": "intuitions.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Intuitions",
+      "pourquoi_entrepreneur": [
+        "Détecter biais cognitifs et angles morts : meilleur jugement en produit, recrutement, vente et stratégie.",
+        "Comprendre influence et persuasion (avec garde-fous éthiques) pour négocier et convaincre.",
+        "Mieux concevoir des processus de décision et des tests (moins d'intuition non vérifiée)."
+      ]
     },
     {
       "titre": "L'épistémologie",
       "auteur": "Robert Blanché",
       "image": "../img/books/epistemologie.jpg",
       "resume_court": "Introduction à la théorie de la connaissance et à la philosophie des sciences.",
-      "tags": ["épistémologie", "connaissance", "science"],
+      "tags": [
+        "méthode"
+      ],
       "resume_long": "L'épistémologie de Robert Blanché constitue une introduction classique à la philosophie de la connaissance et des sciences. L'ouvrage explore les questions fondamentales : qu'est-ce que la connaissance scientifique ? Comment se distingue-t-elle des autres formes de savoir ? Quels sont les critères de vérité et de validité ? Blanché examine les différentes positions épistémologiques - empirisme, rationalisme, criticisme - et analyse les méthodes scientifiques. Un texte de référence pour comprendre les fondements et les limites de la connaissance.",
       "url_amazon": "https://www.amazon.fr/LEPISTEMOLOGIE-QUE-SAIS-N%C2%B0-1475/dp/B00J3O6JQI/",
-      "categorie": "philosophie"
+      "categorie": "philosophie",
+      "bd": "l-epistemologie.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Constructivisme_(%C3%A9pist%C3%A9mologie)",
+      "pourquoi_entrepreneur": [
+        "Structurer sa pensée critique : distinguer connaissance, croyance, preuve, et hypothèse.",
+        "Décider plus vite avec des heuristiques (simplicité, falsification, élimination du superflu).",
+        "Garder un cap méthodologique : mieux apprendre, mieux expérimenter, mieux arbitrer."
+      ]
     },
     {
       "titre": "Le rasoir d'Occam",
       "auteur": "David Duncan",
       "image": "../img/books/rasoir-occam.jpg",
       "resume_court": "Le principe de parcimonie : préférer l'explication la plus simple.",
-      "tags": ["logique", "simplicité", "raisonnement"],
+      "tags": [
+        "décision"
+      ],
       "resume_long": "Le rasoir d'Occam explore le célèbre principe de parcimonie formulé par le philosophe Guillaume d'Occam au XIVe siècle : 'Entia non sunt multiplicanda praeter necessitatem' (les entités ne doivent pas être multipliées sans nécessité). David Duncan examine l'application de ce principe à travers l'histoire de la philosophie et des sciences, montrant comment il guide la recherche vers les explications les plus simples et élégantes. L'ouvrage analyse aussi les limites et les critiques de ce principe fondamental de la pensée rationnelle.",
       "url_amazon": "https://www.amazon.fr/rasoir-dOccam-D-Duncan/dp/2207248909",
-      "categorie": "philosophie"
+      "categorie": "philosophie",
+      "bd": "le-rasoir-d-occam.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Le_Rasoir_d'Occam_(roman_de_Duncan)",
+      "pourquoi_entrepreneur": [
+        "Structurer sa pensée critique : distinguer connaissance, croyance, preuve, et hypothèse.",
+        "Décider plus vite avec des heuristiques (simplicité, falsification, élimination du superflu).",
+        "Garder un cap méthodologique : mieux apprendre, mieux expérimenter, mieux arbitrer."
+      ]
     },
     {
       "titre": "Le principe de subsidiarité",
       "auteur": "Chantal Delsol",
       "image": "../img/books/subsidiarite.jpg",
       "resume_court": "Répartition des pouvoirs et autonomie des niveaux de décision.",
-      "tags": ["subsidiarité", "politique", "fédéralisme"],
+      "tags": [
+        "société"
+      ],
       "resume_long": "Le principe de subsidiarité examine un concept clé de la philosophie politique : l'idée selon laquelle les décisions doivent être prises au niveau le plus proche des citoyens concernés. Chantal Millon-Delsol retrace l'histoire de ce principe, de ses origines dans la pensée sociale chrétienne à son application dans les structures européennes modernes. Elle analyse comment la subsidiarité permet de concilier unité et diversité, centralisation et autonomie locale. Une réflexion essentielle sur l'organisation du pouvoir dans les sociétés démocratiques.",
       "url_amazon": "https://www.amazon.fr/principe-subsidiarit%C3%A9-Chantal-Millon-Delsol/dp/2130458114",
-      "categorie": "philosophie"
+      "categorie": "philosophie",
+      "bd": "le-principe-de-subsidiarite.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Principe_de_subsidiarit%C3%A9",
+      "pourquoi_entrepreneur": [
+        "Structurer sa pensée critique : distinguer connaissance, croyance, preuve, et hypothèse.",
+        "Décider plus vite avec des heuristiques (simplicité, falsification, élimination du superflu).",
+        "Garder un cap méthodologique : mieux apprendre, mieux expérimenter, mieux arbitrer."
+      ]
     },
     {
       "titre": "Bienvenue en incertitude",
       "auteur": "Philippe Silberzahn",
       "image": "../img/books/bienvenue-incertitude.jpg",
       "resume_court": "Stratégie d'entreprise et effectuation face à l'imprévisible.",
-      "tags": ["stratégie", "effectuation", "entrepreneuriat"],
+      "tags": [
+        "effectuation",
+        "stratégie",
+        "exécution"
+      ],
       "resume_long": "Bienvenue en incertitude propose une nouvelle approche de la stratégie d'entreprise adaptée à un monde imprévisible. Philippe Silberzahn présente le concept d'effectuation, développé par Saras Sarasvathy, qui décrit comment les entrepreneurs experts naviguent dans l'incertitude. Plutôt que de prédire l'avenir, l'effectuation consiste à le construire en s'appuyant sur les moyens disponibles et les opportunités qui émergent. L'ouvrage offre des outils pratiques pour développer cette capacité à transformer l'incertitude en opportunité.",
       "url_amazon": "https://www.amazon.fr/Bienvenue-incertitude-Survivre-prosp%C3%A9rer-surprises/dp/2354564074",
-      "categorie": "hasard"
+      "categorie": "hasard",
+      "bd": "bienvenue-en-incertitude.html",
+      "pourquoi_entrepreneur": [
+        "Mieux décider quand l'incertitude domine : protéger le downside, éviter les paris irréversibles.",
+        "Raisonner en probabilités (plutôt qu'en histoires) pour prioriser, investir, et mesurer.",
+        "Bonus : utile pour clarifier stratégie et arbitrages."
+      ]
     },
     {
       "titre": "Synchronicité et Paracelsica",
       "auteur": "Carl Gustav Jung",
       "image": "../img/books/synchronicite.jpg",
       "resume_court": "Les coïncidences significatives et leur rôle dans nos vies.",
-      "tags": ["synchronicité", "coïncidence", "sens"],
+      "tags": [
+        "synchronicité"
+      ],
       "resume_long": "Synchronicité et Paracelsica explore le phénomène des coïncidences significatives tel que défini par Carl Jung. Jung examine comment ces événements apparemment fortuits mais chargés de sens influencent nos vies. L'ouvrage propose une analyse à la fois psychologique et pratique de la synchronicité, explorant comment notre attention et nos attentes peuvent créer des connections entre événements. Un guide pour reconnaître et utiliser ces moments particuliers où le hasard semble porteur de sens.",
       "url_amazon": "https://www.amazon.fr/Synchronicit%C3%A9-Paracelsica-Carl-Gustav-Jung/dp/222602820X",
-      "categorie": "hasard"
+      "categorie": "hasard",
+      "bd": "synchronicite-et-paracelsica.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Synchronicit%C3%A9_et_Paracelsica",
+      "pourquoi_entrepreneur": [
+        "Mieux décider quand l'incertitude domine : protéger le downside, éviter les paris irréversibles.",
+        "Raisonner en probabilités (plutôt qu'en histoires) pour prioriser, investir, et mesurer.",
+        "Construire des systèmes et des habitudes qui résistent aux chocs et tirent parti de la volatilité."
+      ]
     },
     {
       "titre": "La voie de la synchronicité",
       "auteur": "Allan G. Hunter",
       "image": "../img/books/voie-synchronicite.jpg",
       "resume_court": "Comprendre et utiliser les synchronicités pour trouver sa voie.",
-      "tags": ["synchronicité", "développement personnel", "sens"],
+      "tags": [
+        "synchronicité",
+        "psychologie"
+      ],
       "resume_long": "La voie de la synchronicité propose une approche pratique pour comprendre et utiliser les synchronicités dans notre cheminement personnel. Allan Hunter explore comment ces coïncidences significatives peuvent nous guider vers notre véritable chemin de vie. L'ouvrage offre des exercices pour développer sa sensibilité aux synchronicités et des outils pour interpréter ces signes. Une invitation à être attentif aux messages que l'univers semble nous envoyer à travers ces rencontres improbables.",
       "url_amazon": "https://www.amazon.fr/voie-synchronicit%C3%A9-Suivez-flot-votre/dp/2897522259",
-      "categorie": "hasard"
+      "categorie": "hasard",
+      "bd": "la-voie-de-la-synchronicite.html",
+      "pourquoi_entrepreneur": [
+        "Mieux décider quand l'incertitude domine : protéger le downside, éviter les paris irréversibles.",
+        "Raisonner en probabilités (plutôt qu'en histoires) pour prioriser, investir, et mesurer.",
+        "Construire des systèmes et des habitudes qui résistent aux chocs et tirent parti de la volatilité."
+      ]
     },
     {
       "titre": "Sérendipité",
       "auteur": "Sylvie Catellin",
       "image": "../img/books/serendipite-catellin.jpg",
       "resume_court": "Du conte au concept. L'art de faire des découvertes par hasard.",
-      "tags": ["sérendipité", "découverte", "hasard"],
+      "tags": [
+        "sérendipité",
+        "innovation",
+        "incertitude"
+      ],
       "resume_long": "Sérendipité retrace l'histoire fascinante d'un concept né d'un conte persan et devenu central dans la compréhension de l'innovation scientifique. Sylvie Catellin explore comment de nombreuses découvertes majeures - de la pénicilline au Post-it - sont le fruit du hasard et de la sagacité. L'ouvrage analyse les conditions qui favorisent la sérendipité : curiosité, ouverture d'esprit, capacité à reconnaître l'inattendu. Une réflexion profonde sur le rôle du hasard dans la création et l'innovation.",
       "url_amazon": "https://www.amazon.fr/S%C3%A9rendipit%C3%A9-Du-conte-au-concept/dp/2021136825",
-      "categorie": "hasard"
+      "categorie": "hasard",
+      "bd": "serendipite.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/S%C3%A9rendipit%C3%A9",
+      "pourquoi_entrepreneur": [
+        "Mieux décider quand l'incertitude domine : protéger le downside, éviter les paris irréversibles.",
+        "Raisonner en probabilités (plutôt qu'en histoires) pour prioriser, investir, et mesurer.",
+        "Construire des systèmes et des habitudes qui résistent aux chocs et tirent parti de la volatilité."
+      ]
     },
     {
       "titre": "C'est quoi la serendipité ?",
       "auteur": "Danièle Bourcier, Pek van Andel",
       "image": "../img/books/cest-quoi-serendipite.jpg",
       "resume_court": "Histoire et applications d'un concept fascinant.",
-      "tags": ["sérendipité", "innovation", "recherche"],
+      "tags": [
+        "sérendipité",
+        "innovation"
+      ],
       "resume_long": "C'est quoi la sérendipité? offre une exploration multidisciplinaire de ce concept intrigant. Danièle Bourcier et Pek van Andel retracent son origine dans le conte des trois princes de Serendip et examinent ses applications dans divers domaines : science, art, vie quotidienne. L'ouvrage présente de nombreux exemples de découvertes sérendipiennes et analyse les processus mentaux qui permettent de transformer un accident en innovation. Un livre accessible et stimulant sur l'art de trouver ce qu'on ne cherchait pas.",
       "url_amazon": "https://www.amazon.fr/Cest-quoi-serendipité-Danièle-Bourcier/dp/2702913083",
-      "categorie": "hasard"
+      "categorie": "hasard",
+      "bd": "c-est-quoi-la-serendipite.html",
+      "pourquoi_entrepreneur": [
+        "Mieux décider quand l'incertitude domine : protéger le downside, éviter les paris irréversibles.",
+        "Raisonner en probabilités (plutôt qu'en histoires) pour prioriser, investir, et mesurer.",
+        "Construire des systèmes et des habitudes qui résistent aux chocs et tirent parti de la volatilité."
+      ]
     },
     {
       "titre": "La Vache pourpre",
       "auteur": "Seth Godin",
       "image": "../img/books/vache-pourpre.jpg",
       "resume_court": "Rendez votre marque, vos produits remarquables dans un monde saturé.",
-      "tags": ["marketing", "innovation", "différenciation"],
+      "tags": [
+        "marketing",
+        "innovation"
+      ],
       "resume_long": "La Vache pourpre argumente que dans un monde saturé de produits et de messages, seul ce qui est véritablement remarquable sort du lot. Seth Godin utilise la métaphore de la vache pourpre : si vous voyiez une vache pourpre dans un champ, vous la remarqueriez immédiatement. De même, les produits et services qui réussissent aujourd'hui sont ceux qui se démarquent radicalement. L'ouvrage propose une approche du marketing centrée sur l'innovation remarquable plutôt que sur la publicité massive.",
       "url_amazon": "https://www.amazon.fr/vache-pourpre-produits-entreprise-remarquables/dp/2840016729",
-      "categorie": "psychologie"
+      "categorie": "psychologie",
+      "bd": "la-vache-pourpre.html",
+      "pourquoi_entrepreneur": [
+        "Détecter biais cognitifs et angles morts : meilleur jugement en produit, recrutement, vente et stratégie.",
+        "Comprendre influence et persuasion (avec garde-fous éthiques) pour négocier et convaincre.",
+        "Bonus : utile pour améliorer ton acquisition et ton positionnement."
+      ]
     },
     {
       "titre": "La Marque",
       "auteur": "Benoît Heilbrunn",
       "image": "../img/books/la-marque.jpg",
       "resume_court": "Comprendre les mécanismes profonds de la construction des marques.",
-      "tags": ["marque", "branding", "identité"],
+      "tags": [
+        "marketing"
+      ],
       "resume_long": "La Marque propose une analyse approfondie des mécanismes qui font qu'une marque réussit à créer du sens et de la valeur. Benoît Heilbrunn, professeur de marketing, explore la dimension sémiotique et symbolique des marques. Il montre comment les marques fonctionnent comme des systèmes de signification, créant des univers de sens et des communautés d'appartenance. L'ouvrage examine les stratégies de construction identitaire des marques et leur rôle dans nos sociétés contemporaines. Une référence pour comprendre la marque au-delà de sa fonction commerciale.",
       "url_amazon": "https://www.amazon.fr/marque-Beno%C3%AEt-Heilbrunn/dp/2130635121",
-      "categorie": "psychologie"
+      "categorie": "psychologie",
+      "bd": "la-marque.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Marque_(marketing)",
+      "pourquoi_entrepreneur": [
+        "Détecter biais cognitifs et angles morts : meilleur jugement en produit, recrutement, vente et stratégie.",
+        "Comprendre influence et persuasion (avec garde-fous éthiques) pour négocier et convaincre.",
+        "Bonus : utile pour améliorer ton acquisition et ton positionnement."
+      ]
     },
     {
       "titre": "Le But",
       "auteur": "Eliyahu M. Goldratt",
       "image": "../img/books/le-but.jpg",
       "resume_court": "Un processus de progrès permanent. La Théorie des Contraintes appliquée à la production.",
-      "tags": ["management", "théorie des contraintes", "production"],
+      "tags": [
+        "exécution",
+        "théorie des contraintes"
+      ],
       "resume_long": "Le But est un roman de management qui remet en cause ce que nous avons appris en matière de gestion et place au centre de son intrigue la recherche permanente de progrès et d'équilibre. Le livre incite les managers à se poser les bonnes questions, notamment 'Quel est le but de votre entreprise ?'. À travers l'histoire d'Alex Rogo, directeur d'usine qui doit sauver son site de la fermeture en trois mois, Goldratt introduit sa célèbre Théorie des Contraintes (TOC). Cette édition inclut un texte inédit où l'auteur explique que toutes les entreprises sont différentes et qu'il faut s'appuyer sur les règles sous-jacentes pour relever le défi du progrès permanent. Traduit en 27 langues, figure dans la liste du Times des 25 livres de management les plus influents.",
       "url_amazon": "https://www.amazon.fr/but-processus-progr%C3%A8s-permanent/dp/2124654047",
       "categorie": "management",
-      "bd": "lebut.html"
+      "bd": "lebut.html",
+      "pourquoi_entrepreneur": [
+        "Renforcer l'exécution : identifier contraintes, goulots et leviers qui pilotent le système.",
+        "Accélérer sans chaos : planifier, livrer, et améliorer en continu avec des règles simples.",
+        "Aligner équipe et objectifs via métriques, priorités nettes et décisions réversibles."
+      ]
     },
     {
       "titre": "Réussir n'est pas une question de chance",
       "auteur": "Eliyahu M. Goldratt",
       "image": "../img/books/ce-netait-pas-le-hasard.jpg",
       "resume_court": "Réussir n'est pas une question de chance. Suite du But appliquée au marketing et à la stratégie.",
-      "tags": ["stratégie", "marketing", "théorie des contraintes"],
+      "tags": [
+        "stratégie",
+        "marketing",
+        "théorie des contraintes"
+      ],
       "resume_long": "Suite du célèbre roman Le But, Ce n'était pas le hasard (It's Not Luck) retrouve Alex Rogo sept ans après avoir sauvé son usine. Devenu vice-président de la division Diversification d'Unico, il fait face à un défi encore plus complexe. Les actionnaires exigent de refocaliser l'entreprise sur ses métiers de base : s'il réussit à augmenter la profitabilité de ses entreprises, elles seront vendues ; s'il échoue, elles seront fermées. Dans les deux cas, son poste et celui de son équipe seront remis en question. Goldratt encourage les lecteurs à repenser leur façon de penser, en entreprise comme dans la vie quotidienne. Ce livre est vraiment orienté vers le marketing, la stratégie d'entreprise et le bien-être dans les relations, démontrant les apports de la Théorie des Contraintes dans les activités professionnelles et personnelles.",
       "url_amazon": "https://www.amazon.fr/R%C3%A9ussir-nest-pas-question-chance/dp/2124650661",
-      "categorie": "management"
+      "categorie": "management",
+      "bd": "reussir-n-est-pas-une-question-de-chance.html",
+      "pourquoi_entrepreneur": [
+        "Renforcer l'exécution : identifier contraintes, goulots et leviers qui pilotent le système.",
+        "Accélérer sans chaos : planifier, livrer, et améliorer en continu avec des règles simples.",
+        "Bonus : utile pour améliorer ton acquisition et ton positionnement."
+      ]
     },
     {
       "titre": "La Chaîne Critique",
       "auteur": "Eliyahu M. Goldratt",
       "image": "../img/books/la-chaine-critique.jpg",
       "resume_court": "Théorie des Contraintes appliquée à la gestion de projet. Réduire les délais drastiquement.",
-      "tags": ["gestion de projet", "planification", "théorie des contraintes"],
+      "tags": [
+        "gestion de projet",
+        "théorie des contraintes"
+      ],
       "resume_long": "La Chaîne Critique (Critical Chain) est un roman de management aussi captivant que Le But et Ce n'était pas le hasard. Dans un environnement industriel où le progrès est une question de survie, trois jeunes cadres d'une entreprise technologique ont pour mission de réduire le time-to-market de leurs nouvelles machines, avec la fortune en jeu s'ils réussissent. Un brillant professeur doit attirer de nouveaux managers dans son université pour enfin obtenir sa titularisation. Ces personnages se rencontrent dans un prestigieux Executive MBA où ils développent une nouvelle méthode gagnante de gestion de projet basée sur l'expérience terrain. Le livre présente et illustre une nouvelle méthode de gestion de projet et de production basée sur la Théorie des Contraintes (TOC) appliquée au management de projet, révolutionnant la façon de gérer les délais et les ressources.",
       "url_amazon": "https://www.amazon.fr/Critical-Chain-critique-Eliyahu-Goldratt/dp/2124656139",
-      "categorie": "management"
+      "categorie": "management",
+      "bd": "la-chaine-critique.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/M%C3%A9thode_de_la_cha%C3%AEne_critique",
+      "pourquoi_entrepreneur": [
+        "Renforcer l'exécution : identifier contraintes, goulots et leviers qui pilotent le système.",
+        "Accélérer sans chaos : planifier, livrer, et améliorer en continu avec des règles simples.",
+        "Bonus : utile pour réduire les délais et stabiliser l'exécution."
+      ]
     },
     {
       "titre": "Hors piste ! Entreprendre sans idées reçues",
-      "auteur": "Véronique Pidancet-Barrière",
+      "auteur": "Pierre Letourneur (collectif Melcion, Chassagne & Cie), Véronique Pidancet-Barrière",
       "image": "../img/books/hors-piste-entreprendre-sans-idees-recues.jpg",
       "resume_court": "Un antidote aux mythes de l’entrepreneuriat : lucidité, terrain, et décisions concrètes.",
-      "tags": ["entrepreneuriat", "idées reçues", "business", "stratégie"],
+      "tags": [
+        "société",
+        "stratégie"
+      ],
       "resume_long": "Hors piste ! démonte une série d'idées reçues sur l'entrepreneuriat et propose une lecture plus réaliste du terrain : ce qui compte vraiment quand on lance, pilote et fait grandir un projet. L'ouvrage met l'accent sur la clarté des choix, la compréhension des contraintes, et la capacité à arbitrer sans se laisser guider par les clichés (startup, levée, \"passion\", etc.). Un livre utile pour revenir au concret et prendre de meilleures décisions d'exécution.",
       "url_amazon": "https://www.amazon.fr/Hors-piste-Entreprendre-id%C3%A9es-re%C3%A7ues-ebook/dp/B0093QGY6G",
-      "categorie": "management"
+      "categorie": "management",
+      "bd": "hors-piste-entreprendre-sans-idees-recues.html",
+      "pourquoi_entrepreneur": [
+        "Renforcer l'exécution : identifier contraintes, goulots et leviers qui pilotent le système.",
+        "Accélérer sans chaos : planifier, livrer, et améliorer en continu avec des règles simples.",
+        "Bonus : utile pour clarifier stratégie et arbitrages."
+      ]
     },
     {
       "titre": "La soumission librement consentie",
-      "auteur": "Jean-Léon Beauvois",
+      "auteur": "Robert-Vincent Joule, Jean-Léon Beauvois",
       "image": "../img/books/la-soumission-librement-consentie.jpg",
       "resume_court": "Pourquoi nous obéissons et consentons : les mécanismes de l’influence et de la manipulation au quotidien.",
-      "tags": ["influence", "manipulation", "psychologie sociale", "biais cognitifs"],
+      "tags": [
+        "influence",
+        "biais cognitifs"
+      ],
       "resume_long": "La soumission librement consentie explore les mécanismes qui nous amènent à dire oui, à obéir, et à nous engager sans contrainte apparente. Jean‑Léon Beauvois décrit comment des dispositifs d’influence (engagement, rationalisations, contexte social) produisent du consentement et renforcent l’adhésion, y compris quand cela va contre nos intérêts. Un livre utile pour reconnaître ces situations, se protéger, et concevoir des interactions plus éthiques (vente, management, politique, vie quotidienne).",
       "url_amazon": "https://www.amazon.fr/soumission-librement-consentie-Robert-Vincent-Joule/dp/2130794491",
-      "categorie": "psychologie"
+      "categorie": "psychologie",
+      "bd": "la-soumission-librement-consentie.html",
+      "url_wikipedia": "https://fr.wikipedia.org/wiki/Soumission_librement_consentie",
+      "pourquoi_entrepreneur": [
+        "Détecter biais cognitifs et angles morts : meilleur jugement en produit, recrutement, vente et stratégie.",
+        "Comprendre influence et persuasion (avec garde-fous éthiques) pour négocier et convaincre.",
+        "Mieux concevoir des processus de décision et des tests (moins d'intuition non vérifiée)."
+      ]
+    },
+    {
+      "titre": "Effectuation: Les principes de l’entrepreneuriat pour tous",
+      "auteur": "Philippe Silberzahn",
+      "image": "../img/books/effectuation-les-principes-de-l-entrepreneuriat-pour-tous.jpg",
+      "resume_court": "Les principes de l’effectuation : entreprendre sans prédire, en construisant avec les moyens disponibles.",
+      "tags": [
+        "effectuation",
+        "stratégie",
+        "incertitude"
+      ],
+      "resume_long": "Ce livre présente l’effectuation, un mode de pensée observé chez des entrepreneurs expérimentés : partir de ce qu’on a (qui je suis, ce que je sais, qui je connais), avancer par engagements progressifs, et accepter de co-construire l’opportunité avec des parties prenantes. Plutôt que de chercher à prédire un marché incertain, l’approche aide à réduire le risque en limitant la perte acceptable, en itérant et en saisissant les contingences. Une lecture utile pour structurer un projet dans l’incertitude, surtout au démarrage.",
+      "url_amazon": "https://www.amazon.fr/dp/2744067342",
+      "categorie": "management",
+      "bd": "effectuation-les-principes-de-l-entrepreneuriat-pour-tous.html",
+      "pourquoi_entrepreneur": [
+        "Apprendre à avancer sans prédire : partir des moyens disponibles et sécuriser des engagements progressifs.",
+        "Mieux décider dans un environnement incertain : réduire l'irréversibilité, tester et apprendre vite.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement."
+      ]
+    },
+    {
+      "titre": "Effectual Entrepreneurship",
+      "auteur": "Saras D. Sarasvathy",
+      "image": "../img/books/effectual-entrepreneurship.jpg",
+      "resume_court": "La théorie fondatrice de l’effectuation, appliquée à l’action entrepreneuriale.",
+      "tags": [
+        "effectuation",
+        "stratégie",
+        "incertitude"
+      ],
+      "resume_long": "Saras Sarasvathy formalise l’effectuation : une logique d’action entrepreneuriale qui privilégie le contrôle sur la prédiction. Le livre explique les principes (perte acceptable, patchwork fou, tirer parti des surprises, pilote dans l’avion) et comment ils se traduisent en décisions concrètes. C’est une base solide pour concevoir des expériences, sécuriser des engagements et avancer sans plan figé.",
+      "url_amazon": "https://www.amazon.fr/dp/1032427280",
+      "categorie": "management",
+      "bd": "effectual-entrepreneurship.html",
+      "pourquoi_entrepreneur": [
+        "Apprendre à avancer sans prédire : partir des moyens disponibles et sécuriser des engagements progressifs.",
+        "Mieux décider dans un environnement incertain : réduire l'irréversibilité, tester et apprendre vite.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement."
+      ]
+    },
+    {
+      "titre": "Hors de la crise",
+      "auteur": "W. Edwards Deming",
+      "image": "../img/books/hors-de-la-crise.jpg",
+      "resume_court": "Qualité, système et management : une feuille de route pour transformer durablement l’organisation.",
+      "tags": [
+        "méthode",
+        "exécution",
+        "stratégie"
+      ],
+      "resume_long": "Deming expose les causes systémiques des problèmes de qualité et de performance, et propose une approche de transformation fondée sur l’amélioration continue, la mesure et le management par le système (plutôt que par la sanction). Pour un entrepreneur, c’est un rappel puissant : on optimise un système, pas des individus isolés, et la qualité est une stratégie, pas un département. Idéal pour structurer l’exécution quand l’équipe grandit.",
+      "url_amazon": "https://www.amazon.fr/dp/2717843930",
+      "categorie": "management",
+      "bd": "hors-de-la-crise.html",
+      "pourquoi_entrepreneur": [
+        "Construire une culture de test : mesurer, expérimenter, puis standardiser ce qui marche.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Décider sur des faits : mesurer, tester, apprendre, puis standardiser ce qui marche."
+      ]
+    },
+    {
+      "titre": "Du nouveau en économie",
+      "auteur": "W. Edwards Deming",
+      "image": "../img/books/du-nouveau-en-economie.jpg",
+      "resume_court": "La “System of Profound Knowledge” : comprendre variation, système, connaissance et psychologie.",
+      "tags": [
+        "méthode",
+        "stratégie",
+        "exécution"
+      ],
+      "resume_long": "Dans cet ouvrage, Deming synthétise sa pensée autour d’un cadre : comprendre les systèmes, la variation, la théorie de la connaissance et la psychologie. Ce cadre sert à diagnostiquer, décider et améliorer sans tomber dans les explications simplistes. Pour un entrepreneur, c’est un antidote aux décisions basées sur des anecdotes : on apprend à mesurer, à distinguer bruit et signal, et à construire des boucles d’amélioration.",
+      "url_amazon": "https://www.amazon.fr/dp/2717830499",
+      "categorie": "management",
+      "bd": "du-nouveau-en-economie.html",
+      "pourquoi_entrepreneur": [
+        "Construire une culture de test : mesurer, expérimenter, puis standardiser ce qui marche.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Décider sur des faits : mesurer, tester, apprendre, puis standardiser ce qui marche."
+      ]
+    },
+    {
+      "titre": "Un an pour sauver l’Entreprise",
+      "auteur": "Eliyahu M. Goldratt",
+      "image": "../img/books/un-an-pour-sauver-l-entreprise.jpg",
+      "resume_court": "Appliquer la Théorie des Contraintes aux systèmes d’information et aux organisations complexes.",
+      "tags": [
+        "théorie des contraintes",
+        "exécution",
+        "stratégie"
+      ],
+      "resume_long": "Goldratt applique l’esprit de la Théorie des Contraintes à des environnements où les goulets ne sont pas seulement physiques : priorités, flux d’information, dépendances, politiques internes. Le livre insiste sur le fait qu’une optimisation locale peut dégrader la performance globale. Pour un entrepreneur, c’est très utile dès qu’il y a plusieurs équipes et une complexité croissante : clarifier la contrainte, la protéger, et aligner tout le système dessus.",
+      "url_amazon": "https://www.amazon.fr/dp/2124650750",
+      "categorie": "management",
+      "bd": "un-an-pour-sauver-l-entreprise.html",
+      "pourquoi_entrepreneur": [
+        "Identifier la contrainte (goulot) et aligner l'organisation sur ce levier pour accélérer sans chaos.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Transformer les idées en résultats : installer des routines simples, des métriques et un rythme d'amélioration."
+      ]
+    },
+    {
+      "titre": "Isn’t It Obvious?",
+      "auteur": "Eliyahu M. Goldratt",
+      "image": "../img/books/isn-t-it-obvious.jpg",
+      "resume_court": "La Théorie des Contraintes appliquée à la distribution et à la chaîne d’approvisionnement.",
+      "tags": [
+        "théorie des contraintes",
+        "exécution",
+        "stratégie"
+      ],
+      "resume_long": "Ce roman de management transpose la Théorie des Contraintes dans le monde de la distribution : stocks, disponibilité, ruptures, et flux. Il montre comment des règles simples, centrées sur la contrainte et la variabilité, peuvent améliorer service et cash. Pour un entrepreneur, c’est particulièrement pertinent si ton business a un flux (e-commerce, retail, ops) où les stocks et la disponibilité font ou défont l’expérience client.",
+      "url_amazon": "https://www.amazon.fr/dp/168441010X",
+      "categorie": "management",
+      "bd": "isn-t-it-obvious.html",
+      "pourquoi_entrepreneur": [
+        "Identifier la contrainte (goulot) et aligner l'organisation sur ce levier pour accélérer sans chaos.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Transformer les idées en résultats : installer des routines simples, des métriques et un rythme d'amélioration."
+      ]
+    },
+    {
+      "titre": "The Choice (Revised Edition)",
+      "auteur": "Eliyahu M. Goldratt",
+      "image": "../img/books/the-choice-revised-edition.jpg",
+      "resume_court": "Un livre plus personnel : des principes de pensée et de décision, racontés comme un dialogue.",
+      "tags": [
+        "stratégie",
+        "méthode",
+        "décision"
+      ],
+      "resume_long": "Goldratt déroule une série de principes pour raisonner clairement : distinguer symptômes et causes, clarifier les objectifs, et éviter les compromis artificiels. C’est moins “opérationnel” que TOC, mais très utile pour un entrepreneur qui doit décider vite dans l’ambiguïté. Le format narratif rend les idées faciles à retenir et à transmettre à une équipe.",
+      "url_amazon": "https://www.amazon.fr/dp/0884271935",
+      "categorie": "management",
+      "bd": "the-choice-revised-edition.html",
+      "pourquoi_entrepreneur": [
+        "Construire une culture de test : mesurer, expérimenter, puis standardiser ce qui marche.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Décider sur des faits : mesurer, tester, apprendre, puis standardiser ce qui marche."
+      ]
+    },
+    {
+      "titre": "The Gold Mine: A Novel of Lean Turnaround",
+      "auteur": "Freddy Ballé, Michael Ballé",
+      "image": "../img/books/the-gold-mine-a-novel-of-lean-turnaround.jpg",
+      "resume_court": "Un roman pour comprendre le Lean : apprendre à voir le gaspillage et améliorer le flux.",
+      "tags": [
+        "méthode",
+        "exécution",
+        "stratégie"
+      ],
+      "resume_long": "Ce livre raconte une transformation Lean à travers une histoire, en mettant l’accent sur l’apprentissage terrain, la résolution de problèmes et l’amélioration continue. On y découvre comment rendre visible le travail, réduire les gaspillages et stabiliser le flux. Pour un entrepreneur, c’est un guide pratique pour bâtir une culture d’exécution et d’amélioration, sans surprocesser.",
+      "url_amazon": "https://www.amazon.fr/dp/0974322563",
+      "categorie": "management",
+      "bd": "the-gold-mine-a-novel-of-lean-turnaround.html",
+      "pourquoi_entrepreneur": [
+        "Construire une culture de test : mesurer, expérimenter, puis standardiser ce qui marche.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Décider sur des faits : mesurer, tester, apprendre, puis standardiser ce qui marche."
+      ]
+    },
+    {
+      "titre": "The Lean Manager: A Novel of Lean Transformation",
+      "auteur": "Freddy Ballé, Michael Ballé",
+      "image": "../img/books/the-lean-manager-a-novel-of-lean-transformation.jpg",
+      "resume_court": "Manager en mode Lean : coaching, résolution de problèmes, et routines d’amélioration.",
+      "tags": [
+        "méthode",
+        "exécution",
+        "psychologie"
+      ],
+      "resume_long": "Dans la continuité de The Gold Mine, ce roman met l’accent sur le rôle du manager : développer les personnes, structurer l’apprentissage et installer des routines qui améliorent le système. Pour un entrepreneur, c’est utile quand l’équipe grandit : passer du “faire” au “faire faire”, sans perdre la qualité d’exécution.",
+      "url_amazon": "https://www.amazon.fr/dp/1934109258",
+      "categorie": "management",
+      "bd": "the-lean-manager-a-novel-of-lean-transformation.html",
+      "pourquoi_entrepreneur": [
+        "Construire une culture de test : mesurer, expérimenter, puis standardiser ce qui marche.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Décider sur des faits : mesurer, tester, apprendre, puis standardiser ce qui marche."
+      ]
+    },
+    {
+      "titre": "Lean Thinking: Banish Waste and Create Wealth in Your Corporation",
+      "auteur": "James P. Womack, Daniel T. Jones",
+      "image": "../img/books/lean-thinking-banish-waste-and-create-wealth-in-your-corporation.jpg",
+      "resume_court": "Les principes du Lean appliqués à la performance : flux, valeur, et élimination du gaspillage.",
+      "tags": [
+        "méthode",
+        "exécution",
+        "stratégie"
+      ],
+      "resume_long": "Un classique du Lean : définir la valeur du point de vue client, cartographier le flux, faire circuler, tirer par la demande, et viser la perfection. Pour un entrepreneur, c’est un cadre simple pour améliorer qualité et vitesse sans brûler l’équipe : on optimise le flux et on supprime le gaspillage plutôt que d’ajouter de la pression.",
+      "url_amazon": "https://www.amazon.fr/dp/8498750210",
+      "categorie": "management",
+      "bd": "lean-thinking-banish-waste-and-create-wealth-in-your-corporation.html",
+      "pourquoi_entrepreneur": [
+        "Construire une culture de test : mesurer, expérimenter, puis standardiser ce qui marche.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Décider sur des faits : mesurer, tester, apprendre, puis standardiser ce qui marche."
+      ]
+    },
+    {
+      "titre": "Your Brain at Work",
+      "auteur": "David Rock",
+      "image": "../img/books/your-brain-at-work.jpg",
+      "resume_court": "Attention, charge mentale et performance : comment mieux travailler avec ton cerveau.",
+      "tags": [
+        "psychologie",
+        "décision",
+        "exécution"
+      ],
+      "resume_long": "David Rock explique comment la charge cognitive, l’attention et la fatigue impactent la performance. Le livre donne des repères concrets pour mieux structurer son travail, prioriser et réduire la surcharge. Pour un entrepreneur, c’est particulièrement utile pour protéger le focus et limiter les décisions dégradées par le stress.",
+      "url_amazon": "https://www.amazon.fr/dp/0062312820",
+      "categorie": "psychologie",
+      "bd": "your-brain-at-work.html",
+      "pourquoi_entrepreneur": [
+        "Améliorer focus, décisions et relations : un avantage direct pour l'exécution.",
+        "Améliorer la qualité des décisions : réduire les angles morts et éviter les raisonnements trompeurs.",
+        "Transformer les idées en résultats : installer des routines simples, des métriques et un rythme d'amélioration."
+      ]
+    },
+    {
+      "titre": "Quiet Leadership",
+      "auteur": "David Rock",
+      "image": "../img/books/quiet-leadership.jpg",
+      "resume_court": "Une approche du leadership basée sur le coaching et la clarté mentale plutôt que la pression.",
+      "tags": [
+        "psychologie",
+        "influence",
+        "exécution"
+      ],
+      "resume_long": "Le livre propose un style de management qui aide les personnes à penser plus clairement : poser les bonnes questions, créer les conditions d’insight, et réduire les frictions émotionnelles. Pour un entrepreneur, c’est un levier pour améliorer les conversations difficiles (priorités, performance, feedback) et rendre l’équipe plus autonome.",
+      "url_amazon": "https://www.amazon.fr/dp/0061750646",
+      "categorie": "psychologie",
+      "bd": "quiet-leadership.html",
+      "pourquoi_entrepreneur": [
+        "Mieux convaincre (et se protéger) : comprendre les leviers de persuasion et leurs biais.",
+        "Améliorer focus, décisions et relations : un avantage direct pour l'exécution.",
+        "Transformer les idées en résultats : installer des routines simples, des métriques et un rythme d'amélioration."
+      ]
+    },
+    {
+      "titre": "Influence: Science and Practice",
+      "auteur": "Robert B. Cialdini",
+      "image": "../img/books/influence-science-and-practice.jpg",
+      "resume_court": "Les mécanismes de persuasion (réciprocité, rareté, preuve sociale…) et comment s’en protéger.",
+      "tags": [
+        "influence",
+        "biais cognitifs",
+        "marketing"
+      ],
+      "resume_long": "Cialdini décrit des principes robustes de persuasion et les biais qui les rendent efficaces. Pour un entrepreneur, c’est utile à deux niveaux : construire des messages et des offres plus convaincants, et repérer les manipulations (vente, négociation, partenariats). À utiliser avec un cadre éthique clair.",
+      "url_amazon": "https://www.amazon.fr/dp/161066020X",
+      "categorie": "psychologie",
+      "bd": "influence-science-and-practice.html",
+      "pourquoi_entrepreneur": [
+        "Clarifier proposition de valeur et messages : vendre plus clairement, sans surpromettre.",
+        "Mieux convaincre (et se protéger) : comprendre les leviers de persuasion et leurs biais.",
+        "Améliorer focus, décisions et relations : un avantage direct pour l'exécution."
+      ]
+    },
+    {
+      "titre": "Éloge de l’incertitude. Devenez riche, beau et intelligent avec PowerPoint, Excel et Word",
+      "auteur": "Rafi Haladjian",
+      "image": "../img/books/eloge-de-l-incertitude.jpg",
+      "resume_court": "Un regard provocateur sur l’incertitude et nos illusions de maîtrise dans le travail moderne.",
+      "tags": [
+        "incertitude",
+        "décision",
+        "stratégie"
+      ],
+      "resume_long": "Haladjian propose une réflexion sur l’incertitude et les outils “modernes” qui donnent une impression de contrôle. Pour un entrepreneur, c’est un bon contrepoids : accepter l’inconnu, décider avec information imparfaite, et éviter de confondre production de slides avec création de valeur.",
+      "url_amazon": "https://www.amazon.fr/dp/2352280133",
+      "categorie": "hasard",
+      "bd": "eloge-de-l-incertitude.html",
+      "pourquoi_entrepreneur": [
+        "Mieux décider dans un environnement incertain : réduire l'irréversibilité, tester et apprendre vite.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Mieux décider dans l'incertitude : limiter la perte acceptable et privilégier des choix réversibles."
+      ]
+    },
+    {
+      "titre": "Drive: The Surprising Truth About What Motivates Us",
+      "auteur": "Daniel H. Pink",
+      "image": "../img/books/drive-the-surprising-truth-about-what-motivates-us.jpg",
+      "resume_court": "Motivation intrinsèque : autonomie, maîtrise, sens (plutôt que carotte/bâton).",
+      "tags": [
+        "psychologie",
+        "exécution",
+        "éthique"
+      ],
+      "resume_long": "Pink synthétise des recherches sur la motivation : les systèmes d’incitation peuvent dégrader la performance sur les tâches créatives. À la place, autonomie, maîtrise et sens produisent un engagement durable. Pour un entrepreneur, c’est précieux pour concevoir culture, objectifs et incentives sans casser l’initiative.",
+      "url_amazon": "https://www.amazon.fr/dp/1594488843",
+      "categorie": "psychologie",
+      "bd": "drive-the-surprising-truth-about-what-motivates-us.html",
+      "pourquoi_entrepreneur": [
+        "Améliorer focus, décisions et relations : un avantage direct pour l'exécution.",
+        "Transformer les idées en résultats : installer des routines simples, des métriques et un rythme d'amélioration.",
+        "Mieux gérer stress, attention et relations : un avantage direct pour la performance."
+      ]
+    },
+    {
+      "titre": "To Sell Is Human: The Surprising Truth About Moving Others",
+      "auteur": "Daniel H. Pink",
+      "image": "../img/books/to-sell-is-human-the-surprising-truth-about-moving-others.jpg",
+      "resume_court": "Vendre au quotidien : convaincre, négocier, et faire bouger les autres (sans scripts).",
+      "tags": [
+        "marketing",
+        "influence",
+        "décision"
+      ],
+      "resume_long": "Pink montre que la vente n’est pas réservée aux commerciaux : tout le monde “vend” des idées, des priorités, des choix. Le livre propose des principes pratiques (empathie, clarté, cadence, questions) pour mieux convaincre. Pour un entrepreneur, c’est une base utile pour le go-to-market et le leadership.",
+      "url_amazon": "https://www.amazon.fr/dp/159448628X",
+      "categorie": "management",
+      "bd": "to-sell-is-human-the-surprising-truth-about-moving-others.html",
+      "pourquoi_entrepreneur": [
+        "Clarifier proposition de valeur et messages : vendre plus clairement, sans surpromettre.",
+        "Mieux convaincre (et se protéger) : comprendre les leviers de persuasion et leurs biais.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement."
+      ]
+    },
+    {
+      "titre": "Punished by Rewards",
+      "auteur": "Alfie Kohn",
+      "image": "../img/books/punished-by-rewards.jpg",
+      "resume_court": "Pourquoi les récompenses et incentives peuvent nuire à la motivation et à l’apprentissage.",
+      "tags": [
+        "psychologie",
+        "éthique",
+        "exécution"
+      ],
+      "resume_long": "Kohn critique la logique “récompense/punition” dans l’éducation et le travail : elle favorise le court terme et réduit l’intérêt intrinsèque. Pour un entrepreneur, c’est une lecture utile avant de mettre en place bonus, commissions ou OKR mal calibrés : on y apprend à éviter des effets pervers sur la culture et la qualité.",
+      "url_amazon": "https://www.amazon.fr/dp/0395650283",
+      "categorie": "psychologie",
+      "bd": "punished-by-rewards.html",
+      "pourquoi_entrepreneur": [
+        "Améliorer focus, décisions et relations : un avantage direct pour l'exécution.",
+        "Transformer les idées en résultats : installer des routines simples, des métriques et un rythme d'amélioration.",
+        "Mieux gérer stress, attention et relations : un avantage direct pour la performance."
+      ]
+    },
+    {
+      "titre": "Freakonomics",
+      "auteur": "Steven D. Levitt, Stephen J. Dubner",
+      "image": "../img/books/freakonomics.jpg",
+      "resume_court": "Appliquer des outils d’économie empirique à des questions surprenantes du quotidien.",
+      "tags": [
+        "méthode",
+        "décision",
+        "société"
+      ],
+      "resume_long": "Freakonomics popularise une façon de penser : poser des hypothèses, chercher des données, tester des causalités plutôt que raconter des histoires. Pour un entrepreneur, c’est un rappel précieux : mesurer avant de conclure, éviter les corrélations trompeuses, et raisonner en incitations.",
+      "url_amazon": "https://www.amazon.fr/dp/0061234001",
+      "categorie": "philosophie",
+      "bd": "freakonomics.html",
+      "pourquoi_entrepreneur": [
+        "Construire une culture de test : mesurer, expérimenter, puis standardiser ce qui marche.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Décider sur des faits : mesurer, tester, apprendre, puis standardiser ce qui marche."
+      ]
+    },
+    {
+      "titre": "SuperFreakonomics",
+      "auteur": "Steven D. Levitt, Stephen J. Dubner",
+      "image": "../img/books/superfreakonomics.jpg",
+      "resume_court": "Suite orientée expérimentation : biais, incitations et solutions contre-intuitives.",
+      "tags": [
+        "méthode",
+        "décision",
+        "société"
+      ],
+      "resume_long": "Dans la continuité, le livre met l’accent sur les mécanismes d’incitation et les effets inattendus des politiques et décisions. Pour un entrepreneur, c’est utile pour challenger ses intuitions, concevoir des tests et anticiper des effets secondaires.",
+      "url_amazon": "https://www.amazon.fr/dp/0062003208",
+      "categorie": "philosophie",
+      "bd": "superfreakonomics.html",
+      "pourquoi_entrepreneur": [
+        "Construire une culture de test : mesurer, expérimenter, puis standardiser ce qui marche.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Décider sur des faits : mesurer, tester, apprendre, puis standardiser ce qui marche."
+      ]
+    },
+    {
+      "titre": "The Halo Effect",
+      "auteur": "Phil Rosenzweig",
+      "image": "../img/books/the-halo-effect.jpg",
+      "resume_court": "Pourquoi on attribue le succès à de “bonnes pratiques”… souvent après coup (et à tort).",
+      "tags": [
+        "biais cognitifs",
+        "décision",
+        "méthode"
+      ],
+      "resume_long": "Rosenzweig démonte des erreurs classiques d’analyse du succès (halo effect, biais de sélection, récit rétrospectif). Pour un entrepreneur, c’est un vaccin contre les recettes miracles : on apprend à distinguer chance, contexte et causalité, et à construire une stratégie sans copier aveuglément des “winners”.",
+      "url_amazon": "https://www.amazon.fr/dp/1416538585",
+      "categorie": "management",
+      "bd": "the-halo-effect.html",
+      "pourquoi_entrepreneur": [
+        "Construire une culture de test : mesurer, expérimenter, puis standardiser ce qui marche.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Décider sur des faits : mesurer, tester, apprendre, puis standardiser ce qui marche."
+      ]
+    },
+    {
+      "titre": "Hard Facts, Dangerous Half-Truths, and Total Nonsense",
+      "auteur": "Jeffrey Pfeffer, Robert I. Sutton",
+      "image": "../img/books/hard-facts-dangerous-half-truths-and-total-nonsense.jpg",
+      "resume_court": "Evidence-based management : décider et exécuter sur des faits, pas sur des modes.",
+      "tags": [
+        "méthode",
+        "exécution",
+        "décision"
+      ],
+      "resume_long": "Les auteurs défendent un management “evidence-based” : chercher des preuves, tester ce qui marche, et éviter les pratiques à la mode non vérifiées. Pour un entrepreneur, c’est une méthode de travail : instrumenter, observer, expérimenter, puis standardiser ce qui fonctionne.",
+      "url_amazon": "https://www.amazon.fr/dp/1591398622",
+      "categorie": "management",
+      "bd": "hard-facts-dangerous-half-truths-and-total-nonsense.html",
+      "pourquoi_entrepreneur": [
+        "Construire une culture de test : mesurer, expérimenter, puis standardiser ce qui marche.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Décider sur des faits : mesurer, tester, apprendre, puis standardiser ce qui marche."
+      ]
+    },
+    {
+      "titre": "Stratégie Océan Bleu",
+      "auteur": "W. Chan Kim, Renée Mauborgne",
+      "image": "../img/books/strategie-ocean-bleu.jpg",
+      "resume_court": "Créer de nouveaux espaces de marché plutôt que se battre sur l’existant.",
+      "tags": [
+        "stratégie",
+        "marketing",
+        "innovation"
+      ],
+      "resume_long": "Le concept d’océan bleu vise à sortir des marchés saturés (océans rouges) en redéfinissant la proposition de valeur. Pour un entrepreneur, c’est utile pour clarifier différenciation, arbitrer “éliminer/réduire/augmenter/créer” et concevoir une offre qui échappe à la comparaison directe.",
+      "url_amazon": "https://www.amazon.fr/dp/1596590688",
+      "categorie": "management",
+      "bd": "strategie-ocean-bleu.html",
+      "pourquoi_entrepreneur": [
+        "Clarifier proposition de valeur et messages : vendre plus clairement, sans surpromettre.",
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Garder un cap net : mieux arbitrer, différencier, et choisir quoi ne pas faire."
+      ]
+    },
+    {
+      "titre": "Citizen Game",
+      "auteur": "Nicolas Gaume",
+      "image": "../img/books/citizen-game.jpg",
+      "resume_court": "Réflexion sur le jeu, les systèmes et l’engagement dans la société numérique.",
+      "tags": [
+        "innovation",
+        "société",
+        "technologie"
+      ],
+      "resume_long": "Citizen Game explore comment les mécanismes de jeu et les systèmes interactifs influencent l’engagement, l’apprentissage et la participation. Pour un entrepreneur, c’est une source d’idées pour concevoir des produits plus engageants, tout en restant attentif aux incitations et effets de bord.",
+      "url_amazon": "https://www.amazon.fr/dp/284337331X",
+      "categorie": "management",
+      "bd": "citizen-game.html",
+      "pourquoi_entrepreneur": [
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Se donner un cadre simple pour décider, agir, et itérer sans se raconter d'histoires.",
+        "Réduire les erreurs coûteuses en rendant explicites hypothèses, risques et critères de succès."
+      ]
+    },
+    {
+      "titre": "The Knack",
+      "auteur": "Norm Brodsky, Bo Burlingham",
+      "image": "../img/books/the-knack.jpg",
+      "resume_court": "Leçons de terrain : vente, cash, hiring, et décisions pragmatiques d’entrepreneur.",
+      "tags": [
+        "stratégie",
+        "exécution",
+        "décision"
+      ],
+      "resume_long": "Brodsky partage des situations réelles (pricing, cash, croissance, orga) et comment les traiter avec pragmatisme. Pour un entrepreneur, c’est un livre “street-smart” : peu de théorie, beaucoup de décisions concrètes et de repères d’exécution.",
+      "url_amazon": "https://www.amazon.fr/dp/1596592737",
+      "categorie": "management",
+      "bd": "the-knack.html",
+      "pourquoi_entrepreneur": [
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Améliorer la qualité des décisions : réduire les angles morts et éviter les raisonnements trompeurs.",
+        "Transformer les idées en résultats : installer des routines simples, des métriques et un rythme d'amélioration."
+      ]
+    },
+    {
+      "titre": "La stratégie du propriétaire",
+      "auteur": "Alain Bloch",
+      "image": "../img/books/la-strategie-du-proprietaire.jpg",
+      "resume_court": "Résilience des entreprises familiales : gouvernance, long terme et arbitrages de propriétaire.",
+      "tags": [
+        "stratégie",
+        "société",
+        "exécution"
+      ],
+      "resume_long": "Ce livre étudie comment les entreprises familiales traversent les crises grâce à une gouvernance et des arbitrages orientés long terme. Pour un entrepreneur, c’est une perspective utile pour penser capital, contrôle, transmission et robustesse du modèle — au-delà de la croissance à tout prix.",
+      "url_amazon": "https://www.amazon.fr/dp/2744065013",
+      "categorie": "management",
+      "bd": "la-strategie-du-proprietaire.html",
+      "pourquoi_entrepreneur": [
+        "Donner des repères concrets pour exécuter plus vite et décider plus clairement.",
+        "Transformer les idées en résultats : installer des routines simples, des métriques et un rythme d'amélioration.",
+        "Garder un cap net : mieux arbitrer, différencier, et choisir quoi ne pas faire."
+      ]
     }
   ]
 }

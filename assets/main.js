@@ -346,11 +346,11 @@ function setupBibliothequePage() {
 
   const grid = $("#bookGrid");
   const search = $("#bookSearch");
-  const filters = $("#bookFilters");
+  const tagFilters = $("#tagFilters");
   const count = $("#bookCount");
-  if (!grid || !search || !filters) return;
+  if (!grid || !search) return;
 
-  let activeFilter = "all";
+  let activeTag = "all";
   let books = [];
 
   const normalizeCategory = (category) =>
@@ -359,22 +359,44 @@ function setupBibliothequePage() {
       .toLowerCase()
       .replaceAll(" ", "-");
 
-  const labelizeCategory = (category) => {
-    const c = String(category || "").trim();
-    if (!c) return "Autre";
-    return c.charAt(0).toUpperCase() + c.slice(1);
+  const normalizeTag = (tag) =>
+    String(tag || "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+
+  const uniqueNormalizedTags = (tags) => {
+    const out = [];
+    const seen = new Set();
+    for (const raw of Array.isArray(tags) ? tags : []) {
+      const t = normalizeTag(raw);
+      if (!t || seen.has(t)) continue;
+      seen.add(t);
+      out.push(t);
+    }
+    return out;
   };
 
-  const renderFilters = () => {
-    const categories = [...new Set(books.map((b) => b.categorie).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-    filters.innerHTML = [
-      `<button class="chip ${activeFilter === "all" ? "isActive" : ""}" type="button" data-filter="all">Tous</button>`,
-      ...categories.map((c) => {
-        const key = normalizeCategory(c);
-        const isActive = activeFilter === key;
-        return `<button class="chip ${isActive ? "isActive" : ""}" type="button" data-filter="${escapeHtml(
-          key
-        )}">${escapeHtml(labelizeCategory(c))}</button>`;
+  const renderTagFilters = () => {
+    if (!tagFilters) return;
+
+    const counts = new Map();
+    for (const b of books) {
+      const tags = uniqueNormalizedTags(b.tags);
+      for (const t of tags) counts.set(t, (counts.get(t) || 0) + 1);
+    }
+
+    const tagsSorted = [...counts.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([tag]) => tag);
+
+    tagFilters.innerHTML = [
+      `<button class="chip ${activeTag === "all" ? "isActive" : ""}" type="button" data-tag="all">tous</button>`,
+      ...tagsSorted.map((t) => {
+        const isActive = activeTag === t;
+        return `<button class="chip ${isActive ? "isActive" : ""}" type="button" data-tag="${escapeHtml(t)}">${escapeHtml(
+          t
+        )}</button>`;
       }),
     ].join("");
   };
@@ -467,8 +489,10 @@ function setupBibliothequePage() {
 
     let filtered = books
       .map((b) => {
-        const matchesFilter = activeFilter === "all" ? true : normalizeCategory(b.categorie) === activeFilter;
-        if (!matchesFilter) return null;
+        if (activeTag !== "all") {
+          const tags = uniqueNormalizedTags(b.tags);
+          if (!tags.includes(activeTag)) return null;
+        }
 
         if (words.length === 0) {
           return { book: b, score: 0 };
@@ -528,11 +552,12 @@ function setupBibliothequePage() {
       .join("");
   };
 
-  filters.addEventListener("click", (event) => {
-    const btn = event.target instanceof HTMLElement ? event.target.closest("[data-filter]") : null;
+  tagFilters?.addEventListener("click", (event) => {
+    const btn = event.target instanceof HTMLElement ? event.target.closest("[data-tag]") : null;
     if (!btn) return;
-    activeFilter = btn.getAttribute("data-filter") || "all";
-    renderFilters();
+    const next = btn.getAttribute("data-tag") || "all";
+    activeTag = activeTag === next ? "all" : next;
+    renderTagFilters();
     render();
   });
 
@@ -565,7 +590,7 @@ function setupBibliothequePage() {
         auteur: String(b.auteur || ""),
         resume_court: String(b.resume_court || ""),
         resume_long: String(b.resume_long || ""),
-        tags: Array.isArray(b.tags) ? b.tags : [],
+        tags: uniqueNormalizedTags(b.tags),
         categorie: String(b.categorie || ""),
         url_amazon: b.url_amazon ? String(b.url_amazon) : "",
         image: b.image ? String(b.image) : "",
@@ -576,7 +601,7 @@ function setupBibliothequePage() {
       books = [];
     }
 
-    renderFilters();
+    renderTagFilters();
     render();
 
     if (books.length === 0) {
@@ -585,6 +610,142 @@ function setupBibliothequePage() {
           <h3>Bibliothèque indisponible</h3>
           <p>Impossible de charger <code>../data/bibliotheque.json</code>.</p>
           <p class="muted tiny">Astuce : vérifiez que vous servez le dossier du projet (pas seulement <code>pages/</code>).</p>
+        </article>
+      `;
+    }
+  })();
+}
+
+function setupBookDetailPage() {
+  if (document.body.dataset.page !== "book-detail") return;
+
+  const mount = $("#bookDetailMount");
+  if (!mount) return;
+
+  const bd = String(document.body.dataset.book || "").trim();
+  if (!bd) {
+    mount.innerHTML = `
+      <article class="infoCard">
+        <h3>Page introuvable</h3>
+        <p>Cette page ne sait pas quel livre afficher.</p>
+        <p class="muted tiny">Astuce : ajoutez <code>data-book</code> sur <code>&lt;body&gt;</code>.</p>
+      </article>
+    `;
+    return;
+  }
+
+  const normalizeTag = (tag) =>
+    String(tag || "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+
+  const uniqueNormalizedTags = (tags) => {
+    const out = [];
+    const seen = new Set();
+    for (const raw of Array.isArray(tags) ? tags : []) {
+      const t = normalizeTag(raw);
+      if (!t || seen.has(t)) continue;
+      seen.add(t);
+      out.push(t);
+    }
+    return out;
+  };
+
+  const render = (book) => {
+    const title = String(book.titre || "");
+    const author = String(book.auteur || "");
+    const cover = book.image ? String(book.image) : "";
+    const amazon = book.url_amazon ? String(book.url_amazon) : "";
+    const wikipedia = book.url_wikipedia ? String(book.url_wikipedia) : "";
+    const tags = uniqueNormalizedTags(book.tags);
+    const categorie = String(book.categorie || "").trim().toLowerCase();
+
+    const why = Array.isArray(book.pourquoi_entrepreneur)
+      ? book.pourquoi_entrepreneur.map((p) => String(p)).filter(Boolean)
+      : typeof book.pourquoi_entrepreneur === "string"
+        ? [book.pourquoi_entrepreneur]
+        : [];
+
+    const tagsHtml = [
+      ...(categorie ? [`<span class="tag">${escapeHtml(categorie)}</span>`] : []),
+      ...tags.slice(0, 6).map((t) => `<span class="tag">${escapeHtml(t)}</span>`),
+    ].join("");
+
+    const links = [
+      amazon
+        ? `<a class="detailLink" href="${escapeHtml(amazon)}" target="_blank" rel="noopener noreferrer">Voir sur Amazon</a>`
+        : "",
+      wikipedia
+        ? `<a class="detailLink" href="${escapeHtml(wikipedia)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>`
+        : "",
+    ]
+      .filter(Boolean)
+      .join("");
+
+    const whyHtml =
+      why.length > 0
+        ? `
+            <h2>Pourquoi c'est utile pour un entrepreneur</h2>
+            <ul>
+              ${why.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}
+            </ul>
+          `
+        : "";
+
+    mount.innerHTML = `
+      <div class="bookDetail">
+        <div class="bookDetailHeader">
+          <div class="bookDetailCover">
+            ${cover ? `<img src="${escapeHtml(cover)}" alt="Couverture du livre ${escapeHtml(title)}" />` : ""}
+          </div>
+          <div class="bookDetailInfo">
+            <p class="author">${escapeHtml(title)}${author ? ` — ${escapeHtml(author)}` : ""}</p>
+            <div class="tagsRow">
+              <div class="tags">${tagsHtml}</div>
+              ${links ? `<div class="links">${links}</div>` : ""}
+            </div>
+            ${book.resume_court ? `<p style="margin-bottom: 1.25rem;">${escapeHtml(String(book.resume_court))}</p>` : ""}
+            <div class="bookDetailContent">
+              <h2>Résumé</h2>
+              ${book.resume_long ? `<p>${escapeHtml(String(book.resume_long))}</p>` : ""}
+              ${
+                wikipedia
+                  ? `<p class="bookDetailSourceNote">Source complémentaire : <a href="${escapeHtml(
+                      wikipedia
+                    )}" target="_blank" rel="noopener noreferrer">Wikipedia</a>.</p>`
+                  : ""
+              }
+              ${whyHtml}
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="bibliotheque.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">← Retour à la bibliothèque</a>
+        </div>
+      </div>
+    `;
+
+    if (title) document.title = `${title} — The Entrepreneur Whisperer`;
+  };
+
+  (async () => {
+    try {
+      const resp = await fetch("../data/bibliotheque.json", { cache: "no-store" });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const data = await resp.json();
+      const livres = Array.isArray(data?.livres) ? data.livres : [];
+      const found = livres.find((b) => String(b?.bd || "") === bd);
+      if (!found) throw new Error(`Book not found for bd=${bd}`);
+      render(found);
+    } catch (e) {
+      console.error(e);
+      mount.innerHTML = `
+        <article class="infoCard">
+          <h3>Livre introuvable</h3>
+          <p>Impossible de charger ce livre depuis <code>../data/bibliotheque.json</code>.</p>
+          <p class="muted tiny">Détail : ${escapeHtml(String(e?.message || e))}</p>
         </article>
       `;
     }
@@ -609,6 +770,7 @@ function init() {
   setupAssistantPage();
   setupConseilsPage();
   setupBibliothequePage();
+  setupBookDetailPage();
 }
 
 document.addEventListener("DOMContentLoaded", init);

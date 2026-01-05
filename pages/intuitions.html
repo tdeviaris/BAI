@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bibliothèque — The Entrepreneur Whisperer</title>
-    <meta name="description" content="Recueil de livres recommandés pour les entrepreneurs." />
+    <title>Intuitions — The Entrepreneur Whisperer</title>
+    <meta name="description" content="Apprendre à écouter sa voix intérieure pour de meilleures décisions." />
     <link rel="icon" type="image/png" href="../img/founder_hacks_compass_refined_v2_1024.png" />
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
-  <body data-page="bibliotheque">
+  <body data-page="book-detail" data-book="intuitions.html">
     <a class="skipLink" href="#contenu">Aller au contenu</a>
 
     <header class="siteHeader" data-surface="page">
@@ -39,26 +39,15 @@
         </div>
       </nav>
 
-	      <section class="pageHero" id="contenu">
-	        <div class="container">
-	          <p class="pill">Le coin lecture</p>
-	          <h1>Bibliothèque</h1>
-	          <p class="lead">Un recueil de livres recommandés pour entrepreneurs, triables par intention.</p>
-	        </div>
-	      </section>
+      <section class="pageHero" id="contenu" style="padding: 1rem 0;">
+        <div class="container"></div>
+      </section>
     </header>
 
     <main class="main">
-	      <section class="section" style="padding-top: 0;">
-	        <div class="container">
-	          <div class="toolbar">
-	            <label class="srOnly" for="bookSearch">Rechercher un livre</label>
-	            <input id="bookSearch" class="searchInput" type="search" placeholder="Rechercher un livre (ex: pricing, produit…)" />
-	            <div class="filters" id="tagFilters" role="group" aria-label="Tags"></div>
-	            <p class="muted tiny" id="bookCount" aria-live="polite"></p>
-	          </div>
-
-          <div class="bookGrid" id="bookGrid" aria-label="Liste des livres"></div>
+      <section class="section" style="padding-top: 1rem;">
+        <div class="container">
+          <div id="bookDetailMount"></div>
         </div>
       </section>
     </main>
