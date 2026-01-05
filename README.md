@@ -1,6 +1,6 @@
-# founder hacks
+# The Entrepreneur Whisperer
 
-Site statique (HTML/CSS/JS) pour “founder hacks”, inspiré de l’esprit visuel très coloré de mindmarket.
+Site statique (HTML/CSS/JS) pour “The Entrepreneur Whisperer”, inspiré de l’esprit visuel très coloré de mindmarket.
 
 ## Lancer en local
 
@@ -8,4 +8,3 @@ Site statique (HTML/CSS/JS) pour “founder hacks”, inspiré de l’esprit vis
 - Option 2 (recommandé) :
   - `python3 -m http.server 8080`
   - ouvrir `http://localhost:8080`
-
