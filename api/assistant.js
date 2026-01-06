@@ -153,18 +153,22 @@ export default async function handler(req, res) {
           model,
           instructions:
             "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, en te basant d’abord sur les extraits fournis (issus de la base de connaissance). Si l’info n’est pas dans les extraits, dis-le clairement et propose une démarche. Termine par une courte liste de points clés.",
+          text: { format: { type: "text" } },
           input: [
             { role: "developer", content: `Extraits (base de connaissance)\n\n${context || "(aucun extrait pertinent trouvé)"}` },
             ...input,
             { role: "user", content: message },
           ],
           max_output_tokens: 320,
+          temperature: 0.2,
         },
         { signal: overallAbort.signal, timeout: 8_000 }
       );
 
       let answer = extractOutputTextFromResponse(response);
       let responseStatus = response?.status;
+      let responseError = response?.error ?? null;
+      let incompleteReason = response?.incomplete_details?.reason ?? null;
       if (!answer && response?.id && responseStatus && responseStatus !== "completed") {
         try {
           const again = await client.responses.retrieve(response.id, undefined, {
@@ -172,21 +176,33 @@ export default async function handler(req, res) {
             timeout: 2_500,
           });
           responseStatus = again?.status;
+          responseError = again?.error ?? responseError;
+          incompleteReason = again?.incomplete_details?.reason ?? incompleteReason;
           answer = extractOutputTextFromResponse(again);
         } catch {
           // ignore
         }
       }
-      if (!answer) answer = buildFallbackAnswer(message, hits);
-      console.log("assistant.ok", {
+      const usedFallback = !answer;
+      if (usedFallback) answer = buildFallbackAnswer(message, hits);
+      const debug = {
+        model,
+        response_id: response?.id ?? null,
+        status: responseStatus ?? null,
+        error: responseError?.message ?? null,
+        incomplete_reason: incompleteReason,
+        search_hits: hits.length,
         ms: Date.now() - startedAt,
-        status: responseStatus,
+      };
+      console.log("assistant.ok", {
+        ...debug,
         outItems: Array.isArray(response?.output) ? response.output.length : 0,
         outTextChars: answer.length,
         sources: sources.length,
+        usedFallback,
       });
 
-      return res.status(200).json({ answer, sources });
+      return res.status(200).json({ answer, sources, debug: usedFallback ? debug : undefined });
     } finally {
       clearTimeout(overallTimer);
     }

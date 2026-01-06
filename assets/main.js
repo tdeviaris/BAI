@@ -164,6 +164,7 @@ function setupAssistantPage() {
 
         const answer = String(data?.answer || "").trim() || "Je n’ai pas de réponse pour le moment.";
         const sources = Array.isArray(data?.sources) ? data.sources : [];
+        const debug = data?.debug && typeof data.debug === "object" ? data.debug : null;
         const sourcesText =
           sources.length > 0
             ? `\n\nSources :\n${sources
@@ -172,8 +173,14 @@ function setupAssistantPage() {
                 .filter(Boolean)
                 .join("\n")}`
             : "";
+        const debugText =
+          debug
+            ? `\n\nDiagnostic (tech) :\n• status: ${String(debug.status || "")}\n• error: ${String(
+                debug.error || ""
+              )}\n• incomplete: ${String(debug.incomplete_reason || "")}`
+            : "";
 
-        placeholder.querySelector(".bubbleText").textContent = `${answer}${sourcesText}`;
+        placeholder.querySelector(".bubbleText").textContent = `${answer}${sourcesText}${debugText}`;
         conversation.push({ role: "assistant", content: answer });
       } catch (err) {
         placeholder.querySelector(".bubbleText").textContent = `Désolé, je n’arrive pas à répondre.\n${err?.message || ""}`.trim();
