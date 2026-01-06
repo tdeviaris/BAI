@@ -85,6 +85,13 @@ function isAbortError(err) {
   return /aborted|aborterror/i.test(msg);
 }
 
+function writeSse(res, event, data) {
+  const payload = typeof data === "string" ? data : JSON.stringify(data);
+  res.write(`event: ${event}\n`);
+  for (const line of payload.split("\n")) res.write(`data: ${line}\n`);
+  res.write("\n");
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -94,14 +101,10 @@ export default async function handler(req, res) {
   const apiKey = process.env.OPENAI_API_KEY;
   const vectorStoreId = process.env.OPENAI_VECTOR_STORE_ID;
   const requestedModel = process.env.OPENAI_MODEL || "gpt-4o-mini";
-  const slowModel = /^gpt-5/i.test(requestedModel) || /^o\d/i.test(requestedModel) || /^o[34]/i.test(requestedModel);
-  const fastModel = process.env.OPENAI_FAST_MODEL || "gpt-4o-mini";
   const deadlineMsRaw = Number(process.env.ASSISTANT_DEADLINE_MS || "55000");
   const deadlineMs = Number.isFinite(deadlineMsRaw) ? Math.min(55_000, Math.max(8_000, deadlineMsRaw)) : 55_000;
-  const shouldForceFastModel =
-    String(process.env.ASSISTANT_FORCE_FAST_MODEL || "").toLowerCase() === "true" || (slowModel && deadlineMs <= 15_000);
-  const model = shouldForceFastModel ? fastModel : requestedModel;
-  const defaultMaxOutputTokens = /^gpt-5/i.test(requestedModel) ? 2000 : 700;
+  const model = requestedModel;
+  const defaultMaxOutputTokens = /^gpt-5/i.test(model) ? 2000 : 700;
   const maxOutputTokensRaw = process.env.ASSISTANT_MAX_OUTPUT_TOKENS;
   const maxOutputTokens = maxOutputTokensRaw ? Number(maxOutputTokensRaw) || defaultMaxOutputTokens : defaultMaxOutputTokens;
 
@@ -111,6 +114,7 @@ export default async function handler(req, res) {
   const payload = asJson(req);
   const message = String(payload?.message ?? "").trim();
   const history = Array.isArray(payload?.history) ? payload.history : [];
+  const wantStream = Boolean(payload?.stream);
 
   if (!message) return res.status(400).json({ error: "Missing message" });
 
@@ -169,22 +173,80 @@ export default async function handler(req, res) {
         .filter(Boolean)
         .join("\n\n---\n\n");
 
-      const response = await client.responses.create(
-        {
+      const requestBody = {
+        model,
+        instructions:
+          "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, en te basant d’abord sur les extraits fournis. Si l’info n’est pas dans les extraits, dis-le clairement et propose une démarche. Termine par 3 points clés.",
+        text: { format: { type: "text" } },
+        input: [
+          { role: "developer", content: `Extraits (base de connaissance)\n\n${context || "(aucun extrait pertinent trouvé)"}` },
+          ...input,
+          { role: "user", content: message },
+        ],
+        max_output_tokens: maxOutputTokens,
+        truncation: "auto",
+      };
+
+      if (wantStream) {
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
+        res.setHeader("Cache-Control", "no-cache, no-transform");
+        res.setHeader("Connection", "keep-alive");
+        res.setHeader("X-Accel-Buffering", "no");
+        if (typeof res.flushHeaders === "function") res.flushHeaders();
+
+        writeSse(res, "meta", {
           model,
-          instructions:
-            "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, en te basant d’abord sur les extraits fournis. Si l’info n’est pas dans les extraits, dis-le clairement et propose une démarche. Termine par 3 points clés.",
-          text: { format: { type: "text" } },
-          input: [
-            { role: "developer", content: `Extraits (base de connaissance)\n\n${context || "(aucun extrait pertinent trouvé)"}` },
-            ...input,
-            { role: "user", content: message },
-          ],
+          deadline_ms: deadlineMs,
           max_output_tokens: maxOutputTokens,
-          truncation: "auto",
-        },
-        { signal: overallAbort.signal, timeout: reqTimeout(Math.max(8_000, deadlineMs - 10_000)) }
-      );
+          sources,
+        });
+
+        let answer = "";
+        try {
+          const stream = await client.responses.create(
+            { ...requestBody, stream: true },
+            { signal: overallAbort.signal, timeout: reqTimeout(Math.max(8_000, deadlineMs - 10_000)) }
+          );
+
+          for await (const event of stream) {
+            if (event.type === "response.output_text.delta") {
+              const delta = String(event.delta || "");
+              if (!delta) continue;
+              answer += delta;
+              writeSse(res, "delta", { delta });
+              continue;
+            }
+            if (event.type === "response.failed") {
+              writeSse(res, "error", { error: event.error?.message || "OpenAI error" });
+              break;
+            }
+          }
+
+          console.log("assistant.ok", {
+            model,
+            deadline_ms: deadlineMs,
+            max_output_tokens: maxOutputTokens,
+            status: "streamed",
+            outTextChars: answer.length,
+            sources: sources.length,
+            ms: Date.now() - startedAt,
+          });
+
+          writeSse(res, "done", { ok: true });
+        } catch (err) {
+          const msg = isAbortError(err) ? "Timeout. Réessaie dans quelques secondes." : String(err?.message || "Erreur");
+          writeSse(res, "error", { error: msg });
+        } finally {
+          res.end();
+        }
+        return;
+      }
+
+      const response = await client.responses.create(requestBody, {
+        signal: overallAbort.signal,
+        timeout: reqTimeout(Math.max(8_000, deadlineMs - 10_000)),
+      });
 
       let answer = extractOutputTextFromResponse(response);
       let responseStatus = response?.status;
@@ -211,7 +273,6 @@ export default async function handler(req, res) {
       const debug = {
         requested_model: requestedModel,
         model,
-        slow_model_overridden: shouldForceFastModel && slowModel && model !== requestedModel,
         deadline_ms: deadlineMs,
         response_id: response?.id ?? null,
         status: responseStatus ?? null,
@@ -242,6 +303,14 @@ export default async function handler(req, res) {
     }
     const message = err?.message || "OpenAI request failed";
     const status = err?.status || 500;
+    if (res.headersSent) {
+      try {
+        res.end();
+      } catch {
+        // ignore
+      }
+      return;
+    }
     return res.status(status).json({ error: message });
   }
 }

@@ -154,34 +154,126 @@ function setupAssistantPage() {
         const resp = await fetch("../api/assistant", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: q, history: historyForServer }),
+          body: JSON.stringify({ message: q, history: historyForServer, stream: true }),
         });
 
-        const data = await resp.json().catch(() => ({}));
-        if (!resp.ok) {
+        const contentType = String(resp.headers.get("content-type") || "");
+        if (!resp.ok && !contentType.includes("text/event-stream")) {
+          const data = await resp.json().catch(() => ({}));
           throw new Error(data?.error || `Erreur API (${resp.status})`);
         }
 
-        const answer = String(data?.answer || "").trim() || "Je n’ai pas de réponse pour le moment.";
-        const sources = Array.isArray(data?.sources) ? data.sources : [];
-        const debug = data?.debug && typeof data.debug === "object" ? data.debug : null;
-        const sourcesText =
-          sources.length > 0
-            ? `\n\nSources :\n${sources
-                .slice(0, 6)
-                .map((s) => `• ${String(s?.filename || s?.file_id || "").trim()}`)
-                .filter(Boolean)
-                .join("\n")}`
-            : "";
-        const debugText =
-          debug
-            ? `\n\nDiagnostic (tech) :\n• status: ${String(debug.status || "")}\n• error: ${String(
-                debug.error || ""
-              )}\n• incomplete: ${String(debug.incomplete_reason || "")}`
-            : "";
+        if (contentType.includes("text/event-stream")) {
+          const decoder = new TextDecoder();
+          const reader = resp.body?.getReader();
+          if (!reader) throw new Error("Streaming non supporté par ce navigateur.");
 
-        placeholder.querySelector(".bubbleText").textContent = `${answer}${sourcesText}${debugText}`;
-        conversation.push({ role: "assistant", content: answer });
+          let buffer = "";
+          let currentEvent = "message";
+          let answer = "";
+          let sources = [];
+          let meta = null;
+
+          const flushIfDone = () => {
+            const sourcesText =
+              sources.length > 0
+                ? `\n\nSources :\n${sources
+                    .slice(0, 6)
+                    .map((s) => `• ${String(s?.filename || s?.file_id || "").trim()}`)
+                    .filter(Boolean)
+                    .join("\n")}`
+                : "";
+            const debug = meta && meta.debug ? meta.debug : null;
+            const debugText =
+              debug
+                ? `\n\nDiagnostic (tech) :\n• status: ${String(debug.status || "")}\n• error: ${String(
+                    debug.error || ""
+                  )}\n• incomplete: ${String(debug.incomplete_reason || "")}`
+                : "";
+            placeholder.querySelector(".bubbleText").textContent = `${answer || "Je n’ai pas de réponse pour le moment."}${sourcesText}${debugText}`;
+          };
+
+          for (;;) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            buffer += decoder.decode(value, { stream: true });
+            while (buffer.includes("\n")) {
+              const idx = buffer.indexOf("\n");
+              const line = buffer.slice(0, idx).replace(/\r$/, "");
+              buffer = buffer.slice(idx + 1);
+
+              if (!line) {
+                currentEvent = "message";
+                continue;
+              }
+              if (line.startsWith("event:")) {
+                currentEvent = line.slice(6).trim();
+                continue;
+              }
+              if (line.startsWith("data:")) {
+                const dataStr = line.slice(5).trimStart();
+                if (currentEvent === "delta") {
+                  try {
+                    const parsed = JSON.parse(dataStr);
+                    const delta = String(parsed?.delta ?? "");
+                    if (delta) answer += delta;
+                  } catch {
+                    answer += dataStr;
+                  }
+                  placeholder.querySelector(".bubbleText").textContent = answer;
+                  continue;
+                }
+                if (currentEvent === "meta") {
+                  try {
+                    meta = JSON.parse(dataStr);
+                    sources = Array.isArray(meta?.sources) ? meta.sources : [];
+                  } catch {
+                    meta = null;
+                  }
+                  continue;
+                }
+                if (currentEvent === "error") {
+                  try {
+                    const parsed = JSON.parse(dataStr);
+                    throw new Error(String(parsed?.error || "Erreur streaming"));
+                  } catch {
+                    throw new Error(dataStr || "Erreur streaming");
+                  }
+                }
+                if (currentEvent === "done") {
+                  flushIfDone();
+                }
+              }
+            }
+          }
+
+          flushIfDone();
+          conversation.push({ role: "assistant", content: answer });
+        } else {
+          const data = await resp.json().catch(() => ({}));
+          if (!resp.ok) throw new Error(data?.error || `Erreur API (${resp.status})`);
+
+          const answer = String(data?.answer || "").trim() || "Je n’ai pas de réponse pour le moment.";
+          const sources = Array.isArray(data?.sources) ? data.sources : [];
+          const debug = data?.debug && typeof data.debug === "object" ? data.debug : null;
+          const sourcesText =
+            sources.length > 0
+              ? `\n\nSources :\n${sources
+                  .slice(0, 6)
+                  .map((s) => `• ${String(s?.filename || s?.file_id || "").trim()}`)
+                  .filter(Boolean)
+                  .join("\n")}`
+              : "";
+          const debugText =
+            debug
+              ? `\n\nDiagnostic (tech) :\n• status: ${String(debug.status || "")}\n• error: ${String(
+                  debug.error || ""
+                )}\n• incomplete: ${String(debug.incomplete_reason || "")}`
+              : "";
+
+          placeholder.querySelector(".bubbleText").textContent = `${answer}${sourcesText}${debugText}`;
+          conversation.push({ role: "assistant", content: answer });
+        }
       } catch (err) {
         placeholder.querySelector(".bubbleText").textContent = `Désolé, je n’arrive pas à répondre.\n${err?.message || ""}`.trim();
       } finally {
