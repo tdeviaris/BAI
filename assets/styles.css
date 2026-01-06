@@ -1171,6 +1171,8 @@ input:focus-visible {
 .bubbleText {
   margin: 0;
   color: rgba(255, 255, 255, 0.88);
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .chatForm {

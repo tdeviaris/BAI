@@ -175,14 +175,7 @@ function setupAssistantPage() {
           let meta = null;
 
           const flushIfDone = () => {
-            const sourcesText =
-              sources.length > 0
-                ? `\n\nSources :\n${sources
-                    .slice(0, 6)
-                    .map((s) => `• ${String(s?.filename || s?.file_id || "").trim()}`)
-                    .filter(Boolean)
-                    .join("\n")}`
-                : "";
+            const sourcesText = "";
             const debug = meta && meta.debug ? meta.debug : null;
             const debugText =
               debug
@@ -256,14 +249,7 @@ function setupAssistantPage() {
           const answer = String(data?.answer || "").trim() || "Je n’ai pas de réponse pour le moment.";
           const sources = Array.isArray(data?.sources) ? data.sources : [];
           const debug = data?.debug && typeof data.debug === "object" ? data.debug : null;
-          const sourcesText =
-            sources.length > 0
-              ? `\n\nSources :\n${sources
-                  .slice(0, 6)
-                  .map((s) => `• ${String(s?.filename || s?.file_id || "").trim()}`)
-                  .filter(Boolean)
-                  .join("\n")}`
-              : "";
+          const sourcesText = "";
           const debugText =
             debug
               ? `\n\nDiagnostic (tech) :\n• status: ${String(debug.status || "")}\n• error: ${String(

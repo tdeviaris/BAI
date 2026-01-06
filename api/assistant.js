@@ -107,6 +107,7 @@ export default async function handler(req, res) {
   const defaultMaxOutputTokens = /^gpt-5/i.test(model) ? 2000 : 700;
   const maxOutputTokensRaw = process.env.ASSISTANT_MAX_OUTPUT_TOKENS;
   const maxOutputTokens = maxOutputTokensRaw ? Number(maxOutputTokensRaw) || defaultMaxOutputTokens : defaultMaxOutputTokens;
+  const includeSources = String(process.env.ASSISTANT_INCLUDE_SOURCES || "").toLowerCase() === "true";
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
@@ -176,7 +177,7 @@ export default async function handler(req, res) {
       const requestBody = {
         model,
         instructions:
-          "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, en te basant d’abord sur les extraits fournis. Si l’info n’est pas dans les extraits, dis-le clairement et propose une démarche. Termine par 3 points clés.",
+          "Tu es l’assistant IA de “The Entrepreneur Whisperer”.\n\nContraintes de forme :\n- Réponds en français.\n- Formate en texte aéré avec retours à la ligne : titres courts + listes à puces.\n- Ne commence pas par un label type “Court:” / “Réponse:” / “Conclusion:”.\n- Va à l’essentiel (pas de pavé monolithique).\n\nContraintes de fond :\n- Base-toi d’abord sur les extraits fournis.\n- Si l’info est absente des extraits, dis-le clairement et propose une démarche.\n- Termine par 3 points clés.",
         text: { format: { type: "text" } },
         input: [
           { role: "developer", content: `Extraits (base de connaissance)\n\n${context || "(aucun extrait pertinent trouvé)"}` },
@@ -199,7 +200,7 @@ export default async function handler(req, res) {
           model,
           deadline_ms: deadlineMs,
           max_output_tokens: maxOutputTokens,
-          sources,
+          sources: includeSources ? sources : [],
         });
 
         let answer = "";
@@ -223,15 +224,15 @@ export default async function handler(req, res) {
             }
           }
 
-          console.log("assistant.ok", {
-            model,
-            deadline_ms: deadlineMs,
-            max_output_tokens: maxOutputTokens,
-            status: "streamed",
-            outTextChars: answer.length,
-            sources: sources.length,
-            ms: Date.now() - startedAt,
-          });
+        console.log("assistant.ok", {
+          model,
+          deadline_ms: deadlineMs,
+          max_output_tokens: maxOutputTokens,
+          status: "streamed",
+          outTextChars: answer.length,
+          sources: sources.length,
+          ms: Date.now() - startedAt,
+        });
 
           writeSse(res, "done", { ok: true });
         } catch (err) {
@@ -293,7 +294,9 @@ export default async function handler(req, res) {
       });
 
       const shouldExposeDebug = usedFallback || debug.status !== "completed";
-      return res.status(200).json({ answer, sources, debug: shouldExposeDebug ? debug : undefined });
+      return res
+        .status(200)
+        .json({ answer, sources: includeSources ? sources : [], debug: shouldExposeDebug ? debug : undefined });
     } finally {
       clearTimeout(overallTimer);
     }
