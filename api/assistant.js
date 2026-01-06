@@ -67,17 +67,10 @@ export default async function handler(req, res) {
       model,
       instructions:
         "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, et base-toi en priorité sur les documents de la base de connaissance (outil file_search). Si l’info est absente, dis-le clairement et propose une démarche. Termine par une courte liste de points clés.",
-      tools: [{ type: "file_search" }],
+      tools: [{ type: "file_search", vector_store_ids: [vectorStoreId] }],
       tool_choice: "auto",
       input,
       max_output_tokens: 800,
-      // Force the tool to search in our vector store.
-      // (The SDK supports passing vector store ids at request time.)
-      tool_resources: {
-        file_search: {
-          vector_store_ids: [vectorStoreId],
-        },
-      },
     });
 
     const answer = response.output_text || "";
@@ -100,4 +93,3 @@ export default async function handler(req, res) {
     return res.status(status).json({ error: message });
   }
 }
-
