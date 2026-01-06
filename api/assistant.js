@@ -96,8 +96,12 @@ export default async function handler(req, res) {
   const requestedModel = process.env.OPENAI_MODEL || "gpt-4o-mini";
   const slowModel = /^gpt-5/i.test(requestedModel) || /^o\d/i.test(requestedModel) || /^o[34]/i.test(requestedModel);
   const fastModel = process.env.OPENAI_FAST_MODEL || "gpt-4o-mini";
-  const model = slowModel ? fastModel : requestedModel;
-  const maxOutputTokens = 700;
+  const deadlineMsRaw = Number(process.env.ASSISTANT_DEADLINE_MS || "55000");
+  const deadlineMs = Number.isFinite(deadlineMsRaw) ? Math.min(55_000, Math.max(8_000, deadlineMsRaw)) : 55_000;
+  const shouldForceFastModel =
+    String(process.env.ASSISTANT_FORCE_FAST_MODEL || "").toLowerCase() === "true" || (slowModel && deadlineMs <= 15_000);
+  const model = shouldForceFastModel ? fastModel : requestedModel;
+  const maxOutputTokens = Number(process.env.ASSISTANT_MAX_OUTPUT_TOKENS || "700") || 700;
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
@@ -109,7 +113,7 @@ export default async function handler(req, res) {
   if (!message) return res.status(400).json({ error: "Missing message" });
 
   res.setHeader("Cache-Control", "no-store");
-  const client = new OpenAI({ apiKey, timeout: 15_000 });
+  const client = new OpenAI({ apiKey, timeout: deadlineMs });
 
   const input = [];
   for (const h of history.slice(-12)) {
@@ -121,9 +125,9 @@ export default async function handler(req, res) {
   try {
     const startedAt = Date.now();
     const overallAbort = new AbortController();
-    const overallTimer = setTimeout(() => overallAbort.abort(), 13_800);
-    const remainingMs = () => Math.max(0, 13_800 - (Date.now() - startedAt));
-    const reqTimeout = (target) => Math.max(250, Math.min(target, remainingMs() - 250));
+    const overallTimer = setTimeout(() => overallAbort.abort(), deadlineMs);
+    const remainingMs = () => Math.max(0, deadlineMs - (Date.now() - startedAt));
+    const reqTimeout = (target) => Math.max(350, Math.min(target, remainingMs() - 750));
 
     try {
       const search = await client.vectorStores.search(
@@ -134,7 +138,7 @@ export default async function handler(req, res) {
           rewrite_query: false,
           ranking_options: { score_threshold: 0.15 },
         },
-        { signal: overallAbort.signal, timeout: reqTimeout(2_400) }
+        { signal: overallAbort.signal, timeout: reqTimeout(6_000) }
       );
 
       const hits = Array.isArray(search?.data) ? search.data : [];
@@ -177,7 +181,7 @@ export default async function handler(req, res) {
           max_output_tokens: maxOutputTokens,
           truncation: "auto",
         },
-        { signal: overallAbort.signal, timeout: reqTimeout(7_000) }
+        { signal: overallAbort.signal, timeout: reqTimeout(Math.max(8_000, deadlineMs - 10_000)) }
       );
 
       let answer = extractOutputTextFromResponse(response);
@@ -205,7 +209,8 @@ export default async function handler(req, res) {
       const debug = {
         requested_model: requestedModel,
         model,
-        slow_model_overridden: slowModel && model !== requestedModel,
+        slow_model_overridden: shouldForceFastModel && slowModel && model !== requestedModel,
+        deadline_ms: deadlineMs,
         response_id: response?.id ?? null,
         status: responseStatus ?? null,
         error: responseError?.message ?? null,
