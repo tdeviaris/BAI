@@ -33,6 +33,27 @@ function extractFileIdsFromResponse(response) {
   return [...ids];
 }
 
+function extractOutputTextFromResponse(response) {
+  const direct = typeof response?.output_text === "string" ? response.output_text.trim() : "";
+  if (direct) return direct;
+
+  const parts = [];
+  for (const item of response?.output ?? []) {
+    if (item?.type !== "message") continue;
+    for (const content of item?.content ?? []) {
+      if (content?.type === "output_text" && typeof content?.text === "string") {
+        const t = content.text.trim();
+        if (t) parts.push(t);
+      } else if (content?.type === "refusal" && typeof content?.refusal === "string") {
+        const r = content.refusal.trim();
+        if (r) return r;
+      }
+    }
+  }
+
+  return parts.join("\n\n").trim();
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -80,11 +101,15 @@ export default async function handler(req, res) {
       );
 
       const hits = Array.isArray(search?.data) ? search.data : [];
-      const sources = hits.slice(0, 4).map((h) => ({
-        file_id: h.file_id,
-        filename: h.filename,
-        score: h.score,
-      }));
+      const sources = [];
+      const seenFiles = new Set();
+      for (const h of hits) {
+        const fileId = h?.file_id;
+        if (!fileId || seenFiles.has(fileId)) continue;
+        seenFiles.add(fileId);
+        sources.push({ file_id: fileId, filename: h?.filename, score: h?.score });
+        if (sources.length >= 4) break;
+      }
 
       const context = hits
         .slice(0, 4)
@@ -115,8 +140,14 @@ export default async function handler(req, res) {
         { signal: overallAbort.signal, timeout: 10_000 }
       );
 
-      const answer = response.output_text || "";
-      console.log("assistant.ok", { ms: Date.now() - startedAt, sources: sources.length });
+      const answer = extractOutputTextFromResponse(response);
+      console.log("assistant.ok", {
+        ms: Date.now() - startedAt,
+        status: response?.status,
+        outItems: Array.isArray(response?.output) ? response.output.length : 0,
+        outTextChars: answer.length,
+        sources: sources.length,
+      });
 
       return res.status(200).json({ answer, sources });
     } finally {
