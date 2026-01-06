@@ -109,6 +109,10 @@ export default async function handler(req, res) {
   const maxOutputTokens = maxOutputTokensRaw ? Number(maxOutputTokensRaw) || defaultMaxOutputTokens : defaultMaxOutputTokens;
   const includeSources = String(process.env.ASSISTANT_INCLUDE_SOURCES || "").toLowerCase() === "true";
   const ragMode = String(process.env.ASSISTANT_RAG_MODE || "tool").toLowerCase(); // tool|manual
+  const searchResultsRaw = Number(process.env.ASSISTANT_SEARCH_RESULTS || "2");
+  const searchResults = Number.isFinite(searchResultsRaw) ? Math.min(10, Math.max(1, searchResultsRaw)) : 2;
+  const scoreThresholdRaw = Number(process.env.ASSISTANT_SEARCH_SCORE_THRESHOLD || "0.2");
+  const scoreThreshold = Number.isFinite(scoreThresholdRaw) ? Math.min(1, Math.max(0, scoreThresholdRaw)) : 0.2;
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
@@ -143,6 +147,7 @@ export default async function handler(req, res) {
         "Contraintes de forme :\n" +
         "- Réponds en français.\n" +
         "- Formate en texte aéré avec retours à la ligne : titres courts + listes à puces.\n" +
+        "- Réponse concise (évite les explications longues).\n" +
         "- Ne commence pas par un label type “Court:” / “Réponse:” / “Conclusion:”.\n" +
         "- Évite les mots “extraits” / “les extraits”. Parle de “base de connaissance”.\n" +
         "- Ne termine pas par une relance, une proposition d’aide ou une question (“Si vous voulez…”, “Dites‑moi…”, etc.).\n\n" +
@@ -162,8 +167,8 @@ export default async function handler(req, res) {
             {
               type: "file_search",
               vector_store_ids: [vectorStoreId],
-              max_num_results: 3,
-              ranking_options: { score_threshold: 0.15 },
+              max_num_results: searchResults,
+              ranking_options: { score_threshold: scoreThreshold },
             },
           ],
           tool_choice: "auto",
