@@ -101,7 +101,9 @@ export default async function handler(req, res) {
   const shouldForceFastModel =
     String(process.env.ASSISTANT_FORCE_FAST_MODEL || "").toLowerCase() === "true" || (slowModel && deadlineMs <= 15_000);
   const model = shouldForceFastModel ? fastModel : requestedModel;
-  const maxOutputTokens = Number(process.env.ASSISTANT_MAX_OUTPUT_TOKENS || "700") || 700;
+  const defaultMaxOutputTokens = /^gpt-5/i.test(requestedModel) ? 2000 : 700;
+  const maxOutputTokensRaw = process.env.ASSISTANT_MAX_OUTPUT_TOKENS;
+  const maxOutputTokens = maxOutputTokensRaw ? Number(maxOutputTokensRaw) || defaultMaxOutputTokens : defaultMaxOutputTokens;
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
