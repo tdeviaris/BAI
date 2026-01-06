@@ -144,7 +144,8 @@ export default async function handler(req, res) {
         "- Réponds en français.\n" +
         "- Formate en texte aéré avec retours à la ligne : titres courts + listes à puces.\n" +
         "- Ne commence pas par un label type “Court:” / “Réponse:” / “Conclusion:”.\n" +
-        "- Évite les mots “extraits” / “les extraits”. Parle de “base de connaissance”.\n\n" +
+        "- Évite les mots “extraits” / “les extraits”. Parle de “base de connaissance”.\n" +
+        "- Ne termine pas par une relance, une proposition d’aide ou une question (“Si vous voulez…”, “Dites‑moi…”, etc.).\n\n" +
         "Contraintes de fond :\n" +
         "- Utilise d’abord la base de connaissance.\n" +
         "- Puis complète avec des bonnes pratiques générales (sans opposer/contraster), en restant cohérent.\n" +
