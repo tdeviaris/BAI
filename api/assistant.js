@@ -54,6 +54,29 @@ function extractOutputTextFromResponse(response) {
   return parts.join("\n\n").trim();
 }
 
+function buildFallbackAnswer(message, hits) {
+  const snippets = (hits || [])
+    .slice(0, 2)
+    .map((h) => {
+      const text = (h?.content || [])
+        .map((c) => String(c?.text || "").trim())
+        .filter(Boolean)
+        .slice(0, 1)
+        .join("\n");
+      const short = text.length > 500 ? `${text.slice(0, 500)}…` : text;
+      return short ? `- ${h?.filename || "source"}: ${short}` : "";
+    })
+    .filter(Boolean)
+    .join("\n");
+
+  return (
+    "Je n’arrive pas à générer une réponse complète pour le moment (sortie vide du modèle). " +
+    "Voici les extraits les plus proches trouvés dans la base, et on peut reformuler la question :\n\n" +
+    `Question: ${message}\n\n` +
+    (snippets || "- (aucun extrait pertinent trouvé)")
+  );
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -97,7 +120,7 @@ export default async function handler(req, res) {
           rewrite_query: false,
           ranking_options: { score_threshold: 0.15 },
         },
-        { signal: overallAbort.signal, timeout: 4_000 }
+        { signal: overallAbort.signal, timeout: 3_000 }
       );
 
       const hits = Array.isArray(search?.data) ? search.data : [];
@@ -137,13 +160,27 @@ export default async function handler(req, res) {
           ],
           max_output_tokens: 320,
         },
-        { signal: overallAbort.signal, timeout: 10_000 }
+        { signal: overallAbort.signal, timeout: 8_000 }
       );
 
-      const answer = extractOutputTextFromResponse(response);
+      let answer = extractOutputTextFromResponse(response);
+      let responseStatus = response?.status;
+      if (!answer && response?.id && responseStatus && responseStatus !== "completed") {
+        try {
+          const again = await client.responses.retrieve(response.id, undefined, {
+            signal: overallAbort.signal,
+            timeout: 2_500,
+          });
+          responseStatus = again?.status;
+          answer = extractOutputTextFromResponse(again);
+        } catch {
+          // ignore
+        }
+      }
+      if (!answer) answer = buildFallbackAnswer(message, hits);
       console.log("assistant.ok", {
         ms: Date.now() - startedAt,
-        status: response?.status,
+        status: responseStatus,
         outItems: Array.isArray(response?.output) ? response.output.length : 0,
         outTextChars: answer.length,
         sources: sources.length,
