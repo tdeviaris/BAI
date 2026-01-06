@@ -86,6 +86,8 @@ export default async function handler(req, res) {
   const apiKey = process.env.OPENAI_API_KEY;
   const vectorStoreId = process.env.OPENAI_VECTOR_STORE_ID;
   const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
+  const isReasoningModel = /^gpt-5/i.test(model) || /^o\d/i.test(model) || /^o[34]/i.test(model);
+  const maxOutputTokens = isReasoningModel ? 1400 : 700;
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
@@ -160,8 +162,9 @@ export default async function handler(req, res) {
             ...input,
             { role: "user", content: message },
           ],
-          max_output_tokens: 700,
+          max_output_tokens: maxOutputTokens,
           truncation: "auto",
+          ...(isReasoningModel ? { reasoning: { effort: "low" } } : {}),
         },
         { signal: overallAbort.signal, timeout: 8_000 }
       );
@@ -170,6 +173,7 @@ export default async function handler(req, res) {
       let responseStatus = response?.status;
       let responseError = response?.error ?? null;
       let incompleteReason = response?.incomplete_details?.reason ?? null;
+      let usage = response?.usage ?? null;
       if (!answer && response?.id && responseStatus && responseStatus !== "completed") {
         try {
           const again = await client.responses.retrieve(response.id, undefined, {
@@ -179,6 +183,7 @@ export default async function handler(req, res) {
           responseStatus = again?.status;
           responseError = again?.error ?? responseError;
           incompleteReason = again?.incomplete_details?.reason ?? incompleteReason;
+          usage = again?.usage ?? usage;
           answer = extractOutputTextFromResponse(again);
         } catch {
           // ignore
@@ -193,6 +198,9 @@ export default async function handler(req, res) {
         error: responseError?.message ?? null,
         incomplete_reason: incompleteReason,
         search_hits: hits.length,
+        max_output_tokens: maxOutputTokens,
+        output_text_len: typeof response?.output_text === "string" ? response.output_text.length : null,
+        usage,
         ms: Date.now() - startedAt,
       };
       console.log("assistant.ok", {
