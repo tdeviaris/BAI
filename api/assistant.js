@@ -77,6 +77,14 @@ function buildFallbackAnswer(message, hits) {
   );
 }
 
+function isAbortError(err) {
+  if (!err) return false;
+  if (err.name === "AbortError") return true;
+  if (err.cause && err.cause.name === "AbortError") return true;
+  const msg = String(err.message || "");
+  return /aborted|aborterror/i.test(msg);
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -87,7 +95,7 @@ export default async function handler(req, res) {
   const vectorStoreId = process.env.OPENAI_VECTOR_STORE_ID;
   const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
   const isReasoningModel = /^gpt-5/i.test(model) || /^o\d/i.test(model) || /^o[34]/i.test(model);
-  const maxOutputTokens = isReasoningModel ? 1400 : 700;
+  const maxOutputTokens = isReasoningModel ? 900 : 700;
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
@@ -99,7 +107,7 @@ export default async function handler(req, res) {
   if (!message) return res.status(400).json({ error: "Missing message" });
 
   res.setHeader("Cache-Control", "no-store");
-  const client = new OpenAI({ apiKey, timeout: 30_000 });
+  const client = new OpenAI({ apiKey, timeout: 15_000 });
 
   const input = [];
   for (const h of history.slice(-12)) {
@@ -111,7 +119,9 @@ export default async function handler(req, res) {
   try {
     const startedAt = Date.now();
     const overallAbort = new AbortController();
-    const overallTimer = setTimeout(() => overallAbort.abort(), 13_500);
+    const overallTimer = setTimeout(() => overallAbort.abort(), 13_800);
+    const remainingMs = () => Math.max(0, 13_800 - (Date.now() - startedAt));
+    const reqTimeout = (target) => Math.max(250, Math.min(target, remainingMs() - 250));
 
     try {
       const search = await client.vectorStores.search(
@@ -122,7 +132,7 @@ export default async function handler(req, res) {
           rewrite_query: false,
           ranking_options: { score_threshold: 0.15 },
         },
-        { signal: overallAbort.signal, timeout: 3_000 }
+        { signal: overallAbort.signal, timeout: reqTimeout(2_400) }
       );
 
       const hits = Array.isArray(search?.data) ? search.data : [];
@@ -166,7 +176,7 @@ export default async function handler(req, res) {
           truncation: "auto",
           ...(isReasoningModel ? { reasoning: { effort: "low" } } : {}),
         },
-        { signal: overallAbort.signal, timeout: 8_000 }
+        { signal: overallAbort.signal, timeout: reqTimeout(7_000) }
       );
 
       let answer = extractOutputTextFromResponse(response);
@@ -178,7 +188,7 @@ export default async function handler(req, res) {
         try {
           const again = await client.responses.retrieve(response.id, undefined, {
             signal: overallAbort.signal,
-            timeout: 2_500,
+            timeout: reqTimeout(2_000),
           });
           responseStatus = again?.status;
           responseError = again?.error ?? responseError;
@@ -217,7 +227,7 @@ export default async function handler(req, res) {
       clearTimeout(overallTimer);
     }
   } catch (err) {
-    if (err?.name === "AbortError") {
+    if (isAbortError(err)) {
       return res.status(504).json({ error: "Timeout. Réessaie dans quelques secondes." });
     }
     const message = err?.message || "OpenAI request failed";
