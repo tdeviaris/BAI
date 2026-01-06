@@ -1139,7 +1139,7 @@ input:focus-visible {
   min-height: 340px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
 
 .bubble {
@@ -1173,6 +1173,7 @@ input:focus-visible {
   color: rgba(255, 255, 255, 0.88);
   white-space: pre-wrap;
   word-break: break-word;
+  line-height: 1.65;
 }
 
 .chatForm {

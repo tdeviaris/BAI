@@ -108,6 +108,7 @@ export default async function handler(req, res) {
   const maxOutputTokensRaw = process.env.ASSISTANT_MAX_OUTPUT_TOKENS;
   const maxOutputTokens = maxOutputTokensRaw ? Number(maxOutputTokensRaw) || defaultMaxOutputTokens : defaultMaxOutputTokens;
   const includeSources = String(process.env.ASSISTANT_INCLUDE_SOURCES || "").toLowerCase() === "true";
+  const ragMode = String(process.env.ASSISTANT_RAG_MODE || "tool").toLowerCase(); // tool|manual
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
@@ -137,6 +138,115 @@ export default async function handler(req, res) {
     const reqTimeout = (target) => Math.max(350, Math.min(target, remainingMs() - 750));
 
     try {
+      const instructions =
+        "Tu es l’assistant IA de “The Entrepreneur Whisperer”.\n\n" +
+        "Contraintes de forme :\n" +
+        "- Réponds en français.\n" +
+        "- Formate en texte aéré avec retours à la ligne : titres courts + listes à puces.\n" +
+        "- Ne commence pas par un label type “Court:” / “Réponse:” / “Conclusion:”.\n" +
+        "- Évite les mots “extraits” / “les extraits”. Parle de “base de connaissance”.\n\n" +
+        "Contraintes de fond :\n" +
+        "- Utilise d’abord la base de connaissance.\n" +
+        "- Puis complète avec des bonnes pratiques générales (sans opposer/contraster), en restant cohérent.\n" +
+        "- Quand tu ajoutes un complément non présent dans la base de connaissance, indique-le simplement comme “Bonnes pratiques”.\n" +
+        "- Termine par 3 points clés.";
+
+      // Prefer a single Responses call with built-in file_search for speed.
+      if (ragMode === "tool") {
+        const requestBody = {
+          model,
+          instructions,
+          text: { format: { type: "text" } },
+          tools: [
+            {
+              type: "file_search",
+              vector_store_ids: [vectorStoreId],
+              max_num_results: 3,
+              ranking_options: { score_threshold: 0.15 },
+            },
+          ],
+          tool_choice: "auto",
+          input: [...input, { role: "user", content: message }],
+          max_output_tokens: maxOutputTokens,
+          truncation: "auto",
+        };
+
+        if (wantStream) {
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
+          res.setHeader("Cache-Control", "no-cache, no-transform");
+          res.setHeader("Connection", "keep-alive");
+          res.setHeader("X-Accel-Buffering", "no");
+          if (typeof res.flushHeaders === "function") res.flushHeaders();
+
+          writeSse(res, "meta", {
+            model,
+            deadline_ms: deadlineMs,
+            max_output_tokens: maxOutputTokens,
+            sources: [],
+          });
+
+          let answer = "";
+          try {
+            const stream = await client.responses.create(
+              { ...requestBody, stream: true },
+              { signal: overallAbort.signal, timeout: reqTimeout(Math.max(8_000, deadlineMs - 10_000)) }
+            );
+
+            for await (const event of stream) {
+              if (event.type === "response.output_text.delta") {
+                const delta = String(event.delta || "");
+                if (!delta) continue;
+                answer += delta;
+                writeSse(res, "delta", { delta });
+                continue;
+              }
+              if (event.type === "response.failed") {
+                writeSse(res, "error", { error: event.error?.message || "OpenAI error" });
+                break;
+              }
+            }
+
+            console.log("assistant.ok", {
+              model,
+              deadline_ms: deadlineMs,
+              max_output_tokens: maxOutputTokens,
+              rag_mode: "tool",
+              status: "streamed",
+              outTextChars: answer.length,
+              ms: Date.now() - startedAt,
+            });
+
+            writeSse(res, "done", { ok: true });
+          } catch (err) {
+            const msg = isAbortError(err) ? "Timeout. Réessaie dans quelques secondes." : String(err?.message || "Erreur");
+            writeSse(res, "error", { error: msg });
+          } finally {
+            res.end();
+          }
+          return;
+        }
+
+        const response = await client.responses.create(requestBody, {
+          signal: overallAbort.signal,
+          timeout: reqTimeout(Math.max(8_000, deadlineMs - 10_000)),
+        });
+
+        const answer = extractOutputTextFromResponse(response);
+        console.log("assistant.ok", {
+          model,
+          deadline_ms: deadlineMs,
+          max_output_tokens: maxOutputTokens,
+          rag_mode: "tool",
+          status: response?.status,
+          incomplete_reason: response?.incomplete_details?.reason ?? null,
+          outTextChars: answer.length,
+          ms: Date.now() - startedAt,
+        });
+
+        return res.status(200).json({ answer, sources: [], debug: undefined });
+      }
+
       const search = await client.vectorStores.search(
         vectorStoreId,
         {
@@ -176,11 +286,10 @@ export default async function handler(req, res) {
 
       const requestBody = {
         model,
-        instructions:
-          "Tu es l’assistant IA de “The Entrepreneur Whisperer”.\n\nContraintes de forme :\n- Réponds en français.\n- Formate en texte aéré avec retours à la ligne : titres courts + listes à puces.\n- Ne commence pas par un label type “Court:” / “Réponse:” / “Conclusion:”.\n- Va à l’essentiel (pas de pavé monolithique).\n\nContraintes de fond :\n- Base-toi d’abord sur les extraits fournis.\n- Si l’info est absente des extraits, dis-le clairement et propose une démarche.\n- Termine par 3 points clés.",
+        instructions,
         text: { format: { type: "text" } },
         input: [
-          { role: "developer", content: `Extraits (base de connaissance)\n\n${context || "(aucun extrait pertinent trouvé)"}` },
+          { role: "developer", content: `Base de connaissance (passages sélectionnés)\n\n${context || "(aucun passage pertinent trouvé)"}` },
           ...input,
           { role: "user", content: message },
         ],
