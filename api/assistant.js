@@ -152,7 +152,7 @@ export default async function handler(req, res) {
         {
           model,
           instructions:
-            "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, en te basant d’abord sur les extraits fournis (issus de la base de connaissance). Si l’info n’est pas dans les extraits, dis-le clairement et propose une démarche. Termine par une courte liste de points clés.",
+            "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, en te basant d’abord sur les extraits fournis (issus de la base de connaissance). Si l’info n’est pas dans les extraits, dis-le clairement et propose une démarche. Réponse courte (max ~10 lignes). Termine par 3 points clés.",
           text: { format: { type: "text" } },
           input: [
             { role: "developer", content: `Extraits (base de connaissance)\n\n${context || "(aucun extrait pertinent trouvé)"}` },
@@ -202,7 +202,8 @@ export default async function handler(req, res) {
         usedFallback,
       });
 
-      return res.status(200).json({ answer, sources, debug: usedFallback ? debug : undefined });
+      const shouldExposeDebug = usedFallback || debug.status !== "completed";
+      return res.status(200).json({ answer, sources, debug: shouldExposeDebug ? debug : undefined });
     } finally {
       clearTimeout(overallTimer);
     }
