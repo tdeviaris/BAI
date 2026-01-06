@@ -160,7 +160,6 @@ export default async function handler(req, res) {
             { role: "user", content: message },
           ],
           max_output_tokens: 320,
-          temperature: 0.2,
         },
         { signal: overallAbort.signal, timeout: 8_000 }
       );
