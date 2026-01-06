@@ -93,9 +93,11 @@ export default async function handler(req, res) {
 
   const apiKey = process.env.OPENAI_API_KEY;
   const vectorStoreId = process.env.OPENAI_VECTOR_STORE_ID;
-  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
-  const isReasoningModel = /^gpt-5/i.test(model) || /^o\d/i.test(model) || /^o[34]/i.test(model);
-  const maxOutputTokens = isReasoningModel ? 900 : 700;
+  const requestedModel = process.env.OPENAI_MODEL || "gpt-4o-mini";
+  const slowModel = /^gpt-5/i.test(requestedModel) || /^o\d/i.test(requestedModel) || /^o[34]/i.test(requestedModel);
+  const fastModel = process.env.OPENAI_FAST_MODEL || "gpt-4o-mini";
+  const model = slowModel ? fastModel : requestedModel;
+  const maxOutputTokens = 700;
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
@@ -174,7 +176,6 @@ export default async function handler(req, res) {
           ],
           max_output_tokens: maxOutputTokens,
           truncation: "auto",
-          ...(isReasoningModel ? { reasoning: { effort: "low" } } : {}),
         },
         { signal: overallAbort.signal, timeout: reqTimeout(7_000) }
       );
@@ -202,7 +203,9 @@ export default async function handler(req, res) {
       const usedFallback = !answer;
       if (usedFallback) answer = buildFallbackAnswer(message, hits);
       const debug = {
+        requested_model: requestedModel,
         model,
+        slow_model_overridden: slowModel && model !== requestedModel,
         response_id: response?.id ?? null,
         status: responseStatus ?? null,
         error: responseError?.message ?? null,
