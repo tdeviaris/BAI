@@ -72,7 +72,7 @@ export default async function handler(req, res) {
         vectorStoreId,
         {
           query: message,
-          max_num_results: 6,
+          max_num_results: 4,
           rewrite_query: false,
           ranking_options: { score_threshold: 0.15 },
         },
@@ -80,21 +80,21 @@ export default async function handler(req, res) {
       );
 
       const hits = Array.isArray(search?.data) ? search.data : [];
-      const sources = hits.slice(0, 6).map((h) => ({
+      const sources = hits.slice(0, 4).map((h) => ({
         file_id: h.file_id,
         filename: h.filename,
         score: h.score,
       }));
 
       const context = hits
-        .slice(0, 6)
+        .slice(0, 4)
         .map((h, idx) => {
           const chunks = (h.content || [])
             .map((c) => String(c?.text || "").trim())
             .filter(Boolean)
             .slice(0, 2)
             .join("\n\n");
-          const snippet = chunks.length > 1800 ? `${chunks.slice(0, 1800)}…` : chunks;
+          const snippet = chunks.length > 1200 ? `${chunks.slice(0, 1200)}…` : chunks;
           return `[${idx + 1}] ${h.filename} (score ${Number(h.score).toFixed(3)})\n${snippet}`;
         })
         .filter(Boolean)
@@ -110,7 +110,7 @@ export default async function handler(req, res) {
             ...input,
             { role: "user", content: message },
           ],
-          max_output_tokens: 450,
+          max_output_tokens: 320,
         },
         { signal: overallAbort.signal, timeout: 10_000 }
       );
