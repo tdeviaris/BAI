@@ -52,7 +52,8 @@ export default async function handler(req, res) {
 
   if (!message) return res.status(400).json({ error: "Missing message" });
 
-  const client = new OpenAI({ apiKey });
+  res.setHeader("Cache-Control", "no-store");
+  const client = new OpenAI({ apiKey, timeout: 12_000 });
 
   const input = [];
   for (const h of history.slice(-12)) {
@@ -63,28 +64,27 @@ export default async function handler(req, res) {
   input.push({ role: "user", content: message });
 
   try {
+    const startedAt = Date.now();
     const response = await client.responses.create({
       model,
       instructions:
         "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, et base-toi en priorité sur les documents de la base de connaissance (outil file_search). Si l’info est absente, dis-le clairement et propose une démarche. Termine par une courte liste de points clés.",
-      tools: [{ type: "file_search", vector_store_ids: [vectorStoreId] }],
+      tools: [
+        {
+          type: "file_search",
+          vector_store_ids: [vectorStoreId],
+          max_num_results: 6,
+          ranking_options: { score_threshold: 0.15 },
+        },
+      ],
       tool_choice: "auto",
       input,
-      max_output_tokens: 800,
+      max_output_tokens: 500,
     });
 
     const answer = response.output_text || "";
-    const fileIds = extractFileIdsFromResponse(response);
-
-    const sources = [];
-    for (const fileId of fileIds.slice(0, 12)) {
-      try {
-        const file = await client.files.retrieve(fileId);
-        sources.push({ file_id: fileId, filename: file?.filename || fileId });
-      } catch {
-        sources.push({ file_id: fileId, filename: fileId });
-      }
-    }
+    const sources = extractFileIdsFromResponse(response).slice(0, 8).map((file_id) => ({ file_id }));
+    console.log("assistant.ok", { ms: Date.now() - startedAt, sources: sources.length });
 
     return res.status(200).json({ answer, sources });
   } catch (err) {
