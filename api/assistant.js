@@ -116,7 +116,7 @@ export default async function handler(req, res) {
         vectorStoreId,
         {
           query: message,
-          max_num_results: 4,
+          max_num_results: 3,
           rewrite_query: false,
           ranking_options: { score_threshold: 0.15 },
         },
@@ -131,19 +131,20 @@ export default async function handler(req, res) {
         if (!fileId || seenFiles.has(fileId)) continue;
         seenFiles.add(fileId);
         sources.push({ file_id: fileId, filename: h?.filename, score: h?.score });
-        if (sources.length >= 4) break;
+        if (sources.length >= 2) break;
       }
 
       const context = hits
-        .slice(0, 4)
+        .filter((h) => h?.file_id && sources.some((s) => s.file_id === h.file_id))
+        .slice(0, 2)
         .map((h, idx) => {
           const chunks = (h.content || [])
             .map((c) => String(c?.text || "").trim())
             .filter(Boolean)
-            .slice(0, 2)
+            .slice(0, 1)
             .join("\n\n");
-          const snippet = chunks.length > 1200 ? `${chunks.slice(0, 1200)}…` : chunks;
-          return `[${idx + 1}] ${h.filename} (score ${Number(h.score).toFixed(3)})\n${snippet}`;
+          const snippet = chunks.length > 900 ? `${chunks.slice(0, 900)}…` : chunks;
+          return `[${idx + 1}] ${h.filename}\n${snippet}`;
         })
         .filter(Boolean)
         .join("\n\n---\n\n");
@@ -152,14 +153,15 @@ export default async function handler(req, res) {
         {
           model,
           instructions:
-            "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, en te basant d’abord sur les extraits fournis (issus de la base de connaissance). Si l’info n’est pas dans les extraits, dis-le clairement et propose une démarche. Réponse courte (max ~10 lignes). Termine par 3 points clés.",
+            "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, en te basant d’abord sur les extraits fournis. Si l’info n’est pas dans les extraits, dis-le clairement et propose une démarche. Termine par 3 points clés.",
           text: { format: { type: "text" } },
           input: [
             { role: "developer", content: `Extraits (base de connaissance)\n\n${context || "(aucun extrait pertinent trouvé)"}` },
             ...input,
             { role: "user", content: message },
           ],
-          max_output_tokens: 320,
+          max_output_tokens: 700,
+          truncation: "auto",
         },
         { signal: overallAbort.signal, timeout: 8_000 }
       );
