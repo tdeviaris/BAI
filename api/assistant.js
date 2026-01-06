@@ -41,7 +41,7 @@ export default async function handler(req, res) {
 
   const apiKey = process.env.OPENAI_API_KEY;
   const vectorStoreId = process.env.OPENAI_VECTOR_STORE_ID;
-  const model = process.env.OPENAI_MODEL || "gpt-4.1-mini";
+  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
@@ -61,29 +61,50 @@ export default async function handler(req, res) {
     const content = String(h?.content ?? "").trim();
     if (content) input.push({ role, content });
   }
-  input.push({ role: "user", content: message });
 
   try {
     const startedAt = Date.now();
+    const search = await client.vectorStores.search(vectorStoreId, {
+      query: message,
+      max_num_results: 6,
+      rewrite_query: true,
+      ranking_options: { score_threshold: 0.15 },
+    });
+
+    const hits = Array.isArray(search?.data) ? search.data : [];
+    const sources = hits.slice(0, 6).map((h) => ({
+      file_id: h.file_id,
+      filename: h.filename,
+      score: h.score,
+    }));
+
+    const context = hits
+      .slice(0, 6)
+      .map((h, idx) => {
+        const chunks = (h.content || [])
+          .map((c) => String(c?.text || "").trim())
+          .filter(Boolean)
+          .slice(0, 2)
+          .join("\n\n");
+        const snippet = chunks.length > 1800 ? `${chunks.slice(0, 1800)}…` : chunks;
+        return `[${idx + 1}] ${h.filename} (score ${Number(h.score).toFixed(3)})\n${snippet}`;
+      })
+      .filter(Boolean)
+      .join("\n\n---\n\n");
+
     const response = await client.responses.create({
       model,
       instructions:
-        "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, et base-toi en priorité sur les documents de la base de connaissance (outil file_search). Si l’info est absente, dis-le clairement et propose une démarche. Termine par une courte liste de points clés.",
-      tools: [
-        {
-          type: "file_search",
-          vector_store_ids: [vectorStoreId],
-          max_num_results: 6,
-          ranking_options: { score_threshold: 0.15 },
-        },
+        "Tu es l’assistant IA de “The Entrepreneur Whisperer”. Réponds en français, de façon actionnable, en te basant d’abord sur les extraits fournis (issus de la base de connaissance). Si l’info n’est pas dans les extraits, dis-le clairement et propose une démarche. Termine par une courte liste de points clés.",
+      input: [
+        { role: "developer", content: `Extraits (base de connaissance)\n\n${context || "(aucun extrait pertinent trouvé)"}` },
+        ...input,
+        { role: "user", content: message },
       ],
-      tool_choice: "auto",
-      input,
-      max_output_tokens: 500,
+      max_output_tokens: 450,
     });
 
     const answer = response.output_text || "";
-    const sources = extractFileIdsFromResponse(response).slice(0, 8).map((file_id) => ({ file_id }));
     console.log("assistant.ok", { ms: Date.now() - startedAt, sources: sources.length });
 
     return res.status(200).json({ answer, sources });
