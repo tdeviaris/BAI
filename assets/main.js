@@ -90,6 +90,10 @@ function setupAssistantPage() {
   const input = $("#chatInput");
   if (!stream || !form || !input) return;
 
+  const STORAGE_KEY = "bai.assistant.conversation.v1";
+  const IDLE_RESET_MS = 45 * 60 * 1000;
+  const MAX_STORED_MESSAGES = 40;
+
   const exampleQuestions = [
     "À quels investissements donner la priorité en période de crise ?",
     "Comment structurer la rémunération des commerciaux ?",
@@ -101,6 +105,54 @@ function setupAssistantPage() {
 
   const conversation = [];
 
+  const loadConversation = () => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      const updatedAt = Number(parsed?.updatedAt || 0);
+      if (!updatedAt || Date.now() - updatedAt > IDLE_RESET_MS) {
+        localStorage.removeItem(STORAGE_KEY);
+        return [];
+      }
+      const items = Array.isArray(parsed?.items) ? parsed.items : [];
+      return items
+        .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
+        .slice(-MAX_STORED_MESSAGES);
+    } catch {
+      return [];
+    }
+  };
+
+  const saveConversation = () => {
+    try {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          updatedAt: Date.now(),
+          items: conversation.slice(-MAX_STORED_MESSAGES),
+        })
+      );
+    } catch {
+      // ignore (storage disabled/quota)
+    }
+  };
+
+  const resetConversation = () => {
+    conversation.splice(0, conversation.length);
+    stream.innerHTML = "";
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // ignore
+    }
+    pushBubble({
+      who: "bot",
+      title: "Bienvenue",
+      text: "Pose une question. (Réponses basées sur la base de connaissance.)",
+    });
+  };
+
   const pushBubble = ({ who, title, text }) => {
     const el = document.createElement("div");
     el.className = `bubble ${who}`;
@@ -111,11 +163,38 @@ function setupAssistantPage() {
     return el;
   };
 
-  pushBubble({
-    who: "bot",
-    title: "Bienvenue",
-    text: "Pose une question. (Réponses basées sur la base de connaissance.)",
-  });
+  const restored = loadConversation();
+  if (restored.length > 0) {
+    conversation.push(...restored);
+    for (const item of restored) {
+      pushBubble({
+        who: item.role === "assistant" ? "bot" : "me",
+        title: item.role === "assistant" ? "Assistant" : "Vous",
+        text: item.content,
+      });
+    }
+  } else {
+    pushBubble({
+      who: "bot",
+      title: "Bienvenue",
+      text: "Pose une question. (Réponses basées sur la base de connaissance.)",
+    });
+  }
+
+  // Auto reset after 45 minutes without usage (best-effort).
+  const idleCheck = () => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      const updatedAt = Number(parsed?.updatedAt || 0);
+      if (updatedAt && Date.now() - updatedAt > IDLE_RESET_MS) resetConversation();
+    } catch {
+      // ignore
+    }
+  };
+  const idleTimer = window.setInterval(idleCheck, 60 * 1000);
+  window.addEventListener("beforeunload", () => window.clearInterval(idleTimer), { once: true });
 
   const showExamples = () => {
     pushBubble({
@@ -131,12 +210,14 @@ function setupAssistantPage() {
   form.addEventListener("submit", (event) => {
     (async () => {
       event.preventDefault();
+      idleCheck();
       const q = String(input.value || "").trim();
       if (!q) return;
       input.value = "";
 
       const historyForServer = conversation.slice();
       conversation.push({ role: "user", content: q });
+      saveConversation();
       pushBubble({ who: "me", title: "Vous", text: q });
 
       if (q.toLowerCase() === "exemples") {
@@ -242,6 +323,7 @@ function setupAssistantPage() {
 
           flushIfDone();
           conversation.push({ role: "assistant", content: answer });
+          saveConversation();
         } else {
           const data = await resp.json().catch(() => ({}));
           if (!resp.ok) throw new Error(data?.error || `Erreur API (${resp.status})`);
@@ -259,6 +341,7 @@ function setupAssistantPage() {
 
           placeholder.querySelector(".bubbleText").textContent = `${answer}${sourcesText}${debugText}`;
           conversation.push({ role: "assistant", content: answer });
+          saveConversation();
         }
       } catch (err) {
         placeholder.querySelector(".bubbleText").textContent = `Désolé, je n’arrive pas à répondre.\n${err?.message || ""}`.trim();
