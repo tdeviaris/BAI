@@ -8,3 +8,5 @@ __pycache__/
 assistant/
 knowledgebase/
 knowledgebase_clean/
+
+node_modules/

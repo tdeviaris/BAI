@@ -90,36 +90,16 @@ function setupAssistantPage() {
   const input = $("#chatInput");
   if (!stream || !form || !input) return;
 
-  const knowledgeBase = [
-    {
-      title: "Roadmap produit : prioriser",
-      tags: ["produit", "priorisation", "roadmap"],
-      answer:
-        "Priorise avec une règle simple : (1) douleur client prouvée, (2) impact sur un metric clé, (3) effort faible. Évite les ‘features vitrine’. Fais un top 3, pas un top 30. Découpe en tickets livrables en <2 semaines.",
-      examples: ["Comment prioriser ma roadmap produit ?", "Quelle méthode simple pour prioriser ?"],
-    },
-    {
-      title: "Pricing : point de départ",
-      tags: ["pricing", "vente"],
-      answer:
-        "Commence par la valeur : qui paie, pour quel résultat. Fixe 3 offres (starter / core / premium) et ancre le prix avec la premium. Itère vite : 10 conversations, 10 objections, 10 ajustements.",
-      examples: ["Comment fixer un prix au début ?", "Comment tester mon pricing ?"],
-    },
-    {
-      title: "Prospection : cadence",
-      tags: ["vente", "prospection"],
-      answer:
-        "Cadence courte : une liste de 50 comptes, 10 touches sur 14 jours, un message orienté problème, et un CTA minimal (15 min). Mesure : réponses, rendez-vous, conversion. Améliore le copy avant de scaler le volume.",
-      examples: ["Comment structurer une prospection B2B ?", "Quelle cadence de relance ?"],
-    },
-    {
-      title: "Focus : limiter le scope",
-      tags: ["execution", "focus"],
-      answer:
-        "Réduis à une seule priorité par semaine. Tout le reste doit avoir une date ou être supprimé. Décide en coût d’opportunité : dire oui = dire non à quelque chose de plus important.",
-      examples: ["Comment garder le focus au quotidien ?", "Comment éviter la dispersion ?"],
-    },
+  const exampleQuestions = [
+    "À quels investissements donner la priorité en période de crise ?",
+    "Comment structurer la rémunération des commerciaux ?",
+    "Comment optimiser une tarification B2B ?",
+    "Qu’est-ce que l’effectuation et comment l’appliquer ?",
+    "Comment appliquer la théorie des contraintes (TOC) au quotidien ?",
+    "Quels leviers pour améliorer mon organisation (Lean / Deming) ?",
   ];
+
+  const conversation = [];
 
   const pushBubble = ({ who, title, text }) => {
     const el = document.createElement("div");
@@ -128,61 +108,81 @@ function setupAssistantPage() {
     el.innerHTML = `${titleHtml}<p class="bubbleText">${escapeHtml(text)}</p>`;
     stream.appendChild(el);
     stream.scrollTop = stream.scrollHeight;
+    return el;
   };
 
   pushBubble({
     who: "bot",
     title: "Bienvenue",
-    text: "Pose une question. (MVP démo : base de connaissance locale.)",
+    text: "Pose une question. (Réponses basées sur la base de connaissance.)",
   });
 
   const showExamples = () => {
     pushBubble({
       who: "bot",
       title: "Exemples",
-      text: knowledgeBase
-        .flatMap((k) => k.examples)
-        .slice(0, 6)
+      text: exampleQuestions
+        .slice(0, 8)
         .map((q) => `• ${q}`)
         .join("\n"),
     });
   };
 
   form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const q = String(input.value || "").trim();
-    if (!q) return;
-    input.value = "";
+    (async () => {
+      event.preventDefault();
+      const q = String(input.value || "").trim();
+      if (!q) return;
+      input.value = "";
 
-    pushBubble({ who: "me", title: "Vous", text: q });
+      const historyForServer = conversation.slice();
+      conversation.push({ role: "user", content: q });
+      pushBubble({ who: "me", title: "Vous", text: q });
 
-    if (q.toLowerCase() === "exemples") {
-      showExamples();
-      return;
-    }
+      if (q.toLowerCase() === "exemples") {
+        showExamples();
+        return;
+      }
 
-    const ranked = knowledgeBase
-      .map((k) => ({
-        k,
-        score: Math.max(similarityScore(q, k.title), similarityScore(q, k.tags.join(" ")), similarityScore(q, k.answer)),
-      }))
-      .sort((a, b) => b.score - a.score);
+      const submitBtn = form.querySelector("button[type='submit']");
+      if (submitBtn) submitBtn.disabled = true;
+      input.disabled = true;
 
-    const best = ranked[0];
-    if (!best || best.score < 10) {
-      pushBubble({
-        who: "bot",
-        title: "Je n’ai pas (encore) ça dans la base",
-        text: "Essaie avec d’autres mots-clés (ex: produit, pricing, prospection, focus) ou tape “exemples”.",
-      });
-      return;
-    }
+      const placeholder = pushBubble({ who: "bot", title: "Assistant", text: "Je réfléchis…" });
 
-    pushBubble({
-      who: "bot",
-      title: best.k.title,
-      text: best.k.answer,
-    });
+      try {
+        const resp = await fetch("../api/assistant", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: q, history: historyForServer }),
+        });
+
+        const data = await resp.json().catch(() => ({}));
+        if (!resp.ok) {
+          throw new Error(data?.error || `Erreur API (${resp.status})`);
+        }
+
+        const answer = String(data?.answer || "").trim() || "Je n’ai pas de réponse pour le moment.";
+        const sources = Array.isArray(data?.sources) ? data.sources : [];
+        const sourcesText =
+          sources.length > 0
+            ? `\n\nSources :\n${sources
+                .slice(0, 6)
+                .map((s) => `• ${String(s?.filename || s?.file_id || "").trim()}`)
+                .filter(Boolean)
+                .join("\n")}`
+            : "";
+
+        placeholder.querySelector(".bubbleText").textContent = `${answer}${sourcesText}`;
+        conversation.push({ role: "assistant", content: answer });
+      } catch (err) {
+        placeholder.querySelector(".bubbleText").textContent = `Désolé, je n’arrive pas à répondre.\n${err?.message || ""}`.trim();
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        input.disabled = false;
+        input.focus();
+      }
+    })();
   });
 }
 
