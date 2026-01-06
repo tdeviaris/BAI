@@ -10,3 +10,4 @@ knowledgebase/
 knowledgebase_clean/
 
 node_modules/
+.env.local
