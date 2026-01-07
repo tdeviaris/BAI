@@ -147,7 +147,7 @@ export default async function handler(req, res) {
         "Contraintes de forme :\n" +
         "- Réponds en français.\n" +
         "- Formate en texte aéré avec retours à la ligne : titres courts + listes à puces.\n" +
-        "- Réponse concise (évite les explications longues).\n" +
+        "- Réponse concise (évite les explications longues), sauf pour le paragraphe de différenciation.\n" +
         "- Ne commence pas par un label type “Court:” / “Réponse:” / “Conclusion:”.\n" +
         "- Évite les mots “extraits” / “les extraits”. Parle de “base de connaissance”.\n" +
         "- Ne termine pas par une relance, une proposition d’aide ou une question (“Si vous voulez…”, “Dites‑moi…”, etc.).\n\n" +
@@ -155,7 +155,7 @@ export default async function handler(req, res) {
         "- Utilise d’abord la base de connaissance.\n" +
         "- Puis complète avec des bonnes pratiques générales (sans opposer/contraster), en restant cohérent.\n" +
         "- Quand tu ajoutes un complément non présent dans la base de connaissance, indique-le simplement comme “Bonnes pratiques”.\n" +
-        "- Termine par 3 points clés.";
+        "- Ajoute systématiquement un paragraphe dédié, détaillé (plusieurs phrases), qui explique comment la recommandation issue de la base de connaissance se différencie des croyances habituelles sur le sujet, et en quoi cela justifie l’usage de cet assistant plutôt qu’un LLM classique.";
 
       // Prefer a single Responses call with built-in file_search for speed.
       if (ragMode === "tool") {
