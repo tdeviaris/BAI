@@ -113,7 +113,7 @@ export default async function handler(req, res) {
   const searchResults = Number.isFinite(searchResultsRaw) ? Math.min(10, Math.max(1, searchResultsRaw)) : 9;
   const scoreThresholdRaw = Number(process.env.ASSISTANT_SEARCH_SCORE_THRESHOLD || "0.1");
   const scoreThreshold = Number.isFinite(scoreThresholdRaw) ? Math.min(1, Math.max(0, scoreThresholdRaw)) : 0.1;
-  const rankerRaw = String(process.env.ASSISTANT_SEARCH_RANKER || "default-2024-11-15").toLowerCase();
+  const rankerRaw = String(process.env.ASSISTANT_SEARCH_RANKER || "auto").toLowerCase();
   const ranker = rankerRaw === "auto" || rankerRaw === "default-2024-11-15" ? rankerRaw : "default-2024-11-15";
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
