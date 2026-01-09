@@ -11,3 +11,5 @@ knowledgebase_clean/
 
 node_modules/
 .env.local
+.vercel
+.env*.local
