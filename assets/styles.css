@@ -1212,9 +1212,44 @@ input:focus-visible {
 .bubbleText {
   margin: 0;
   color: rgba(255, 255, 255, 0.88);
-  white-space: pre-wrap;
   word-break: break-word;
   line-height: 1.65;
+}
+
+.bubbleText.isPlain {
+  white-space: pre-wrap;
+}
+
+.bubbleText.markdown {
+  white-space: normal;
+}
+
+.bubbleText.markdown h3 {
+  margin: 0.5rem 0 0.35rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+.bubbleText.markdown p {
+  margin: 0 0 0.7rem;
+}
+
+.bubbleText.markdown ul {
+  margin: 0.2rem 0 0.8rem;
+  padding-left: 1.1rem;
+}
+
+.bubbleText.markdown li {
+  margin: 0.35rem 0;
+}
+
+.bubbleText.markdown strong {
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 800;
+}
+
+.bubbleText.markdown > :last-child {
+  margin-bottom: 0;
 }
 
 .chatForm {

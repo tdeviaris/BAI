@@ -68,6 +68,35 @@ function escapeHtml(text) {
   return text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
 
+function renderMarkdown(text) {
+  const raw = String(text || "");
+  const fallback = escapeHtml(raw).replace(/\n/g, "<br>");
+  if (typeof window === "undefined") return fallback;
+  const marked = window.marked;
+  const purify = window.DOMPurify;
+  if (!marked || !purify) return fallback;
+  try {
+    const html = marked.parse(raw, { breaks: true, gfm: true });
+    return purify.sanitize(html, { USE_PROFILES: { html: true } });
+  } catch {
+    return fallback;
+  }
+}
+
+function setBubblePlain(el, text) {
+  if (!el) return;
+  el.classList.remove("markdown");
+  el.classList.add("isPlain");
+  el.textContent = String(text || "");
+}
+
+function setBubbleMarkdown(el, text) {
+  if (!el) return;
+  el.classList.remove("isPlain");
+  el.classList.add("markdown");
+  el.innerHTML = renderMarkdown(text);
+}
+
 function similarityScore(query, text) {
   const q = query.toLowerCase().trim();
   const t = text.toLowerCase();
@@ -747,14 +776,30 @@ function setupAssistantPage() {
       who: "bot",
       title: t("assistant.welcomeTitle"),
       text: t("assistant.welcomeText"),
+      format: "markdown",
     });
   };
 
-  const pushBubble = ({ who, title, text }) => {
+  const pushBubble = ({ who, title, text, format = "plain" }) => {
     const el = document.createElement("div");
     el.className = `bubble ${who}`;
-    const titleHtml = title ? `<p class="bubbleTitle">${escapeHtml(title)}</p>` : "";
-    el.innerHTML = `${titleHtml}<p class="bubbleText">${escapeHtml(text)}</p>`;
+
+    if (title) {
+      const titleEl = document.createElement("p");
+      titleEl.className = "bubbleTitle";
+      titleEl.textContent = title;
+      el.appendChild(titleEl);
+    }
+
+    const textEl = document.createElement("div");
+    textEl.className = "bubbleText";
+    if (format === "markdown") {
+      setBubbleMarkdown(textEl, text);
+    } else {
+      setBubblePlain(textEl, text);
+    }
+    el.appendChild(textEl);
+
     stream.appendChild(el);
     stream.scrollTop = stream.scrollHeight;
     return el;
@@ -764,10 +809,12 @@ function setupAssistantPage() {
   if (restored.length > 0) {
     conversation.push(...restored);
     for (const item of restored) {
+      const isBot = item.role === "assistant";
       pushBubble({
-        who: item.role === "assistant" ? "bot" : "me",
-        title: item.role === "assistant" ? t("assistant.assistantTitle") : t("assistant.userTitle"),
+        who: isBot ? "bot" : "me",
+        title: isBot ? t("assistant.assistantTitle") : t("assistant.userTitle"),
         text: item.content,
+        format: isBot ? "markdown" : "plain",
       });
     }
   } else {
@@ -775,6 +822,7 @@ function setupAssistantPage() {
       who: "bot",
       title: t("assistant.welcomeTitle"),
       text: t("assistant.welcomeText"),
+      format: "markdown",
     });
   }
 
@@ -801,6 +849,7 @@ function setupAssistantPage() {
         .slice(0, 8)
         .map((q) => `• ${q}`)
         .join("\n"),
+      format: "plain",
     });
   };
 
@@ -815,7 +864,7 @@ function setupAssistantPage() {
       const historyForServer = conversation.slice();
       conversation.push({ role: "user", content: q });
       saveConversation();
-      pushBubble({ who: "me", title: t("assistant.userTitle"), text: q });
+      pushBubble({ who: "me", title: t("assistant.userTitle"), text: q, format: "plain" });
 
       if (examplesTrigger.includes(q.toLowerCase())) {
         showExamples();
@@ -826,7 +875,12 @@ function setupAssistantPage() {
       if (submitBtn) submitBtn.disabled = true;
       input.disabled = true;
 
-      const placeholder = pushBubble({ who: "bot", title: t("assistant.assistantTitle"), text: t("assistant.thinking") });
+      const placeholder = pushBubble({
+        who: "bot",
+        title: t("assistant.assistantTitle"),
+        text: t("assistant.thinking"),
+        format: "plain",
+      });
 
       try {
         const resp = await fetch("../api/assistant", {
@@ -861,7 +915,8 @@ function setupAssistantPage() {
                     debug.error || ""
                   )}\n• incomplete: ${String(debug.incomplete_reason || "")}`
                 : "";
-            placeholder.querySelector(".bubbleText").textContent = `${answer || "Je n’ai pas de réponse pour le moment."}${sourcesText}${debugText}`;
+            const bubble = placeholder.querySelector(".bubbleText");
+            setBubbleMarkdown(bubble, `${answer || "Je n’ai pas de réponse pour le moment."}${sourcesText}${debugText}`);
           };
 
           for (;;) {
@@ -891,7 +946,7 @@ function setupAssistantPage() {
                   } catch {
                     answer += dataStr;
                   }
-                  placeholder.querySelector(".bubbleText").textContent = answer;
+                  setBubblePlain(placeholder.querySelector(".bubbleText"), answer);
                   continue;
                 }
                 if (currentEvent === "meta") {
@@ -936,12 +991,15 @@ function setupAssistantPage() {
                 )}\n• incomplete: ${String(debug.incomplete_reason || "")}`
               : "";
 
-          placeholder.querySelector(".bubbleText").textContent = `${answer}${sourcesText}${debugText}`;
+          setBubbleMarkdown(placeholder.querySelector(".bubbleText"), `${answer}${sourcesText}${debugText}`);
           conversation.push({ role: "assistant", content: answer });
           saveConversation();
         }
       } catch (err) {
-        placeholder.querySelector(".bubbleText").textContent = `${t("assistant.error")}\n${err?.message || ""}`.trim();
+        setBubblePlain(
+          placeholder.querySelector(".bubbleText"),
+          `${t("assistant.error")}\n${err?.message || ""}`.trim()
+        );
       } finally {
         if (submitBtn) submitBtn.disabled = false;
         input.disabled = false;
