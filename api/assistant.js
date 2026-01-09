@@ -56,7 +56,7 @@ function extractOutputTextFromResponse(response) {
 
 function buildFallbackAnswer(message, hits) {
   const snippets = (hits || [])
-    .slice(0, 2)
+    .slice(0, 3)
     .map((h) => {
       const text = (h?.content || [])
         .map((c) => String(c?.text || "").trim())
@@ -109,10 +109,10 @@ export default async function handler(req, res) {
   const maxOutputTokens = maxOutputTokensRaw ? Number(maxOutputTokensRaw) || defaultMaxOutputTokens : defaultMaxOutputTokens;
   const includeSources = String(process.env.ASSISTANT_INCLUDE_SOURCES || "").toLowerCase() === "true";
   const ragMode = String(process.env.ASSISTANT_RAG_MODE || "tool").toLowerCase(); // tool|manual
-  const searchResultsRaw = Number(process.env.ASSISTANT_SEARCH_RESULTS || "2");
-  const searchResults = Number.isFinite(searchResultsRaw) ? Math.min(10, Math.max(1, searchResultsRaw)) : 2;
-  const scoreThresholdRaw = Number(process.env.ASSISTANT_SEARCH_SCORE_THRESHOLD || "0.2");
-  const scoreThreshold = Number.isFinite(scoreThresholdRaw) ? Math.min(1, Math.max(0, scoreThresholdRaw)) : 0.2;
+  const searchResultsRaw = Number(process.env.ASSISTANT_SEARCH_RESULTS || "5");
+  const searchResults = Number.isFinite(searchResultsRaw) ? Math.min(10, Math.max(1, searchResultsRaw)) : 5;
+  const scoreThresholdRaw = Number(process.env.ASSISTANT_SEARCH_SCORE_THRESHOLD || "0.15");
+  const scoreThreshold = Number.isFinite(scoreThresholdRaw) ? Math.min(1, Math.max(0, scoreThresholdRaw)) : 0.15;
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
@@ -252,13 +252,14 @@ export default async function handler(req, res) {
         return res.status(200).json({ answer, sources: [], debug: undefined });
       }
 
+      const manualMaxResults = Math.min(12, Math.max(3, searchResults));
       const search = await client.vectorStores.search(
         vectorStoreId,
         {
           query: message,
-          max_num_results: 3,
+          max_num_results: manualMaxResults,
           rewrite_query: false,
-          ranking_options: { score_threshold: 0.15 },
+          ranking_options: { score_threshold: scoreThreshold },
         },
         { signal: overallAbort.signal, timeout: reqTimeout(6_000) }
       );
@@ -266,17 +267,18 @@ export default async function handler(req, res) {
       const hits = Array.isArray(search?.data) ? search.data : [];
       const sources = [];
       const seenFiles = new Set();
+      const maxSources = Math.min(4, Math.max(2, searchResults));
       for (const h of hits) {
         const fileId = h?.file_id;
         if (!fileId || seenFiles.has(fileId)) continue;
         seenFiles.add(fileId);
         sources.push({ file_id: fileId, filename: h?.filename, score: h?.score });
-        if (sources.length >= 2) break;
+        if (sources.length >= maxSources) break;
       }
 
       const context = hits
         .filter((h) => h?.file_id && sources.some((s) => s.file_id === h.file_id))
-        .slice(0, 2)
+        .slice(0, maxSources)
         .map((h, idx) => {
           const chunks = (h.content || [])
             .map((c) => String(c?.text || "").trim())
