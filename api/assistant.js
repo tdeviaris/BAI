@@ -109,10 +109,12 @@ export default async function handler(req, res) {
   const maxOutputTokens = maxOutputTokensRaw ? Number(maxOutputTokensRaw) || defaultMaxOutputTokens : defaultMaxOutputTokens;
   const includeSources = String(process.env.ASSISTANT_INCLUDE_SOURCES || "").toLowerCase() === "true";
   const ragMode = String(process.env.ASSISTANT_RAG_MODE || "tool").toLowerCase(); // tool|manual
-  const searchResultsRaw = Number(process.env.ASSISTANT_SEARCH_RESULTS || "5");
-  const searchResults = Number.isFinite(searchResultsRaw) ? Math.min(10, Math.max(1, searchResultsRaw)) : 5;
-  const scoreThresholdRaw = Number(process.env.ASSISTANT_SEARCH_SCORE_THRESHOLD || "0.15");
-  const scoreThreshold = Number.isFinite(scoreThresholdRaw) ? Math.min(1, Math.max(0, scoreThresholdRaw)) : 0.15;
+  const searchResultsRaw = Number(process.env.ASSISTANT_SEARCH_RESULTS || "9");
+  const searchResults = Number.isFinite(searchResultsRaw) ? Math.min(10, Math.max(1, searchResultsRaw)) : 9;
+  const scoreThresholdRaw = Number(process.env.ASSISTANT_SEARCH_SCORE_THRESHOLD || "0.1");
+  const scoreThreshold = Number.isFinite(scoreThresholdRaw) ? Math.min(1, Math.max(0, scoreThresholdRaw)) : 0.1;
+  const rankerRaw = String(process.env.ASSISTANT_SEARCH_RANKER || "default-2024-11-15").toLowerCase();
+  const ranker = rankerRaw === "auto" || rankerRaw === "default-2024-11-15" ? rankerRaw : "default-2024-11-15";
 
   if (!apiKey) return res.status(500).json({ error: "Missing OPENAI_API_KEY" });
   if (!vectorStoreId) return res.status(500).json({ error: "Missing OPENAI_VECTOR_STORE_ID" });
@@ -167,7 +169,7 @@ export default async function handler(req, res) {
               type: "file_search",
               vector_store_ids: [vectorStoreId],
               max_num_results: searchResults,
-              ranking_options: { score_threshold: scoreThreshold },
+              ranking_options: { score_threshold: scoreThreshold, ranker },
             },
           ],
           tool_choice: "auto",
@@ -259,7 +261,7 @@ export default async function handler(req, res) {
           query: message,
           max_num_results: manualMaxResults,
           rewrite_query: false,
-          ranking_options: { score_threshold: scoreThreshold },
+          ranking_options: { score_threshold: scoreThreshold, ranker },
         },
         { signal: overallAbort.signal, timeout: reqTimeout(6_000) }
       );
