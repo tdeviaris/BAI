@@ -1078,6 +1078,27 @@
       ]
     },
     {
+      "titre": "Start with Why",
+      "auteur": "Simon Sinek",
+      "image": "../img/books/start-with-why.jpg",
+      "resume_court": "Commencer par le pourquoi pour aligner équipe, clients et décisions.",
+      "tags": [
+        "stratégie",
+        "marketing",
+        "influence"
+      ],
+      "resume_long": "Sinek explique que les organisations inspirantes communiquent de l’intérieur vers l’extérieur : pourquoi, comment, quoi. Clarifier le why crée de la cohérence et rend les choix plus simples : offre, positionnement, recrutement, storytelling. Pour un entrepreneur, c’est un cadre utile pour différencier sa proposition de valeur et mobiliser durablement.",
+      "url_amazon": "https://www.amazon.fr/dp/1591846447",
+      "categorie": "management",
+      "bd": "start-with-why.html",
+      "url_wikipedia": "https://en.wikipedia.org/wiki/Start_with_Why",
+      "pourquoi_entrepreneur": [
+        "Clarifier la raison d’être pour trancher plus vite et éviter les décisions dispersées.",
+        "Aligner message, produit et culture : plus d’adhésion côté clients et équipe.",
+        "Différencier la marque autrement que par les fonctionnalités ou le prix."
+      ]
+    },
+    {
       "titre": "Citizen Game",
       "auteur": "Nicolas Gaume",
       "image": "../img/books/citizen-game.jpg",

@@ -1,0 +1,653 @@
+{
+  "livres": [
+    {
+      "bd": "antifragile.html",
+      "titre": "Antifragile",
+      "resume_court": "How to benefit from chaos and uncertainty. Things that gain from disorder.",
+      "resume_long": "Nassim Nicholas Taleb offers a revolutionary lesson: not only to survive the catastrophes of our time - the Black Swans that hit a person, a culture, or a civilization - but to turn them into benefits. Just as the human body strengthens under stress and effort, and popular movements grow when repressed, living things in general develop better when exposed to disorder, volatility, or anything that disrupts them. This ability not only to profit from chaos but to need it to become better is antifragility, like the Lernaean Hydra whose heads multiplied when cut off.",
+      "pourquoi_entrepreneur": [
+        "Make better decisions when uncertainty dominates: protect the downside, avoid irreversible bets.",
+        "Think in probabilities (rather than stories) to prioritize, invest, and measure.",
+        "Build systems and habits that withstand shocks and benefit from volatility."
+      ]
+    },
+    {
+      "bd": "le-cygne-noir.html",
+      "titre": "The Black Swan",
+      "resume_court": "The power of the unpredictable. Understanding rare, high-impact events.",
+      "resume_long": "The Black Swan reveals the nature of Black Swans - highly improbable, random events that punctuate our lives: they have massive impact, are almost impossible to predict, and yet after the fact we always try to find a rational explanation. According to Taleb's Black Swan theory, a Black Swan is an unpredictable event with a low probability of occurring that, if it occurs, has consequences of exceptional magnitude. They are totally unexpected and their impact is huge, but our brains will find logical reasons to explain them after the fact.",
+      "pourquoi_entrepreneur": [
+        "Make better decisions when uncertainty dominates: protect the downside, avoid irreversible bets.",
+        "Think in probabilities (rather than stories) to prioritize, invest, and measure.",
+        "Build systems and habits that withstand shocks and benefit from volatility."
+      ]
+    },
+    {
+      "bd": "le-hasard-sauvage.html",
+      "titre": "Fooled by Randomness",
+      "resume_court": "How luck deceives us. The traps of randomness in our lives.",
+      "resume_long": "Fooled by Randomness explores how we are misled by chance in all aspects of life. Nassim Taleb examines how humans confuse luck and skill and why we systematically underestimate the role of randomness in our successes and failures. Through examples from finance, science, and everyday life, he shows how our inability to understand the random nature of events leads to poor decisions and wrong conclusions about the causes of success.",
+      "pourquoi_entrepreneur": [
+        "Make better decisions when uncertainty dominates: protect the downside, avoid irreversible bets.",
+        "Think in probabilities (rather than stories) to prioritize, invest, and measure.",
+        "Build systems and habits that withstand shocks and benefit from volatility."
+      ]
+    },
+    {
+      "bd": "jouer-sa-peau.html",
+      "titre": "Skin in the Game",
+      "resume_court": "Hidden asymmetries in everyday life. The importance of having skin in the game.",
+      "resume_long": "Skin in the Game explores the idea that those who make decisions must bear the consequences. Taleb shows that hidden asymmetries - where some have power without responsibility - are behind many dysfunctions in society. Having skin in the game means being exposed to the real risks of your decisions, a principle that applies to finance, politics, health, and personal relationships. The book is a deep exploration of justice, courage, and true expertise.",
+      "pourquoi_entrepreneur": [
+        "Make better decisions when uncertainty dominates: protect the downside, avoid irreversible bets.",
+        "Think in probabilities (rather than stories) to prioritize, invest, and measure.",
+        "Build systems and habits that withstand shocks and benefit from volatility."
+      ]
+    },
+    {
+      "bd": "sapiens.html",
+      "titre": "Sapiens",
+      "resume_court": "A brief history of humankind, from the cognitive revolution to today.",
+      "resume_long": "Sapiens offers an overview of human history and evolution from the late Pleistocene to the 21st century. The main argument is that Homo sapiens became the dominant species because it is the only animal capable of cooperating efficiently with large numbers of others. Yuval Noah Harari divides human evolution into four phases: cognitive revolution, agricultural revolution, unification of humankind, and industrial revolution. He also explains the emergence of concepts such as religion, nation, and human rights.",
+      "pourquoi_entrepreneur": [
+        "Zoom out on the human and technological dynamics reshaping markets.",
+        "Inform product and positioning choices by understanding social forces (narratives, beliefs, institutions).",
+        "Develop long-term strategic thinking beyond short-term execution."
+      ]
+    },
+    {
+      "bd": "homo-deus.html",
+      "titre": "Homo Deus",
+      "resume_court": "A brief history of tomorrow. What will humanity become in the age of algorithms?",
+      "resume_long": "Homo Deus looks at the capacities humans (Homo sapiens) have acquired and their evolution as the dominant species. The premise is that in the 21st century humanity will likely seek happiness, immortality, and godlike powers. Harari envisions a future where technology replaces humanist ideals and liberal government, arguing that the world of tomorrow may be run by advanced algorithms and AI rather than humans.",
+      "pourquoi_entrepreneur": [
+        "Zoom out on the human and technological dynamics reshaping markets.",
+        "Inform product and positioning choices by understanding social forces (narratives, beliefs, institutions).",
+        "Develop long-term strategic thinking beyond short-term execution."
+      ]
+    },
+    {
+      "bd": "21-lecons-pour-le-xxieme-siecle.html",
+      "titre": "21 Lessons for the 21st Century",
+      "resume_court": "Today's big challenges: technology, politics, spirituality.",
+      "resume_long": "After Sapiens explored our past and Homo Deus sketched an AI-driven future, 21 Lessons for the 21st Century tackles the major challenges of our time. Why is liberal democracy in crisis? Are we on the brink of a new world war? What about the epidemic of fake news? Which civilization dominates the world? How should we face terrorism? Should we prepare for nuclear war? Harari shares his reflections with clarity and depth.",
+      "pourquoi_entrepreneur": [
+        "Zoom out on the human and technological dynamics reshaping markets.",
+        "Inform product and positioning choices by understanding social forces (narratives, beliefs, institutions).",
+        "Develop long-term strategic thinking beyond short-term execution."
+      ]
+    },
+    {
+      "bd": "nexus.html",
+      "titre": "Nexus",
+      "resume_court": "A history of information networks and their impact on civilizations.",
+      "resume_long": "Nexus explores how information networks have shaped human history and continue to transform society. Harari examines the evolution of information systems, from writing to AI algorithms, and analyzes their impact on power, knowledge, and truth. The book shows how these networks enabled large-scale cooperation while creating new forms of control and manipulation. An essential reflection on our digital era.",
+      "pourquoi_entrepreneur": [
+        "Zoom out on the human and technological dynamics reshaping markets.",
+        "Inform product and positioning choices by understanding social forces (narratives, beliefs, institutions).",
+        "Develop long-term strategic thinking beyond short-term execution."
+      ]
+    },
+    {
+      "bd": "sociologie-generale-vol-1.html",
+      "titre": "General Sociology Vol. 1",
+      "resume_court": "Lectures at the College de France. Foundations of Bourdieu's sociology.",
+      "resume_long": "General Sociology presents Pierre Bourdieu's lectures at the College de France (1981-1983). These lectures are a masterful introduction to his sociological thought. He develops key concepts: habitus, capital, field, symbolic violence. Through concrete examples and case analyses, Bourdieu shows how social structures reproduce themselves and how dominant groups maintain their position. A key text for understanding contemporary sociology.",
+      "pourquoi_entrepreneur": [
+        "Better read power, reputation, and legitimacy games (markets, media, organizations).",
+        "Understand how symbolic value is built: useful for positioning and brand.",
+        "Avoid organizational mistakes by separating stated rules from real incentives."
+      ]
+    },
+    {
+      "bd": "language-and-symbolic-power.html",
+      "titre": "Language and Symbolic Power",
+      "resume_court": "Language as an instrument of power and symbolic domination.",
+      "resume_long": "Language and Symbolic Power explores how language functions as a tool of power and symbolic domination. Bourdieu shows that language is not just communication but a system of classification and social hierarchy. He analyzes how different forms of linguistic capital reproduce social inequalities and how linguistic legitimacy is built and maintained. A deep analysis of the subtle mechanisms of domination through words.",
+      "pourquoi_entrepreneur": [
+        "Better read power, reputation, and legitimacy games (markets, media, organizations).",
+        "Understand how symbolic value is built: useful for positioning and brand.",
+        "Avoid organizational mistakes by separating stated rules from real incentives."
+      ]
+    },
+    {
+      "bd": "le-vocabulaire-de-bourdieu.html",
+      "titre": "The Vocabulary of Bourdieu",
+      "resume_court": "Guide to key concepts: habitus, capital, field, symbolic violence.",
+      "resume_long": "The Vocabulary of Bourdieu offers a clear, systematic introduction to Pierre Bourdieu's core concepts. Each entry explains a key notion - habitus, capital (economic, cultural, social, symbolic), field, illusio, symbolic violence, etc. - tracing its origins, uses, and theoretical implications. An indispensable tool for anyone who wants to discover or deepen their understanding of Bourdieu's work.",
+      "pourquoi_entrepreneur": [
+        "Better read power, reputation, and legitimacy games (markets, media, organizations).",
+        "Understand how symbolic value is built: useful for positioning and brand.",
+        "Avoid organizational mistakes by separating stated rules from real incentives."
+      ]
+    },
+    {
+      "bd": "la-semiotique-du-langage.html",
+      "titre": "The Semiotics of Language",
+      "resume_court": "Introduction to structural semiotics and discourse analysis.",
+      "resume_long": "The Semiotics of Language provides a comprehensive introduction to the structural semiotics of the Paris School inspired by A.J. Greimas. Joseph Courtes presents tools and methods for discourse analysis, from deep narrative structures to surface manifestations. The book covers key concepts: semiotic square, narrative schema, modalities, narrative programs. A reference for understanding how meaning is built in texts.",
+      "pourquoi_entrepreneur": [
+        "Clarify the message: understand how signs, narratives, and codes create meaning.",
+        "Improve marketing/brand/UX by working on perception, not just features.",
+        "Create more coherent communications (promise, proof, tone, identity)."
+      ]
+    },
+    {
+      "bd": "semiotique-des-passions.html",
+      "titre": "Semiotics of Passions",
+      "resume_court": "From states of things to states of mind. The affective dimension of meaning.",
+      "resume_long": "Semiotics of Passions explores the affective and passionate dimension of meaning. Fontanille and Greimas develop a theory to analyze how passions - jealousy, anger, greed, love - manifest in discourse and structure narratives. The book offers a systematic approach to states of mind and shows how they connect with states of things. A major contribution to understanding the thymic dimension of meaning and human experience.",
+      "pourquoi_entrepreneur": [
+        "Clarify the message: understand how signs, narratives, and codes create meaning.",
+        "Improve marketing/brand/UX by working on perception, not just features.",
+        "Create more coherent communications (promise, proof, tone, identity)."
+      ]
+    },
+    {
+      "bd": "introduction-a-la-semiologie.html",
+      "titre": "Introduction to Semiology",
+      "resume_court": "The basics of the science of signs and communication.",
+      "resume_long": "Introduction to Semiology offers a clear and accessible presentation of the science of signs. Georges Mounin traces the history of semiology from Saussure to Peirce and presents key concepts: sign, signifier/signified, syntagm/paradigm, denotation/connotation. The book explores different sign systems - verbal language, images, gestures, social codes - and shows how semiology decodes the mechanisms of human communication.",
+      "pourquoi_entrepreneur": [
+        "Clarify the message: understand how signs, narratives, and codes create meaning.",
+        "Improve marketing/brand/UX by working on perception, not just features.",
+        "Create more coherent communications (promise, proof, tone, identity)."
+      ]
+    },
+    {
+      "bd": "la-force-de-l-intuition.html",
+      "titre": "The Power of Intuition",
+      "resume_court": "The power of thinking without thinking. The strength of instant decisions.",
+      "resume_long": "Blink (Intuition) explores the power of intuitive thinking and instant decisions. Malcolm Gladwell shows that our ability to make rapid judgments - what he calls thin-slicing - can be surprisingly accurate. Through fascinating examples from art, psychology, medicine, and sports, he reveals how our adaptive unconscious works. The book also examines the limits of intuition, notably unconscious biases. A captivating exploration of how we really make decisions.",
+      "pourquoi_entrepreneur": [
+        "Detect cognitive biases and blind spots: better judgment in product, hiring, sales, and strategy.",
+        "Understand influence and persuasion (with ethical guardrails) to negotiate and convince.",
+        "Design better decision processes and tests (less unverified intuition)."
+      ]
+    },
+    {
+      "bd": "systeme-1-systeme-2.html",
+      "titre": "Thinking, Fast and Slow",
+      "resume_court": "Fast thinking vs slow thinking: understand our biases and decide better.",
+      "resume_long": "Nobel laureate Daniel Kahneman describes two modes of thinking: System 1 (fast, intuitive, automatic) and System 2 (slow, analytical, effortful). The book shows how System 1 helps us daily but also traps us through cognitive biases (anchoring, overconfidence, availability, etc.). By understanding these mechanisms, we learn to spot risky situations and set guardrails for better decisions.",
+      "pourquoi_entrepreneur": [
+        "Detect cognitive biases and blind spots: better judgment in product, hiring, sales, and strategy.",
+        "Understand influence and persuasion (with ethical guardrails) to negotiate and convince.",
+        "Design better decision processes and tests (less unverified intuition)."
+      ]
+    },
+    {
+      "bd": "petit-traite-de-manipulation.html",
+      "titre": "The Little Treatise on Manipulation",
+      "resume_court": "For honest people. 30+ scientifically proven influence techniques.",
+      "resume_long": "The Little Treatise on Manipulation for honest people presents around thirty manipulation techniques whose effectiveness is scientifically proven. Joule and Beauvois explain the psychological mechanisms behind techniques like foot-in-the-door, door-in-the-face, or low-balling. Through concrete and often amusing examples featuring Madame O., the authors show how these techniques work in everyday life. A reference work translated into fifteen languages with four million readers.",
+      "pourquoi_entrepreneur": [
+        "Detect cognitive biases and blind spots: better judgment in product, hiring, sales, and strategy.",
+        "Understand influence and persuasion (with ethical guardrails) to negotiate and convince.",
+        "Design better decision processes and tests (less unverified intuition)."
+      ]
+    },
+    {
+      "bd": "intuitions.html",
+      "titre": "Intuitions",
+      "resume_court": "Learn to listen to your inner voice for better decisions.",
+      "resume_long": "Intuitions offers a practical approach to developing and using intuition in decision-making. David O'Hare, a physician and expert in cardiac coherence, explores the scientific basis of intuition and provides concrete exercises to learn to listen to your inner voice. The book shows how intuition complements reason and how to cultivate this ability to make better decisions in all areas of life. An accessible, practical guide to reconnecting head and heart.",
+      "pourquoi_entrepreneur": [
+        "Detect cognitive biases and blind spots: better judgment in product, hiring, sales, and strategy.",
+        "Understand influence and persuasion (with ethical guardrails) to negotiate and convince.",
+        "Design better decision processes and tests (less unverified intuition)."
+      ]
+    },
+    {
+      "bd": "l-epistemologie.html",
+      "titre": "Epistemology",
+      "resume_court": "Introduction to the theory of knowledge and philosophy of science.",
+      "resume_long": "Robert Blanche's Epistemology is a classic introduction to the philosophy of knowledge and science. The book explores fundamental questions: what is scientific knowledge? How does it differ from other forms of knowledge? What are the criteria of truth and validity? Blanche examines different epistemological positions - empiricism, rationalism, criticism - and analyzes scientific methods. A reference text for understanding the foundations and limits of knowledge.",
+      "pourquoi_entrepreneur": [
+        "Structure critical thinking: distinguish knowledge, belief, evidence, and hypothesis.",
+        "Decide faster with heuristics (simplicity, falsification, removing the unnecessary).",
+        "Keep a methodological compass: learn better, experiment better, arbitrate better."
+      ]
+    },
+    {
+      "bd": "le-rasoir-d-occam.html",
+      "titre": "Occam's Razor",
+      "resume_court": "The principle of parsimony: prefer the simplest explanation.",
+      "resume_long": "Occam's Razor explores the famous principle of parsimony formulated by philosopher William of Ockham in the 14th century: 'Entia non sunt multiplicanda praeter necessitatem' (entities should not be multiplied without necessity). David Duncan examines how the principle has been applied throughout the history of philosophy and science, showing how it guides research toward the simplest, most elegant explanations. The book also analyzes the limits and critiques of this foundational principle of rational thought.",
+      "pourquoi_entrepreneur": [
+        "Structure critical thinking: distinguish knowledge, belief, evidence, and hypothesis.",
+        "Decide faster with heuristics (simplicity, falsification, removing the unnecessary).",
+        "Keep a methodological compass: learn better, experiment better, arbitrate better."
+      ]
+    },
+    {
+      "bd": "le-principe-de-subsidiarite.html",
+      "titre": "The Principle of Subsidiarity",
+      "resume_court": "Distribution of powers and autonomy of decision levels.",
+      "resume_long": "The Principle of Subsidiarity examines a key concept in political philosophy: decisions should be taken at the level closest to the citizens concerned. Chantal Millon-Delsol traces the history of this principle from its origins in Christian social thought to its application in modern European structures. She analyzes how subsidiarity reconciles unity and diversity, centralization and local autonomy. An essential reflection on how power is organized in democratic societies.",
+      "pourquoi_entrepreneur": [
+        "Structure critical thinking: distinguish knowledge, belief, evidence, and hypothesis.",
+        "Decide faster with heuristics (simplicity, falsification, removing the unnecessary).",
+        "Keep a methodological compass: learn better, experiment better, arbitrate better."
+      ]
+    },
+    {
+      "bd": "bienvenue-en-incertitude.html",
+      "titre": "Welcome to Uncertainty",
+      "resume_court": "Business strategy and effectuation in the face of the unpredictable.",
+      "resume_long": "Welcome to Uncertainty proposes a new approach to business strategy adapted to an unpredictable world. Philippe Silberzahn presents effectuation, a concept developed by Saras Sarasvathy, describing how expert entrepreneurs navigate uncertainty. Instead of predicting the future, effectuation consists of building it using available means and emerging opportunities. The book offers practical tools to develop this capacity to turn uncertainty into opportunity.",
+      "pourquoi_entrepreneur": [
+        "Make better decisions when uncertainty dominates: protect the downside, avoid irreversible bets.",
+        "Think in probabilities (rather than stories) to prioritize, invest, and measure.",
+        "Bonus: useful for clarifying strategy and trade-offs."
+      ]
+    },
+    {
+      "bd": "synchronicite-et-paracelsica.html",
+      "titre": "Synchronicity and Paracelsica",
+      "resume_court": "Meaningful coincidences and their role in our lives.",
+      "resume_long": "Synchronicity and Paracelsica explores the phenomenon of meaningful coincidences as defined by Carl Jung. Jung examines how these seemingly random but meaningful events influence our lives. The book offers a psychological and practical analysis of synchronicity, exploring how our attention and expectations can create connections between events. A guide to recognizing and using these moments when chance seems to carry meaning.",
+      "pourquoi_entrepreneur": [
+        "Make better decisions when uncertainty dominates: protect the downside, avoid irreversible bets.",
+        "Think in probabilities (rather than stories) to prioritize, invest, and measure.",
+        "Build systems and habits that withstand shocks and benefit from volatility."
+      ]
+    },
+    {
+      "bd": "la-voie-de-la-synchronicite.html",
+      "titre": "The Path of Synchronicity",
+      "resume_court": "Understand and use synchronicities to find your path.",
+      "resume_long": "The Path of Synchronicity offers a practical approach to understanding and using synchronicities in personal development. Allan Hunter explores how these meaningful coincidences can guide us toward our true life path. The book provides exercises to develop sensitivity to synchronicities and tools to interpret these signs. An invitation to be attentive to the messages the universe seems to send through unlikely encounters.",
+      "pourquoi_entrepreneur": [
+        "Make better decisions when uncertainty dominates: protect the downside, avoid irreversible bets.",
+        "Think in probabilities (rather than stories) to prioritize, invest, and measure.",
+        "Build systems and habits that withstand shocks and benefit from volatility."
+      ]
+    },
+    {
+      "bd": "serendipite.html",
+      "titre": "Serendipity",
+      "resume_court": "From tale to concept. The art of making discoveries by chance.",
+      "resume_long": "Serendipity traces the fascinating history of a concept born from a Persian tale that became central to understanding scientific innovation. Sylvie Catellin explores how many major discoveries - from penicillin to the Post-it - are the result of chance and sagacity. The book analyzes the conditions that foster serendipity: curiosity, openness, and the ability to recognize the unexpected. A deep reflection on the role of chance in creation and innovation.",
+      "pourquoi_entrepreneur": [
+        "Make better decisions when uncertainty dominates: protect the downside, avoid irreversible bets.",
+        "Think in probabilities (rather than stories) to prioritize, invest, and measure.",
+        "Build systems and habits that withstand shocks and benefit from volatility."
+      ]
+    },
+    {
+      "bd": "c-est-quoi-la-serendipite.html",
+      "titre": "What is Serendipity?",
+      "resume_court": "History and applications of a fascinating concept.",
+      "resume_long": "What is Serendipity? offers a multidisciplinary exploration of this intriguing concept. Daniele Bourcier and Pek van Andel trace its origin in the tale of the three Princes of Serendip and examine its applications across fields: science, art, everyday life. The book presents many examples of serendipitous discoveries and analyzes the mental processes that turn accidents into innovation. An accessible, stimulating book on finding what you were not looking for.",
+      "pourquoi_entrepreneur": [
+        "Make better decisions when uncertainty dominates: protect the downside, avoid irreversible bets.",
+        "Think in probabilities (rather than stories) to prioritize, invest, and measure.",
+        "Build systems and habits that withstand shocks and benefit from volatility."
+      ]
+    },
+    {
+      "bd": "la-vache-pourpre.html",
+      "titre": "The Purple Cow",
+      "resume_court": "Make your brand and products remarkable in a saturated world.",
+      "resume_long": "The Purple Cow argues that in a world saturated with products and messages, only what is truly remarkable stands out. Seth Godin uses the metaphor of a purple cow: if you saw a purple cow in a field, you would notice it immediately. Likewise, products and services that succeed today are those that stand out radically. The book proposes a marketing approach centered on remarkable innovation rather than mass advertising.",
+      "pourquoi_entrepreneur": [
+        "Detect cognitive biases and blind spots: better judgment in product, hiring, sales, and strategy.",
+        "Understand influence and persuasion (with ethical guardrails) to negotiate and convince.",
+        "Bonus: useful for improving acquisition and positioning."
+      ]
+    },
+    {
+      "bd": "la-marque.html",
+      "titre": "The Brand",
+      "resume_court": "Understanding the deep mechanisms of brand building.",
+      "resume_long": "The Brand offers an in-depth analysis of the mechanisms that allow a brand to create meaning and value. Benoit Heilbrunn, a marketing professor, explores the semiotic and symbolic dimensions of brands. He shows how brands work as systems of meaning, creating universes of sense and communities of belonging. The book examines identity-building strategies and the role of brands in contemporary societies. A reference to understand branding beyond its commercial function.",
+      "pourquoi_entrepreneur": [
+        "Detect cognitive biases and blind spots: better judgment in product, hiring, sales, and strategy.",
+        "Understand influence and persuasion (with ethical guardrails) to negotiate and convince.",
+        "Bonus: useful for improving acquisition and positioning."
+      ]
+    },
+    {
+      "bd": "lebut.html",
+      "titre": "The Goal",
+      "resume_court": "A process of ongoing improvement. Theory of Constraints applied to production.",
+      "resume_long": "The Goal is a management novel that challenges what we have learned about management and puts the search for ongoing improvement and balance at the center of its plot. It encourages managers to ask the right questions, notably 'What is the goal of your company?'. Through the story of Alex Rogo, a plant manager who must save his site from closure in three months, Goldratt introduces his famous Theory of Constraints (TOC). This edition includes an unpublished text where the author explains that all companies are different and that you must rely on underlying rules to meet the challenge of ongoing improvement. Translated into 27 languages, it appears on the Times list of the 25 most influential management books.",
+      "pourquoi_entrepreneur": [
+        "Strengthen execution: identify constraints, bottlenecks, and levers that run the system.",
+        "Accelerate without chaos: plan, deliver, and improve continuously with simple rules.",
+        "Align team and objectives through metrics, clear priorities, and reversible decisions."
+      ]
+    },
+    {
+      "bd": "reussir-n-est-pas-une-question-de-chance.html",
+      "titre": "Success Is Not a Matter of Luck",
+      "resume_court": "Success is not a matter of luck. Sequel to The Goal applied to marketing and strategy.",
+      "resume_long": "Sequel to the famous novel The Goal, It's Not Luck follows Alex Rogo seven years after saving his plant. Now vice president of Unico's Diversification division, he faces an even more complex challenge. Shareholders demand the company refocus on its core business: if he increases profitability, the businesses will be sold; if he fails, they will be shut down. Either way, his job and his team's are on the line. Goldratt encourages readers to rethink their thinking, in business and in daily life. The book is oriented toward marketing, business strategy, and well-being in relationships, showing the contributions of the Theory of Constraints to professional and personal activities.",
+      "pourquoi_entrepreneur": [
+        "Strengthen execution: identify constraints, bottlenecks, and levers that run the system.",
+        "Accelerate without chaos: plan, deliver, and improve continuously with simple rules.",
+        "Bonus: useful for improving acquisition and positioning."
+      ]
+    },
+    {
+      "bd": "la-chaine-critique.html",
+      "titre": "Critical Chain",
+      "resume_court": "Theory of Constraints applied to project management. Cut lead times drastically.",
+      "resume_long": "Critical Chain is a management novel as gripping as The Goal and It's Not Luck. In an industrial environment where progress is a matter of survival, three young managers in a tech company must reduce time-to-market for new machines, with the company's fortune at stake if they succeed. A brilliant professor must attract new managers to his university to finally earn tenure. These characters meet in a prestigious Executive MBA where they develop a winning method for project management based on field experience. The book presents a new method of project and production management based on the Theory of Constraints (TOC), revolutionizing how schedules and resources are managed.",
+      "pourquoi_entrepreneur": [
+        "Strengthen execution: identify constraints, bottlenecks, and levers that run the system.",
+        "Accelerate without chaos: plan, deliver, and improve continuously with simple rules.",
+        "Bonus: useful for reducing lead times and stabilizing execution."
+      ]
+    },
+    {
+      "bd": "hors-piste-entreprendre-sans-idees-recues.html",
+      "titre": "Off-Piste! Starting a Business Without Preconceptions",
+      "resume_court": "An antidote to entrepreneurship myths: clarity, field reality, and concrete decisions.",
+      "resume_long": "Off-Piste! dismantles a series of cliches about entrepreneurship and offers a more realistic reading of the field: what really matters when you launch, run, and grow a project. The book emphasizes clarity of choices, understanding constraints, and the ability to arbitrate without being guided by cliches (startup, fundraising, 'passion', etc.). A useful book to return to the concrete and make better execution decisions.",
+      "pourquoi_entrepreneur": [
+        "Strengthen execution: identify constraints, bottlenecks, and levers that run the system.",
+        "Accelerate without chaos: plan, deliver, and improve continuously with simple rules.",
+        "Bonus: useful for clarifying strategy and trade-offs."
+      ]
+    },
+    {
+      "bd": "la-soumission-librement-consentie.html",
+      "titre": "Voluntary Submission",
+      "resume_court": "Why we obey and consent: the mechanisms of influence and manipulation in daily life.",
+      "resume_long": "Voluntary Submission explores the mechanisms that lead us to say yes, obey, and commit without obvious constraint. Jean-Leon Beauvois describes how influence devices (commitment, rationalizations, social context) produce consent and reinforce adherence, even when it goes against our interests. A useful book to recognize these situations, protect yourself, and design more ethical interactions (sales, management, politics, daily life).",
+      "pourquoi_entrepreneur": [
+        "Detect cognitive biases and blind spots: better judgment in product, hiring, sales, and strategy.",
+        "Understand influence and persuasion (with ethical guardrails) to negotiate and convince.",
+        "Design better decision processes and tests (less unverified intuition)."
+      ]
+    },
+    {
+      "bd": "effectuation-les-principes-de-l-entrepreneuriat-pour-tous.html",
+      "titre": "Effectuation: The Principles of Entrepreneurship for Everyone",
+      "resume_court": "Effectuation principles: start without predicting, build with available means.",
+      "resume_long": "This book presents effectuation, a way of thinking observed among experienced entrepreneurs: start from what you have (who I am, what I know, who I know), move forward through progressive commitments, and accept co-creating the opportunity with stakeholders. Instead of trying to predict an uncertain market, the approach reduces risk by limiting acceptable loss, iterating, and leveraging contingencies. A useful read to structure a project in uncertainty, especially at the start.",
+      "pourquoi_entrepreneur": [
+        "Learn to move forward without predicting: start from available means and secure progressive commitments.",
+        "Decide better in uncertainty: reduce irreversibility, test and learn fast.",
+        "Provide concrete benchmarks to execute faster and decide more clearly."
+      ]
+    },
+    {
+      "bd": "effectual-entrepreneurship.html",
+      "titre": "Effectual Entrepreneurship",
+      "resume_court": "The foundational effectuation theory applied to entrepreneurial action.",
+      "resume_long": "Saras Sarasvathy formalizes effectuation: a logic of entrepreneurial action that favors control over prediction. The book explains the principles (affordable loss, crazy quilt, leveraging surprises, pilot-in-the-plane) and how they translate into concrete decisions. A solid base to design experiments, secure commitments, and move forward without a fixed plan.",
+      "pourquoi_entrepreneur": [
+        "Learn to move forward without predicting: start from available means and secure progressive commitments.",
+        "Decide better in uncertainty: reduce irreversibility, test and learn fast.",
+        "Provide concrete benchmarks to execute faster and decide more clearly."
+      ]
+    },
+    {
+      "bd": "hors-de-la-crise.html",
+      "titre": "Out of the Crisis",
+      "resume_court": "Quality, system, and management: a roadmap to transform the organization sustainably.",
+      "resume_long": "Deming lays out the systemic causes of quality and performance problems and proposes a transformation approach based on continuous improvement, measurement, and management by the system (rather than punishment). For entrepreneurs, it is a powerful reminder: you optimize a system, not isolated individuals, and quality is a strategy, not a department. Ideal for structuring execution as the team grows.",
+      "pourquoi_entrepreneur": [
+        "Build a testing culture: measure, experiment, then standardize what works.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide on facts: measure, test, learn, then standardize what works."
+      ]
+    },
+    {
+      "bd": "du-nouveau-en-economie.html",
+      "titre": "The New Economics",
+      "resume_court": "The System of Profound Knowledge: understanding variation, systems, knowledge, and psychology.",
+      "resume_long": "In this book, Deming synthesizes his thinking into a framework: understanding systems, variation, the theory of knowledge, and psychology. This framework helps diagnose, decide, and improve without falling into simplistic explanations. For entrepreneurs, it is an antidote to anecdote-based decisions: learn to measure, distinguish noise from signal, and build improvement loops.",
+      "pourquoi_entrepreneur": [
+        "Build a testing culture: measure, experiment, then standardize what works.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide on facts: measure, test, learn, then standardize what works."
+      ]
+    },
+    {
+      "bd": "un-an-pour-sauver-l-entreprise.html",
+      "titre": "One Year to Save the Company",
+      "resume_court": "Applying the Theory of Constraints to information systems and complex organizations.",
+      "resume_long": "Goldratt applies the spirit of the Theory of Constraints to environments where bottlenecks are not only physical: priorities, information flow, dependencies, internal policies. The book stresses that local optimization can degrade overall performance. For entrepreneurs, it's very useful once there are multiple teams and rising complexity: clarify the constraint, protect it, and align the whole system around it.",
+      "pourquoi_entrepreneur": [
+        "Identify the constraint (bottleneck) and align the organization around it to accelerate without chaos.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Turn ideas into results: install simple routines, metrics, and an improvement cadence."
+      ]
+    },
+    {
+      "bd": "isn-t-it-obvious.html",
+      "titre": "Isn't It Obvious?",
+      "resume_court": "Theory of Constraints applied to distribution and supply chain.",
+      "resume_long": "This management novel applies the Theory of Constraints to distribution: inventory, availability, stockouts, and flow. It shows how simple rules centered on the constraint and variability can improve service and cash. For entrepreneurs, it's especially relevant if your business has flow (e-commerce, retail, ops) where inventory and availability make or break the customer experience.",
+      "pourquoi_entrepreneur": [
+        "Identify the constraint (bottleneck) and align the organization around it to accelerate without chaos.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Turn ideas into results: install simple routines, metrics, and an improvement cadence."
+      ]
+    },
+    {
+      "bd": "the-choice-revised-edition.html",
+      "titre": "The Choice (Revised Edition)",
+      "resume_court": "A more personal book: principles of thinking and decision told as a dialogue.",
+      "resume_long": "Goldratt lays out a series of principles for clear thinking: distinguish symptoms from causes, clarify goals, and avoid artificial compromises. It is less operational than TOC but very useful for entrepreneurs who must decide quickly in ambiguity. The narrative format makes the ideas easy to remember and transmit to a team.",
+      "pourquoi_entrepreneur": [
+        "Build a testing culture: measure, experiment, then standardize what works.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide on facts: measure, test, learn, then standardize what works."
+      ]
+    },
+    {
+      "bd": "the-gold-mine-a-novel-of-lean-turnaround.html",
+      "titre": "The Gold Mine: A Novel of Lean Turnaround",
+      "resume_court": "A novel to understand Lean: learn to see waste and improve flow.",
+      "resume_long": "This book tells a Lean transformation through a story, emphasizing on-the-ground learning, problem solving, and continuous improvement. You discover how to make work visible, reduce waste, and stabilize flow. For entrepreneurs, it's a practical guide to building a culture of execution and improvement without overprocessing.",
+      "pourquoi_entrepreneur": [
+        "Build a testing culture: measure, experiment, then standardize what works.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide on facts: measure, test, learn, then standardize what works."
+      ]
+    },
+    {
+      "bd": "the-lean-manager-a-novel-of-lean-transformation.html",
+      "titre": "The Lean Manager: A Novel of Lean Transformation",
+      "resume_court": "Leading the Lean way: coaching, problem solving, and improvement routines.",
+      "resume_long": "Following The Gold Mine, this novel focuses on the manager's role: developing people, structuring learning, and installing routines that improve the system. For entrepreneurs, it's useful as the team grows: move from doing to enabling others without losing execution quality.",
+      "pourquoi_entrepreneur": [
+        "Build a testing culture: measure, experiment, then standardize what works.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide on facts: measure, test, learn, then standardize what works."
+      ]
+    },
+    {
+      "bd": "lean-thinking-banish-waste-and-create-wealth-in-your-corporation.html",
+      "titre": "Lean Thinking: Banish Waste and Create Wealth in Your Corporation",
+      "resume_court": "Lean principles applied to performance: flow, value, and waste elimination.",
+      "resume_long": "A Lean classic: define value from the customer's perspective, map the flow, make it flow, pull from demand, and pursue perfection. For entrepreneurs, it's a simple framework to improve quality and speed without burning the team: optimize flow and remove waste rather than adding pressure.",
+      "pourquoi_entrepreneur": [
+        "Build a testing culture: measure, experiment, then standardize what works.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide on facts: measure, test, learn, then standardize what works."
+      ]
+    },
+    {
+      "bd": "your-brain-at-work.html",
+      "titre": "Your Brain at Work",
+      "resume_court": "Attention, mental load, and performance: how to work better with your brain.",
+      "resume_long": "David Rock explains how cognitive load, attention, and fatigue impact performance. The book gives practical guidance to structure work better, prioritize, and reduce overload. For entrepreneurs, it's especially useful to protect focus and limit decisions degraded by stress.",
+      "pourquoi_entrepreneur": [
+        "Improve focus, decisions, and relationships: a direct advantage for execution.",
+        "Improve decision quality: reduce blind spots and avoid misleading reasoning.",
+        "Turn ideas into results: install simple routines, metrics, and an improvement cadence."
+      ]
+    },
+    {
+      "bd": "quiet-leadership.html",
+      "titre": "Quiet Leadership",
+      "resume_court": "A leadership approach based on coaching and mental clarity rather than pressure.",
+      "resume_long": "The book proposes a management style that helps people think more clearly: ask the right questions, create the conditions for insight, and reduce emotional friction. For entrepreneurs, it's a lever to improve difficult conversations (priorities, performance, feedback) and make the team more autonomous.",
+      "pourquoi_entrepreneur": [
+        "Convince better (and protect yourself): understand persuasion levers and their biases.",
+        "Improve focus, decisions, and relationships: a direct advantage for execution.",
+        "Turn ideas into results: install simple routines, metrics, and an improvement cadence."
+      ]
+    },
+    {
+      "bd": "influence-science-and-practice.html",
+      "titre": "Influence: Science and Practice",
+      "resume_court": "Persuasion mechanisms (reciprocity, scarcity, social proof...) and how to protect yourself.",
+      "resume_long": "Cialdini describes robust principles of persuasion and the biases that make them effective. For entrepreneurs, it's useful on two levels: build more convincing messages and offers, and spot manipulation (sales, negotiation, partnerships). Use with a clear ethical framework.",
+      "pourquoi_entrepreneur": [
+        "Clarify value proposition and messaging: sell more clearly without overpromising.",
+        "Convince better (and protect yourself): understand persuasion levers and their biases.",
+        "Improve focus, decisions, and relationships: a direct advantage for execution."
+      ]
+    },
+    {
+      "bd": "eloge-de-l-incertitude.html",
+      "titre": "In Praise of Uncertainty: Become Rich, Beautiful, and Smart with PowerPoint, Excel and Word",
+      "resume_court": "A provocative look at uncertainty and our illusions of control in modern work.",
+      "resume_long": "Haladjian reflects on uncertainty and the 'modern' tools that give a false sense of control. For entrepreneurs, it's a good counterweight: accept the unknown, decide with imperfect information, and avoid confusing slide production with value creation.",
+      "pourquoi_entrepreneur": [
+        "Decide better in uncertainty: reduce irreversibility, test and learn fast.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide better in uncertainty: limit acceptable loss and favor reversible choices."
+      ]
+    },
+    {
+      "bd": "drive-the-surprising-truth-about-what-motivates-us.html",
+      "titre": "Drive: The Surprising Truth About What Motivates Us",
+      "resume_court": "Intrinsic motivation: autonomy, mastery, purpose (rather than carrot/stick).",
+      "resume_long": "Pink synthesizes research on motivation: incentive systems can degrade performance on creative tasks. Instead, autonomy, mastery, and purpose create durable engagement. For entrepreneurs, it's valuable for designing culture, goals, and incentives without killing initiative.",
+      "pourquoi_entrepreneur": [
+        "Improve focus, decisions, and relationships: a direct advantage for execution.",
+        "Turn ideas into results: install simple routines, metrics, and an improvement cadence.",
+        "Manage stress, attention, and relationships better: a direct advantage for performance."
+      ]
+    },
+    {
+      "bd": "to-sell-is-human-the-surprising-truth-about-moving-others.html",
+      "titre": "To Sell Is Human: The Surprising Truth About Moving Others",
+      "resume_court": "Selling every day: convince, negotiate, and move others (without scripts).",
+      "resume_long": "Pink shows that selling isn't reserved for salespeople: everyone sells ideas, priorities, and choices. The book offers practical principles (empathy, clarity, cadence, questions) to persuade better. For entrepreneurs, it's a useful foundation for go-to-market and leadership.",
+      "pourquoi_entrepreneur": [
+        "Clarify value proposition and messaging: sell more clearly without overpromising.",
+        "Convince better (and protect yourself): understand persuasion levers and their biases.",
+        "Provide concrete benchmarks to execute faster and decide more clearly."
+      ]
+    },
+    {
+      "bd": "punished-by-rewards.html",
+      "titre": "Punished by Rewards",
+      "resume_court": "Why rewards and incentives can harm motivation and learning.",
+      "resume_long": "Kohn criticizes the reward/punishment logic in education and work: it favors the short term and reduces intrinsic interest. For entrepreneurs, it's useful before setting bonuses, commissions, or poorly designed OKRs: it teaches how to avoid perverse effects on culture and quality.",
+      "pourquoi_entrepreneur": [
+        "Improve focus, decisions, and relationships: a direct advantage for execution.",
+        "Turn ideas into results: install simple routines, metrics, and an improvement cadence.",
+        "Manage stress, attention, and relationships better: a direct advantage for performance."
+      ]
+    },
+    {
+      "bd": "freakonomics.html",
+      "titre": "Freakonomics",
+      "resume_court": "Applying empirical economics tools to surprising everyday questions.",
+      "resume_long": "Freakonomics popularizes a way of thinking: ask hypotheses, seek data, test causality rather than tell stories. For entrepreneurs, it's a valuable reminder: measure before concluding, avoid misleading correlations, and reason in incentives.",
+      "pourquoi_entrepreneur": [
+        "Build a testing culture: measure, experiment, then standardize what works.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide on facts: measure, test, learn, then standardize what works."
+      ]
+    },
+    {
+      "bd": "superfreakonomics.html",
+      "titre": "SuperFreakonomics",
+      "resume_court": "Experimentation-oriented sequel: biases, incentives, and counterintuitive solutions.",
+      "resume_long": "In the same spirit, the book focuses on incentive mechanisms and the unintended effects of policies and decisions. For entrepreneurs, it's useful to challenge intuition, design tests, and anticipate side effects.",
+      "pourquoi_entrepreneur": [
+        "Build a testing culture: measure, experiment, then standardize what works.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide on facts: measure, test, learn, then standardize what works."
+      ]
+    },
+    {
+      "bd": "the-halo-effect.html",
+      "titre": "The Halo Effect",
+      "resume_court": "Why we attribute success to 'best practices' often after the fact (and wrongly).",
+      "resume_long": "Rosenzweig dismantles classic errors in success analysis (halo effect, selection bias, retrospective narrative). For entrepreneurs, it's a vaccine against miracle recipes: learn to distinguish luck, context, and causality, and build strategy without blindly copying winners.",
+      "pourquoi_entrepreneur": [
+        "Build a testing culture: measure, experiment, then standardize what works.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide on facts: measure, test, learn, then standardize what works."
+      ]
+    },
+    {
+      "bd": "hard-facts-dangerous-half-truths-and-total-nonsense.html",
+      "titre": "Hard Facts, Dangerous Half-Truths, and Total Nonsense",
+      "resume_court": "Evidence-based management: decide and execute on facts, not fads.",
+      "resume_long": "The authors advocate evidence-based management: seek proof, test what works, and avoid unverified management fashions. For entrepreneurs, it's a working method: instrument, observe, experiment, then standardize what works.",
+      "pourquoi_entrepreneur": [
+        "Build a testing culture: measure, experiment, then standardize what works.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Decide on facts: measure, test, learn, then standardize what works."
+      ]
+    },
+    {
+      "bd": "strategie-ocean-bleu.html",
+      "titre": "Blue Ocean Strategy",
+      "resume_court": "Create new market spaces rather than fight on the existing one.",
+      "resume_long": "The blue ocean concept aims to escape saturated markets (red oceans) by redefining the value proposition. For entrepreneurs, it helps clarify differentiation, arbitrate eliminate/reduce/raise/create, and design an offer that escapes direct comparison.",
+      "pourquoi_entrepreneur": [
+        "Clarify value proposition and messaging: sell more clearly without overpromising.",
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Keep a clear course: arbitrate better, differentiate, and choose what not to do."
+      ]
+    },
+    {
+      "bd": "start-with-why.html",
+      "titre": "Start with Why",
+      "resume_court": "Start with why to align team, customers, and decisions.",
+      "resume_long": "Sinek explains that inspiring organizations communicate from the inside out: why, how, what. Clarifying the why creates coherence and makes choices easier: offer, positioning, hiring, storytelling. For entrepreneurs, it's a useful framework to differentiate value proposition and mobilize sustainably.",
+      "pourquoi_entrepreneur": [
+        "Clarify the reason for being to decide faster and avoid scattered decisions.",
+        "Align message, product, and culture for stronger buy-in from customers and team.",
+        "Differentiate the brand beyond features or price."
+      ]
+    },
+    {
+      "bd": "citizen-game.html",
+      "titre": "Citizen Game",
+      "resume_court": "Reflections on play, systems, and engagement in the digital society.",
+      "resume_long": "Citizen Game explores how game mechanics and interactive systems influence engagement, learning, and participation. For entrepreneurs, it's a source of ideas to design more engaging products while paying attention to incentives and side effects.",
+      "pourquoi_entrepreneur": [
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Adopt a simple framework to decide, act, and iterate without self-deception.",
+        "Reduce costly errors by making assumptions, risks, and success criteria explicit."
+      ]
+    },
+    {
+      "bd": "the-knack.html",
+      "titre": "The Knack",
+      "resume_court": "Field lessons: sales, cash, hiring, and pragmatic entrepreneur decisions.",
+      "resume_long": "Brodsky shares real situations (pricing, cash, growth, org) and how to handle them pragmatically. For entrepreneurs, it's a street-smart book: little theory, lots of concrete decisions and execution benchmarks.",
+      "pourquoi_entrepreneur": [
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Improve decision quality: reduce blind spots and avoid misleading reasoning.",
+        "Turn ideas into results: install simple routines, metrics, and an improvement cadence."
+      ]
+    },
+    {
+      "bd": "la-strategie-du-proprietaire.html",
+      "titre": "The Owner's Strategy",
+      "resume_court": "Resilience of family businesses: governance, long term, and owner trade-offs.",
+      "resume_long": "This book studies how family businesses survive crises through governance and long-term trade-offs. For entrepreneurs, it's a useful perspective on capital, control, transmission, and model robustness beyond growth at all costs.",
+      "pourquoi_entrepreneur": [
+        "Provide concrete benchmarks to execute faster and decide more clearly.",
+        "Turn ideas into results: install simple routines, metrics, and an improvement cadence.",
+        "Keep a clear course: arbitrate better, differentiate, and choose what not to do."
+      ]
+    }
+  ]
+}

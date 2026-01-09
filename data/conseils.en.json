@@ -1,0 +1,81 @@
+{
+  "conseils": [
+    {
+      "id": "acheter-entreprise-prix",
+      "titre": "Buying a company? Don't obsess over the purchase price!",
+      "resume_court": "Acquisitions: don't fixate on the purchase price. The real issue isn't the price itself but the value of the target for you, and separating price from financing.",
+      "resume_long": "Buying a company is a good idea, but is the purchase price really the key issue? Every buyer fears overpaying because of information asymmetry. Modern finance mitigates that risk with a Net Asset Guarantee (GAN) and escrow on part of the payment. The real problem is elsewhere: you must separate price from financing.",
+      "descriptif_long": "The real issue is information asymmetry. For a deal to happen, seller and buyer must have different views of future value. The fear of being fooled is powerful, but worse is not buying at all. To avoid being constrained, separate price from financing. You can offer a high price and pay later through different sources: the company's cash flow, a bank loan, structured financing from investors, seller financing, or even using the target's assets (factoring, lease-back). If the deal is financeable, professionals have judged it viable."
+    },
+    {
+      "id": "augmentation-cadres",
+      "titre": "Executive pay raises",
+      "resume_court": "How do you respond when a key executive asks for a raise? The goal is to remain fair and predictable.",
+      "resume_long": "When a key executive asks for a raise for the second year in a row, it's delicate. The entrepreneur must act as a judge to keep social peace. It is crucial to follow a clear process: restate the spirit of the rule, lay out the facts, apply the rule, and communicate the decision. Also ask what the request really is: salary or recognition?",
+      "descriptif_long": "The challenge is to act according to your values and remain predictable. Bringing the executive into the equity is often a false good idea, creating conflicts of interest. Cheaper options exist, such as paying part of the salary in kind (housing), which can be tax-efficient. The best approach is to set a clear rule and personalize the reward. Instead of a bonus, a unique, personalized gift like meeting a person they admire can have a huge perceived value compared to its real cost. The final filter is the entrepreneur's values: giving in to blackmail always costs more than a raise."
+    },
+    {
+      "id": "crise-creativite-griffonnez",
+      "titre": "Creative block? Doodle!",
+      "resume_court": "Neuroscience shows that to generate instant creativity, you just need to... doodle.",
+      "resume_long": "Creativity is the ability to imagine and build something new, to think out of the box. For an entrepreneur, it's vital for differentiation. Neuroscience shows that the most effective activity for immediate creativity is doodling. Letting your hand take over and your mind wander frees rational thinking and the prefrontal cortex, allowing new ideas to surface. It's a real hack for getting unstuck.",
+      "descriptif_long": "Doodling puts you into a flow state that grants access to deeper, less filtered thinking. It also aligns with the idea of being wary of over-productivity and the urge to optimize every minute. It's essential to create white zones - pauses to rest and access another form of intelligence, more creative. A simple gesture like moving a pen can mobilize unexpected resources. The entrepreneur's challenge is to preserve this natural intelligence as artificial intelligence rises."
+    },
+    {
+      "id": "ouvrir-capital",
+      "titre": "Should you open up your equity?",
+      "resume_court": "For an entrepreneur, equity is the expression of freedom. Sharing it is a common mistake to avoid.",
+      "resume_long": "Sharing equity is a major decision. For an entrepreneur, equity represents freedom: the ability to decide, appoint the leader, and control the company's destiny. Sharing equity reduces that freedom. The reasons are often generosity, a sense of fairness, or the need to secure success by bringing in resources. But it's a fundamental mistake to think equity is the right tool to share value.",
+      "descriptif_long": "The heavy price is ending up with partners without affectio societatis, leading to forced decisions and conflicts. Alternatives are preferable. Share value when it is created, not upfront. Stay frugal in management. Offer non-monetary compensation. Don't bring in early-stage talent that won't fit your culture and pay them in shares. Manage time so you don't operate in urgency. Equity doesn't get shared; value does. There are better alternatives."
+    },
+    {
+      "id": "prospection-a-froid",
+      "titre": "The art of cold prospecting",
+      "resume_court": "Cold calling is an outbound method that lets you go after the customers you want instead of waiting.",
+      "resume_long": "Cold calling means calling prospects who don't know you. Contrary to the telemarketing stereotype, it can be very effective if prepared well. It lets you learn a new customer segment, reach warm prospects, gather immediate feedback, and quickly reach the decision-maker. The key is preparation: define your ideal customer profile (ICP), build a database, and establish a calling framework.",
+      "descriptif_long": "The call framework isn't a rigid script. It defines key elements: the goal, the icebreaker, common objections, and prioritization criteria. The real difficulty is psychological - the fear of bothering people and hearing 'no'. Treat 'no' as a metric to improve and keep a positive mindset. A few tips: smile, stand up, do it as a team, visualize your opening line, and use a 5-4-3-2-1 countdown to launch without overthinking. Rejection isn't permanent, general, or personal."
+    },
+    {
+      "id": "art-negocier",
+      "titre": "The art of negotiation",
+      "resume_court": "Negotiation isn't a fight but a collaborative process to reach a win-win agreement.",
+      "resume_long": "There are several approaches to negotiation. Compromise (splitting the difference) is often a bad solution. Principled negotiation (Harvard Project) aims for a deal that works for everyone. To do that, you move from face-to-face to side-by-side to solve a shared problem. The analysis is based on three types of interests: convergent (solid base), divergent (saved for last), and different (source of value creation). Preparation is essential, but you must also know how to start from a blank page.",
+      "descriptif_long": "The main psychological obstacle is the monster box: our tendency to dehumanize the other side. Avoid that bias and make them a partner. Listening is key, but it's not empathy (feeling) - it's attunement (understanding). Seek the other side's real constraints: Who decides? What is their problem and why is it still there? What's the timing? What's at stake? With that information, you can use imagination to explore scenarios and make an offer they can't refuse."
+    },
+    {
+      "id": "creativite-david-lynch",
+      "titre": "Creativity according to David Lynch",
+      "resume_court": "For entrepreneurs, creativity is a superpower. David Lynch proposes a method to reach it: meditation.",
+      "resume_long": "Creativity is essential for entrepreneurs: to innovate, solve problems, adapt, improve, and attract talent. David Lynch, in his book 'Catching the Big Fish', proposes an original method based on meditation. For him, ideas are like fish. To catch big fish (big ideas), you must dive deep within yourself. Meditation, or deep thinking, is the way to access the unconscious where the purest, most powerful ideas live.",
+      "descriptif_long": "Lynch's method relies on meditation as a source, and on understanding that creativity is a natural flow you can enter. You must accept the uncertainty of unknown territories. Ideas come from the depths of the unconscious, not from reasoning. Art requires discipline and listening to intuition. Lynch also recommends having a personal artistic practice. For entrepreneurs, blocking time to meditate and practice deep thinking can have a surprising impact on projects."
+    },
+    {
+      "id": "piege-abscons",
+      "titre": "The sunk cost trap - commitment theory",
+      "resume_court": "The sunk cost fallacy is the bias that makes us persist in a doomed project just because we've already invested.",
+      "resume_long": "The sunk cost trap is a form of self-manipulation. The freer, costlier, and more public a decision felt, the harder it is to abandon it. This bias comes from a conflict in our brain between the primitive tracker, attracted to novelty, and the learned sapiens, which understands that perseverance and investment are winning long-term strategies. The trap appears when sapiens wrongly applies perseverance to a situation where the tracker is right to quit.",
+      "descriptif_long": "This trap is common in entrepreneurship: a problematic partner who won't change, an underperforming employee, a product that won't take off. To avoid it, don't renounce persistence - add discipline. Be aware of the bias. Set clear limits in advance (budget, deadline). Put in place a formal review process when a limit is reached, asking what objective information justifies continuing. Accept that error is human; it's the downside of persistence. Admitting the mistake and reassessing objectively keeps you from getting stuck."
+    },
+    {
+      "id": "conflits-interets",
+      "titre": "Entrepreneurs swim in conflicts of interest",
+      "resume_court": "The entrepreneur constantly faces conflicts of interest with almost everyone they deal with.",
+      "resume_long": "The entrepreneur is constantly confronted with conflicts of interest, even with trusted people. The most painful are the ones you don't anticipate. You must examine three types of counterparts: partners, investors, and vendors. Conflicts between partners are major, often caused by a gap between each person's contribution and their equity stake. Prevention via vesting is essential.",
+      "descriptif_long": "Investors also have divergent interests: they diversify risk and seek short-term liquidity, pushing for maximum risk-taking and a quick sale of the company, which can oppose the entrepreneur's long-term vision. Vendors have their own business model that can conflict with yours (e.g., a fixed-fee accountant who must minimize their time). To avoid conflicts, build expertise on capital issues and get advice from people who have experience and aligned interests."
+    },
+    {
+      "id": "naviguer-chaos",
+      "titre": "Navigating entrepreneurial chaos",
+      "resume_court": "Chaos is everywhere and has always been. For entrepreneurs, it is above all a perception to manage.",
+      "resume_long": "The perception of chaos is amplified by information overload and disrupts our need for order. But history shows that chaos is permanent (wars, crises...). Past generations developed ways to survive it. The two big lessons are resilience and patience. In the face of a shock, there are four reactions: fragility (breaks), solidity (resists), resilience (rebuilds), and antifragility (grows). The entrepreneur must choose resilience to rebuild organization, strategy, and teams.",
+      "descriptif_long": "The second lesson is patience. Time helps us understand things better. Finally, the entrepreneur must play the role of a shaman: explain the invisible to teams, give meaning, and transmit resilience. It's not about being more worried, but about identifying trends on which to build strategy. For example, observing that global capital is flowing to the United States can be an opportunity to create a subsidiary there. That's how you turn chaos into opportunity. You must accept rethinking your plan, even if it creates emotions."
+    },
+    {
+      "id": "prendre-bras-droit",
+      "titre": "Get a right-hand!",
+      "resume_court": "The entrepreneur is often the bottleneck in the organization. Delegation is an essential art to move forward.",
+      "resume_long": "The entrepreneur is often the weakest point in the system, the bottleneck through which all decisions flow. If your teams wait for your green light, you prevent the organization from moving. The solution is to gain productivity by delegating. Outsource anything that can be done by someone with a lower hourly rate, or that drains your energy and that you don't like doing. Delegation is an art: it's trust and track, not fire-and-forget nor command-and-control.",
+      "descriptif_long": "When there are tasks with high cognitive load but medium value, a right-hand is a solution. The typical profile is a young person (25-27) from a top school, curious, who wants to accelerate their career by working daily alongside an entrepreneur. After three years, you can give them a business unit. This field experience is essential to train future leaders and create mutual understanding in the company. Your ability to delegate measures the production capacity of your company. A right-hand is a great way to stop being the bottleneck."
+    }
+  ]
+}

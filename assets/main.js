@@ -14,7 +14,7 @@ function setupMobileNav() {
   const setOpen = (open) => {
     document.body.classList.toggle("navOpen", open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    toggle.querySelector(".srOnly").textContent = open ? "Fermer le menu" : "Ouvrir le menu";
+    toggle.querySelector(".srOnly").textContent = open ? t("menu.close") : t("menu.open");
   };
 
   toggle.addEventListener("click", () => setOpen(!document.body.classList.contains("navOpen")));
@@ -82,6 +82,609 @@ function similarityScore(query, text) {
   return score;
 }
 
+const LANG_STORAGE_KEY = "bai.lang";
+const SUPPORTED_LANGS = ["fr", "en"];
+
+const TAG_TRANSLATIONS = {
+  "biais cognitifs": "cognitive biases",
+  "biais cognitif": "cognitive bias",
+  "décision": "decision-making",
+  "effectuation": "effectuation",
+  "exécution": "execution",
+  "gestion de projet": "project management",
+  "incertitude": "uncertainty",
+  "influence": "influence",
+  "innovation": "innovation",
+  "intuition": "intuition",
+  "langage": "language",
+  "marketing": "marketing",
+  "méthode": "method",
+  "psychologie": "psychology",
+  "société": "society",
+  "stratégie": "strategy",
+  "synchronicité": "synchronicity",
+  "sérendipité": "serendipity",
+  "technologie": "technology",
+  "théorie des contraintes": "theory of constraints",
+  "éthique": "ethics",
+  "acquisition": "acquisition",
+  "actionnariat": "equity ownership",
+  "capital": "equity",
+  "chaos": "chaos",
+  "conflit d'intérêt": "conflict of interest",
+  "créativité": "creativity",
+  "délégation": "delegation",
+  "essentiels": "essentials",
+  "financement": "financing",
+  "inspiration": "inspiration",
+  "management": "management",
+  "neurosciences": "neuroscience",
+  "négociation": "negotiation",
+  "productivité": "productivity",
+  "prospection": "prospecting",
+  "résilience": "resilience",
+  "vente": "sales",
+  "équipe": "team",
+};
+
+const CATEGORY_TRANSLATIONS = {
+  hasard: "uncertainty",
+  humanite: "humanity",
+  management: "management",
+  philosophie: "philosophy",
+  psychologie: "psychology",
+  semiotique: "semiotics",
+  sociologie: "sociology",
+};
+
+const I18N = {
+  fr: {
+    langLabel: "Langue",
+    skip: "Aller au contenu",
+    menu: {
+      open: "Ouvrir le menu",
+      close: "Fermer le menu",
+    },
+    nav: {
+      home: "Accueil",
+      assistant: "Assistant IA",
+      conseils: "Conseils",
+      bibliotheque: "Bibliothèque",
+      apropos: "À propos",
+    },
+    footer: {
+      legal: "Mentions légales",
+    },
+    common: {
+      close: "Fermer",
+    },
+    home: {
+      heroTitle: "Les meilleures pratiques<br />pour Entrepreneurs",
+      heroSubtitle: "Des réponses concrètes, des conseils structurés, et une bibliothèque utile.",
+      heroLead:
+        "The Entrepreneur Whisperer rassemble une base de connaissance pour entrepreneurs, un assistant IA pour retrouver la bonne réponse, et des conseils par thèmes (avec recherche) — le tout dans un format qui se consomme vite.",
+      mediaLabel: "Vidéo / Podcast",
+      mediaPlaceholder: "Ajouter un épisode (placeholder)",
+      mediaHint: "Astuce : vous pouvez remplacer ce bloc par un embed YouTube/Spotify.",
+      sectionTitle: "Une boîte à idées pour les Entrepreneurs",
+      sectionLead:
+        "Trouver une réponse, appliquer une bonne pratique, et passer à l’étape suivante. Chaque contenu est pensé pour être recherché, partagé, et retenu.",
+      cardAssistantTitle: "Assistant IA",
+      cardAssistantDesc: "Le coin interactif : réponses formulées à partir de la base de connaissance.",
+      cardConseilsTitle: "Conseils",
+      cardConseilsDesc: "Le coin podcast : conseils par thèmes, recherche, + podcast audio et mini-BD.",
+      cardBibliothequeTitle: "Bibliothèque",
+      cardBibliothequeDesc: "Le coin lecture : recueil de livres recommandés pour entrepreneurs.",
+    },
+    assistant: {
+      pill: "Le coin interactif",
+      title: "Assistant IA",
+      lead: "Réponses formulées à partir de la base de connaissance, via l’API Responses d’OpenAI.",
+      inputLabel: "Votre question",
+      inputPlaceholder: "Ex: Comment prioriser mon roadmap produit ?",
+      submit: "Envoyer",
+      welcomeTitle: "Bienvenue",
+      welcomeText: "Pose une question, et le Whisperer te répondra à partir de sa base de connaissance.",
+      assistantTitle: "Assistant",
+      userTitle: "Vous",
+      thinking: "Je réfléchis…",
+      examplesTitle: "Exemples",
+      examplesTrigger: ["exemples"],
+      examples: [
+        "À quels investissements donner la priorité en période de crise ?",
+        "Comment structurer la rémunération des commerciaux ?",
+        "Comment optimiser une tarification B2B ?",
+        "Qu’est-ce que l’effectuation et comment l’appliquer ?",
+        "Comment appliquer la théorie des contraintes (TOC) au quotidien ?",
+        "Quels leviers pour améliorer mon organisation (Lean / Deming) ?",
+      ],
+      error: "Désolé, je n’arrive pas à répondre.",
+      noAnswer: "Je n’ai pas de réponse pour le moment.",
+    },
+    conseils: {
+      pill: "Le coin podcast",
+      title: "Conseils",
+      lead: "Recherche par thèmes. Chaque entrée se lit, s’écoute (voix), et se retient (mini BD).",
+      searchLabel: "Rechercher",
+      searchPlaceholder: "Rechercher un conseil (ex: pricing, focus…)",
+      filtersLabel: "Filtres",
+      filterAll: "Tous",
+      filterProduct: "Produit",
+      filterSales: "Vente",
+      filterExecution: "Exécution",
+      filterTeam: "Équipe",
+      modalLabel: "Détail du conseil",
+      audioLabel: "Podcast audio",
+      audioTitle: "Podcast audio (voix)",
+      audioHint: "Lecture via synthèse vocale du navigateur.",
+      audioPlay: "Lire",
+      audioStop: "Stop",
+      comicLabel: "Bande dessinée",
+      comicTitle: "Mini BD",
+      count: {
+        one: "{count} conseil",
+        other: "{count} conseils",
+      },
+      unavailableTitle: "Conseils indisponibles",
+      unavailableBody: "Impossible de charger <code>data/conseils.json</code>.",
+      imageAlt: "Visuel pour {title}",
+      audioUnsupported: "Votre navigateur ne supporte pas l’élément audio.",
+    },
+    bibliotheque: {
+      pill: "Le coin lecture",
+      title: "Bibliothèque",
+      lead: "Un recueil de livres recommandés pour entrepreneurs, triables par intention.",
+      searchLabel: "Rechercher un livre",
+      searchPlaceholder: "Rechercher un livre (ex: pricing, produit…)",
+      filtersLabel: "Tags",
+      listLabel: "Liste des livres",
+      count: {
+        one: "{count} livre",
+        other: "{count} livres",
+      },
+      tagAll: "tous",
+      unavailableTitle: "Bibliothèque indisponible",
+      unavailableBody: "Impossible de charger <code>../data/bibliotheque.json</code>.",
+      unavailableHint: "Astuce : vérifiez que vous servez le dossier du projet (pas seulement <code>pages/</code>).",
+    },
+    bookDetail: {
+      summaryTitle: "Résumé",
+      whyTitle: "Pourquoi c'est utile pour un entrepreneur",
+      amazon: "Voir sur Amazon",
+      wikipedia: "Wikipedia",
+      sourceNote: "Source complémentaire : {source}.",
+      coverAlt: "Couverture du livre {title}",
+      back: "← Retour à la bibliothèque",
+      missingTitle: "Page introuvable",
+      missingBody: "Cette page ne sait pas quel livre afficher.",
+      missingHint: "Astuce : ajoutez <code>data-book</code> sur <code>&lt;body&gt;</code>.",
+      notFoundTitle: "Livre introuvable",
+      notFoundBody: "Impossible de charger ce livre depuis <code>../data/bibliotheque.json</code>.",
+      notFoundDetail: "Détail : {detail}",
+    },
+    apropos: {
+      pill: "Qui est derrière ?",
+      title: "À propos",
+      lead: "Présentation de l’auteur, de la démarche, et de Melcion.",
+      tdvRole: "Entrepreneur • produit • exécution",
+      tdvText:
+        "The Entrepreneur Whisperer est un espace de synthèse : extraire les meilleures pratiques, les structurer, et les rendre faciles à retrouver.",
+      melcionRole: "Co-pilote • structure • clarté",
+      melcionText: "Melcion aide à transformer l’expérience en contenu opérationnel : checklists, templates, et réponses nettes.",
+    },
+    mentions: {
+      pill: "Informations",
+      title: "Mentions légales",
+      lead: "À compléter avec vos informations (éditeur, hébergeur, contact, etc.).",
+      publisherTitle: "Éditeur du site",
+      publisherName: "Nom / société : …",
+      publisherAddress: "Adresse : …",
+      publisherEmail: "Email : …",
+      hostingTitle: "Hébergement",
+      hostingName: "Hébergeur : …",
+      hostingAddress: "Adresse : …",
+      ipTitle: "Propriété intellectuelle",
+      ipBody: "Contenus, marque, et éléments graphiques : …",
+      cookiesTitle: "Cookies & mesure d’audience",
+      cookiesBody: "Outils utilisés, finalités, durée : …",
+    },
+    meta: {
+      home: {
+        title: "The Entrepreneur Whisperer — Les meilleures pratiques pour Entrepreneurs",
+        description:
+          "The Entrepreneur Whisperer : Les meilleures pratiques pour Entrepreneurs. Assistant IA, conseils actionnables, bibliothèque de livres recommandés.",
+      },
+      assistant: {
+        title: "Assistant IA — The Entrepreneur Whisperer",
+        description: "Assistant IA : Le coin interactif, formulé à partir de la base de connaissance.",
+      },
+      conseils: {
+        title: "Conseils — The Entrepreneur Whisperer",
+        description:
+          "Le coin podcast : conseils par thèmes avec recherche. Chaque entrée a un format audio et une mini bande dessinée.",
+      },
+      bibliotheque: {
+        title: "Bibliothèque — The Entrepreneur Whisperer",
+        description: "Recueil de livres recommandés pour les entrepreneurs.",
+      },
+      apropos: {
+        title: "À propos — The Entrepreneur Whisperer",
+        description: "Présentation de l’auteur et de Melcion.",
+      },
+      mentions: {
+        title: "Mentions légales — The Entrepreneur Whisperer",
+        description: "Mentions légales du site The Entrepreneur Whisperer.",
+      },
+    },
+    playPlaceholder:
+      "Placeholder : remplacez ce bloc par un embed (YouTube/Spotify) ou un lecteur audio/vidéo.",
+  },
+  en: {
+    langLabel: "Language",
+    skip: "Skip to content",
+    menu: {
+      open: "Open menu",
+      close: "Close menu",
+    },
+    nav: {
+      home: "Home",
+      assistant: "AI Assistant",
+      conseils: "Advice",
+      bibliotheque: "Library",
+      apropos: "About",
+    },
+    footer: {
+      legal: "Legal notice",
+    },
+    common: {
+      close: "Close",
+    },
+    home: {
+      heroTitle: "Best practices<br />for entrepreneurs",
+      heroSubtitle: "Concrete answers, structured advice, and a useful library.",
+      heroLead:
+        "The Entrepreneur Whisperer brings together a knowledge base for entrepreneurs, an AI assistant to find the right answer, and theme-based advice (with search) — all in a fast, digestible format.",
+      mediaLabel: "Video / Podcast",
+      mediaPlaceholder: "Add an episode (placeholder)",
+      mediaHint: "Tip: you can replace this block with a YouTube/Spotify embed.",
+      sectionTitle: "An idea box for entrepreneurs",
+      sectionLead:
+        "Find an answer, apply a good practice, and move to the next step. Every piece of content is designed to be searchable, shareable, and memorable.",
+      cardAssistantTitle: "AI Assistant",
+      cardAssistantDesc: "Interactive corner: answers formulated from the knowledge base.",
+      cardConseilsTitle: "Advice",
+      cardConseilsDesc: "Podcast corner: theme-based advice, search, + audio and mini comic.",
+      cardBibliothequeTitle: "Library",
+      cardBibliothequeDesc: "Reading corner: a collection of recommended books for entrepreneurs.",
+    },
+    assistant: {
+      pill: "Interactive corner",
+      title: "AI Assistant",
+      lead: "Answers generated from the knowledge base, via OpenAI's Responses API.",
+      inputLabel: "Your question",
+      inputPlaceholder: "e.g., How should I prioritize my product roadmap?",
+      submit: "Send",
+      welcomeTitle: "Welcome",
+      welcomeText: "Ask a question and the Whisperer will answer from its knowledge base.",
+      assistantTitle: "Assistant",
+      userTitle: "You",
+      thinking: "Thinking…",
+      examplesTitle: "Examples",
+      examplesTrigger: ["examples"],
+      examples: [
+        "Which investments should I prioritize during a crisis?",
+        "How should I structure sales compensation?",
+        "How do I optimize B2B pricing?",
+        "What is effectuation and how do I apply it?",
+        "How do I apply the Theory of Constraints (TOC) day to day?",
+        "Which levers improve my organization (Lean / Deming)?",
+      ],
+      error: "Sorry, I can’t answer right now.",
+      noAnswer: "I don’t have an answer for the moment.",
+    },
+    conseils: {
+      pill: "Podcast corner",
+      title: "Advice",
+      lead: "Search by theme. Each entry can be read, listened to (voice), and remembered (mini comic).",
+      searchLabel: "Search",
+      searchPlaceholder: "Search a tip (e.g., pricing, focus…)",
+      filtersLabel: "Filters",
+      filterAll: "All",
+      filterProduct: "Product",
+      filterSales: "Sales",
+      filterExecution: "Execution",
+      filterTeam: "Team",
+      modalLabel: "Advice details",
+      audioLabel: "Audio podcast",
+      audioTitle: "Audio podcast (voice)",
+      audioHint: "Playback via your browser’s text-to-speech.",
+      audioPlay: "Play",
+      audioStop: "Stop",
+      comicLabel: "Comic strip",
+      comicTitle: "Mini comic",
+      count: {
+        one: "{count} tip",
+        other: "{count} tips",
+      },
+      unavailableTitle: "Advice unavailable",
+      unavailableBody: "Unable to load <code>data/conseils.json</code>.",
+      imageAlt: "Visual for {title}",
+      audioUnsupported: "Your browser does not support the audio element.",
+    },
+    bibliotheque: {
+      pill: "Reading corner",
+      title: "Library",
+      lead: "A collection of recommended books for entrepreneurs, filterable by intent.",
+      searchLabel: "Search a book",
+      searchPlaceholder: "Search a book (e.g., pricing, strategy…)",
+      filtersLabel: "Tags",
+      listLabel: "Book list",
+      count: {
+        one: "{count} book",
+        other: "{count} books",
+      },
+      tagAll: "all",
+      unavailableTitle: "Library unavailable",
+      unavailableBody: "Unable to load <code>../data/bibliotheque.json</code>.",
+      unavailableHint: "Tip: make sure you're serving the project folder (not just <code>pages/</code>).",
+    },
+    bookDetail: {
+      summaryTitle: "Summary",
+      whyTitle: "Why it’s useful for an entrepreneur",
+      amazon: "View on Amazon",
+      wikipedia: "Wikipedia",
+      sourceNote: "Additional source: {source}.",
+      coverAlt: "Book cover for {title}",
+      back: "← Back to library",
+      missingTitle: "Page not found",
+      missingBody: "This page doesn’t know which book to display.",
+      missingHint: "Tip: add <code>data-book</code> on <code>&lt;body&gt;</code>.",
+      notFoundTitle: "Book not found",
+      notFoundBody: "Unable to load this book from <code>../data/bibliotheque.json</code>.",
+      notFoundDetail: "Detail: {detail}",
+    },
+    apropos: {
+      pill: "Who’s behind it?",
+      title: "About",
+      lead: "Overview of the author, the approach, and Melcion.",
+      tdvRole: "Entrepreneur • product • execution",
+      tdvText:
+        "The Entrepreneur Whisperer is a synthesis space: extract best practices, structure them, and make them easy to retrieve.",
+      melcionRole: "Co-pilot • structure • clarity",
+      melcionText: "Melcion helps turn experience into operational content: checklists, templates, and clear answers.",
+    },
+    mentions: {
+      pill: "Information",
+      title: "Legal notice",
+      lead: "Fill in with your information (publisher, hosting, contact, etc.).",
+      publisherTitle: "Site publisher",
+      publisherName: "Name / company: …",
+      publisherAddress: "Address: …",
+      publisherEmail: "Email: …",
+      hostingTitle: "Hosting",
+      hostingName: "Host: …",
+      hostingAddress: "Address: …",
+      ipTitle: "Intellectual property",
+      ipBody: "Content, brand, and visual elements: …",
+      cookiesTitle: "Cookies & analytics",
+      cookiesBody: "Tools used, purposes, retention: …",
+    },
+    meta: {
+      home: {
+        title: "The Entrepreneur Whisperer — Best practices for entrepreneurs",
+        description:
+          "The Entrepreneur Whisperer: best practices for entrepreneurs. AI assistant, actionable advice, curated book library.",
+      },
+      assistant: {
+        title: "AI Assistant — The Entrepreneur Whisperer",
+        description: "AI Assistant: the interactive corner powered by the knowledge base.",
+      },
+      conseils: {
+        title: "Advice — The Entrepreneur Whisperer",
+        description:
+          "Podcast corner: theme-based advice with search. Each entry includes audio and a mini comic strip.",
+      },
+      bibliotheque: {
+        title: "Library — The Entrepreneur Whisperer",
+        description: "Collection of recommended books for entrepreneurs.",
+      },
+      apropos: {
+        title: "About — The Entrepreneur Whisperer",
+        description: "Overview of the author and Melcion.",
+      },
+      mentions: {
+        title: "Legal notice — The Entrepreneur Whisperer",
+        description: "Legal notice for The Entrepreneur Whisperer.",
+      },
+    },
+    playPlaceholder: "Placeholder: replace this block with a YouTube/Spotify embed or an audio/video player.",
+  },
+};
+
+let currentLang = "fr";
+
+const normalizeLang = (value) => {
+  const v = String(value || "").toLowerCase();
+  if (!SUPPORTED_LANGS.includes(v)) return "";
+  return v;
+};
+
+const resolveLang = () => {
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = normalizeLang(params.get("lang"));
+  if (urlLang) return urlLang;
+  const stored = normalizeLang(localStorage.getItem(LANG_STORAGE_KEY));
+  if (stored) return stored;
+  const browser = String(navigator.language || "").toLowerCase();
+  return browser.startsWith("en") ? "en" : "fr";
+};
+
+const getI18nValue = (lang, key) => {
+  if (!key) return "";
+  const root = I18N[lang] || I18N.fr;
+  return key.split(".").reduce((acc, part) => (acc && acc[part] !== undefined ? acc[part] : undefined), root);
+};
+
+const formatText = (value, vars) => {
+  if (typeof value !== "string") return value;
+  return value.replace(/\{(\w+)\}/g, (_, key) => String(vars?.[key] ?? ""));
+};
+
+const t = (key, vars, fallback = "") => {
+  const raw = getI18nValue(currentLang, key);
+  if (raw === undefined || raw === null || raw === "") return formatText(fallback, vars);
+  return formatText(raw, vars);
+};
+
+const translateTag = (tag, lang = currentLang) => {
+  if (lang !== "en") return String(tag || "");
+  const key = String(tag || "").trim().toLowerCase();
+  return TAG_TRANSLATIONS[key] || String(tag || "");
+};
+
+const translateCategory = (category, lang = currentLang) => {
+  if (lang !== "en") return String(category || "");
+  const key = String(category || "").trim().toLowerCase();
+  return CATEGORY_TRANSLATIONS[key] || String(category || "");
+};
+
+const normalizeFilterValue = (value) =>
+  String(value || "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+
+const appendLangParam = (href, lang = currentLang) => {
+  if (!href || typeof href !== "string") return href;
+  if (href.startsWith("#") || /^(https?:|mailto:|tel:)/i.test(href)) return href;
+  if (!href.includes(".html")) return href;
+  const [pathWithQuery, hash] = href.split("#");
+  const [path, queryString] = pathWithQuery.split("?");
+  const params = new URLSearchParams(queryString || "");
+  params.set("lang", lang);
+  const query = params.toString();
+  return `${path}${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
+};
+
+const updateInternalLinks = (lang = currentLang) => {
+  $$("a[href]").forEach((link) => {
+    const href = link.getAttribute("href");
+    const next = appendLangParam(href, lang);
+    if (next && next !== href) link.setAttribute("href", next);
+  });
+};
+
+const applyNavI18n = () => {
+  const skip = $(".skipLink");
+  if (skip) skip.textContent = t("skip");
+
+  $$(".navLink").forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    if (href.includes("index.html")) link.textContent = t("nav.home");
+    else if (href.includes("assistant-ia.html")) link.textContent = t("nav.assistant");
+    else if (href.includes("conseils.html")) link.textContent = t("nav.conseils");
+    else if (href.includes("bibliotheque.html")) link.textContent = t("nav.bibliotheque");
+    else if (href.includes("a-propos.html")) link.textContent = t("nav.apropos");
+  });
+
+  const toggleLabel = $(".navToggle .srOnly");
+  if (toggleLabel) toggleLabel.textContent = t("menu.open");
+
+  $$(".footerLegal").forEach((link) => {
+    link.textContent = t("footer.legal");
+  });
+};
+
+const applyI18n = () => {
+  $$("[data-i18n]").forEach((el) => {
+    const key = el.dataset.i18n;
+    const value = getI18nValue(currentLang, key);
+    if (!value) return;
+    if (el.dataset.i18nHtml === "true") {
+      el.innerHTML = value;
+    } else {
+      el.textContent = value;
+    }
+  });
+
+  $$("[data-i18n-attr]").forEach((el) => {
+    const attr = el.dataset.i18nAttr;
+    const key = el.dataset.i18nKey || el.dataset.i18n;
+    const value = getI18nValue(currentLang, key);
+    if (!attr || !value) return;
+    el.setAttribute(attr, value);
+  });
+};
+
+const applyMeta = () => {
+  const pageKey = document.body?.dataset?.page;
+  if (!pageKey) return;
+  const meta = I18N[currentLang]?.meta?.[pageKey];
+  if (meta?.title) document.title = meta.title;
+  const desc = $("meta[name='description']");
+  if (desc && meta?.description) desc.setAttribute("content", meta.description);
+};
+
+const formatCount = (count, key) => {
+  const template = t(`${key}.${count === 1 ? "one" : "other"}`, { count });
+  return template || String(count);
+};
+
+const initLanguage = () => {
+  const lang = resolveLang();
+  currentLang = lang || "fr";
+  document.documentElement.lang = currentLang;
+  try {
+    localStorage.setItem(LANG_STORAGE_KEY, currentLang);
+  } catch {
+    // ignore storage failures
+  }
+  return currentLang;
+};
+
+const setupLangToggle = () => {
+  const panel = $(".navPanel");
+  if (!panel || panel.querySelector(".langSwitcher")) return;
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "langSwitcher";
+  wrapper.setAttribute("role", "group");
+  wrapper.setAttribute("aria-label", t("langLabel"));
+
+  const makeButton = (lang, label) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "langOption";
+    btn.dataset.lang = lang;
+    btn.textContent = label;
+    btn.setAttribute("aria-pressed", lang === currentLang ? "true" : "false");
+    if (lang === currentLang) btn.classList.add("isActive");
+    return btn;
+  };
+
+  wrapper.appendChild(makeButton("fr", "FR"));
+  wrapper.appendChild(document.createTextNode("/"));
+  wrapper.appendChild(makeButton("en", "EN"));
+
+  wrapper.addEventListener("click", (event) => {
+    const btn = event.target instanceof HTMLElement ? event.target.closest("button[data-lang]") : null;
+    if (!btn) return;
+    const nextLang = normalizeLang(btn.dataset.lang);
+    if (!nextLang || nextLang === currentLang) return;
+    try {
+      localStorage.setItem(LANG_STORAGE_KEY, nextLang);
+    } catch {
+      // ignore
+    }
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", nextLang);
+    window.location.href = url.toString();
+  });
+
+  panel.appendChild(wrapper);
+};
+
 function setupAssistantPage() {
   if (document.body.dataset.page !== "assistant") return;
 
@@ -94,14 +697,8 @@ function setupAssistantPage() {
   const IDLE_RESET_MS = 45 * 60 * 1000;
   const MAX_STORED_MESSAGES = 40;
 
-  const exampleQuestions = [
-    "À quels investissements donner la priorité en période de crise ?",
-    "Comment structurer la rémunération des commerciaux ?",
-    "Comment optimiser une tarification B2B ?",
-    "Qu’est-ce que l’effectuation et comment l’appliquer ?",
-    "Comment appliquer la théorie des contraintes (TOC) au quotidien ?",
-    "Quels leviers pour améliorer mon organisation (Lean / Deming) ?",
-  ];
+  const exampleQuestions = getI18nValue(currentLang, "assistant.examples") || [];
+  const examplesTrigger = getI18nValue(currentLang, "assistant.examplesTrigger") || [];
 
   const conversation = [];
 
@@ -148,8 +745,8 @@ function setupAssistantPage() {
     }
     pushBubble({
       who: "bot",
-      title: "Bienvenue",
-      text: "Pose une question. (Réponses basées sur la base de connaissance.)",
+      title: t("assistant.welcomeTitle"),
+      text: t("assistant.welcomeText"),
     });
   };
 
@@ -169,15 +766,15 @@ function setupAssistantPage() {
     for (const item of restored) {
       pushBubble({
         who: item.role === "assistant" ? "bot" : "me",
-        title: item.role === "assistant" ? "Assistant" : "Vous",
+        title: item.role === "assistant" ? t("assistant.assistantTitle") : t("assistant.userTitle"),
         text: item.content,
       });
     }
   } else {
     pushBubble({
       who: "bot",
-      title: "Bienvenue",
-      text: "Pose une question. (Réponses basées sur la base de connaissance.)",
+      title: t("assistant.welcomeTitle"),
+      text: t("assistant.welcomeText"),
     });
   }
 
@@ -199,7 +796,7 @@ function setupAssistantPage() {
   const showExamples = () => {
     pushBubble({
       who: "bot",
-      title: "Exemples",
+      title: t("assistant.examplesTitle"),
       text: exampleQuestions
         .slice(0, 8)
         .map((q) => `• ${q}`)
@@ -218,9 +815,9 @@ function setupAssistantPage() {
       const historyForServer = conversation.slice();
       conversation.push({ role: "user", content: q });
       saveConversation();
-      pushBubble({ who: "me", title: "Vous", text: q });
+      pushBubble({ who: "me", title: t("assistant.userTitle"), text: q });
 
-      if (q.toLowerCase() === "exemples") {
+      if (examplesTrigger.includes(q.toLowerCase())) {
         showExamples();
         return;
       }
@@ -229,7 +826,7 @@ function setupAssistantPage() {
       if (submitBtn) submitBtn.disabled = true;
       input.disabled = true;
 
-      const placeholder = pushBubble({ who: "bot", title: "Assistant", text: "Je réfléchis…" });
+      const placeholder = pushBubble({ who: "bot", title: t("assistant.assistantTitle"), text: t("assistant.thinking") });
 
       try {
         const resp = await fetch("../api/assistant", {
@@ -328,7 +925,7 @@ function setupAssistantPage() {
           const data = await resp.json().catch(() => ({}));
           if (!resp.ok) throw new Error(data?.error || `Erreur API (${resp.status})`);
 
-          const answer = String(data?.answer || "").trim() || "Je n’ai pas de réponse pour le moment.";
+          const answer = String(data?.answer || "").trim() || t("assistant.noAnswer");
           const sources = Array.isArray(data?.sources) ? data.sources : [];
           const debug = data?.debug && typeof data.debug === "object" ? data.debug : null;
           const sourcesText = "";
@@ -344,7 +941,7 @@ function setupAssistantPage() {
           saveConversation();
         }
       } catch (err) {
-        placeholder.querySelector(".bubbleText").textContent = `Désolé, je n’arrive pas à répondre.\n${err?.message || ""}`.trim();
+        placeholder.querySelector(".bubbleText").textContent = `${t("assistant.error")}\n${err?.message || ""}`.trim();
       } finally {
         if (submitBtn) submitBtn.disabled = false;
         input.disabled = false;
@@ -362,6 +959,7 @@ function setupConseilsPage() {
   const filtersContainer = $(".filters");
   if (!grid || !search || !filtersContainer) return;
 
+  const lang = currentLang;
   let activeFilter = "all";
   let conseils = [];
 
@@ -373,9 +971,10 @@ function setupConseilsPage() {
   search.parentElement.insertBefore(count, filtersContainer.nextSibling);
 
   const searchConseil = (conseil, words) => {
+    const translatedTags = lang === "en" ? (conseil.tags || []).map((tag) => translateTag(tag, lang)) : [];
     const fields = {
-      primary: [conseil.titre, ...(conseil.tags || [])],
-      secondary: [conseil.resume_court, conseil.resume_long, conseil.descriptif_long]
+      primary: [conseil.titre, ...(conseil.tags || []), ...translatedTags],
+      secondary: [conseil.resume_court, conseil.resume_long, conseil.descriptif_long],
     };
 
     let score = 0;
@@ -410,8 +1009,11 @@ function setupConseilsPage() {
 
     const filtered = conseils
       .map((c) => {
-        const uniqueTags = [...new Set((c.tags || []).map(tag => tag.toLowerCase()))];
-        const matchesFilter = activeFilter === "all" ? true : uniqueTags.includes(activeFilter);
+        const uniqueTags = [...new Set((c.tags || []).map((tag) => normalizeFilterValue(tag)))];
+        const matchesFilter =
+          normalizeFilterValue(activeFilter) === "all"
+            ? true
+            : uniqueTags.includes(normalizeFilterValue(activeFilter));
         if (!matchesFilter) return null;
         
         if (words.length === 0) {
@@ -425,27 +1027,38 @@ function setupConseilsPage() {
 
     filtered.sort((a, b) => b.score - a.score);
     
-    count.textContent = `${filtered.length} conseil${filtered.length > 1 ? "s" : ""}`;
+    count.textContent = formatCount(filtered.length, "conseils.count");
 
     grid.innerHTML = filtered
       .map(({ conseil: c }) => {
         const tags = (c.tags || [])
           .slice(0, 3)
-          .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
+          .map((t) => `<span class="tag">${escapeHtml(lang === "en" ? translateTag(t, lang) : String(t))}</span>`)
           .join("");
 
-        const imageSrc = c.nom_image ? `../${escapeHtml(c.nom_image)}` : '';
-        const audioSrc = c.nom_fichier_audio ? `../${escapeHtml(c.nom_fichier_audio)}` : '';
+        const imageSrc = c.nom_image ? `../${escapeHtml(c.nom_image)}` : "";
+        const audioSrc = c.nom_fichier_audio ? `../${escapeHtml(c.nom_fichier_audio)}` : "";
+        const imageAlt = t("conseils.imageAlt", { title: c.titre || "" });
 
         return `
           <article class="card" tabindex="0" role="button" style="display: flex; flex-direction: column; justify-content: space-between;">
             <div>
               <h3>${escapeHtml(c.titre)}</h3>
-              ${imageSrc ? `<img src="${imageSrc}" alt="Visual for ${escapeHtml(c.titre)}" width="300" style="margin-top: 8px; margin-bottom: 16px; border-radius: 8px; max-width: 100%;">` : ''}
+              ${
+                imageSrc
+                  ? `<img src="${imageSrc}" alt="${escapeHtml(imageAlt)}" width="300" style="margin-top: 8px; margin-bottom: 16px; border-radius: 8px; max-width: 100%;">`
+                  : ""
+              }
               <p>${escapeHtml(c.resume_court)}</p>
             </div>
             <div>
-              ${audioSrc ? `<audio controls preload="none" style="width: 100%; margin-top: 16px;"><source src="${audioSrc}" type="audio/mpeg">Your browser does not support the audio element.</audio>` : ''}
+              ${
+                audioSrc
+                  ? `<audio controls preload="none" style="width: 100%; margin-top: 16px;"><source src="${audioSrc}" type="audio/mpeg">${escapeHtml(
+                      t("conseils.audioUnsupported")
+                    )}</audio>`
+                  : ""
+              }
               <div class="tagRow" style="margin-top: 8px;">${tags}</div>
             </div>
           </article>
@@ -489,8 +1102,28 @@ function setupConseilsPage() {
       const resp = await fetch("../data/conseils.json", { cache: "no-store" });
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
-      conseils = Array.isArray(data?.conseils) ? data.conseils : [];
-    } catch(e) {
+      let items = Array.isArray(data?.conseils) ? data.conseils : [];
+
+      if (lang === "en") {
+        try {
+          const trResp = await fetch("../data/conseils.en.json", { cache: "no-store" });
+          if (trResp.ok) {
+            const trData = await trResp.json();
+            const translations = Array.isArray(trData?.conseils) ? trData.conseils : [];
+            const byId = new Map(translations.map((c) => [String(c?.id || ""), c]));
+            items = items.map((c) => {
+              const id = String(c?.id || "");
+              if (!id || !byId.has(id)) return c;
+              return { ...c, ...byId.get(id) };
+            });
+          }
+        } catch (err) {
+          console.warn("Unable to load English conseils translation.", err);
+        }
+      }
+
+      conseils = items;
+    } catch (e) {
       console.error(e);
       conseils = [];
     }
@@ -501,8 +1134,8 @@ function setupConseilsPage() {
     if (conseils.length === 0) {
       grid.innerHTML = `
         <article class="infoCard">
-          <h3>Conseils indisponibles</h3>
-          <p>Impossible de charger <code>data/conseils.json</code>.</p>
+          <h3>${t("conseils.unavailableTitle")}</h3>
+          <p>${t("conseils.unavailableBody")}</p>
         </article>
       `;
     }
@@ -518,6 +1151,7 @@ function setupBibliothequePage() {
   const count = $("#bookCount");
   if (!grid || !search) return;
 
+  const lang = currentLang;
   let activeTag = "all";
   let books = [];
 
@@ -559,11 +1193,14 @@ function setupBibliothequePage() {
       .map(([tag]) => tag);
 
     tagFilters.innerHTML = [
-      `<button class="chip ${activeTag === "all" ? "isActive" : ""}" type="button" data-tag="all">tous</button>`,
+      `<button class="chip ${activeTag === "all" ? "isActive" : ""}" type="button" data-tag="all">${escapeHtml(
+        t("bibliotheque.tagAll")
+      )}</button>`,
       ...tagsSorted.map((t) => {
         const isActive = activeTag === t;
+        const label = lang === "en" ? translateTag(t, lang) : t;
         return `<button class="chip ${isActive ? "isActive" : ""}" type="button" data-tag="${escapeHtml(t)}">${escapeHtml(
-          t
+          label
         )}</button>`;
       }),
     ].join("");
@@ -587,14 +1224,18 @@ function setupBibliothequePage() {
   };
 
   const searchBook = (book, words) => {
+    const translatedTags = lang === "en" ? (book.tags || []).map((tag) => translateTag(tag, lang)) : [];
+    const translatedCategory = lang === "en" ? translateCategory(book.categorie, lang) : "";
     const fields = {
       primary: [book.titre, book.auteur],
       secondary: [
         book.resume_court,
         book.resume_long,
         ...(book.tags || []),
-        book.categorie
-      ]
+        ...translatedTags,
+        book.categorie,
+        translatedCategory,
+      ],
     };
 
     let primaryScore = 0;
@@ -674,7 +1315,7 @@ function setupBibliothequePage() {
     // Trier par score décroissant
     filtered.sort((a, b) => b.score - a.score);
 
-    if (count) count.textContent = `${filtered.length} livre${filtered.length > 1 ? "s" : ""}`;
+    if (count) count.textContent = formatCount(filtered.length, "bibliotheque.count");
 
     grid.innerHTML = filtered
       .map(({ book: b }) => b)
@@ -683,7 +1324,11 @@ function setupBibliothequePage() {
           Array.isArray(b.tags) && b.tags.length > 0
             ? b.tags
                 .slice(0, 3)
-                .map((t) => `<span class="tag" style="opacity:.86">${escapeHtml(String(t))}</span>`)
+                .map((t) =>
+                  `<span class="tag" style="opacity:.86">${escapeHtml(
+                    lang === "en" ? translateTag(t, lang) : String(t)
+                  )}</span>`
+                )
                 .join("")
             : "";
         const amazonHref = b.url_amazon ? escapeHtml(b.url_amazon) : "";
@@ -700,6 +1345,8 @@ function setupBibliothequePage() {
         const bookClass = detailPage ? "book clickable" : "book";
         const bookAttrs = detailPage ? `role="button" tabindex="0" style="cursor: pointer;"` : "";
 
+        const categoryLabel = lang === "en" ? translateCategory(b.categorie, lang) : b.categorie;
+        const categoryFallback = lang === "en" ? "other" : "autre";
         return `
           <article class="${bookClass}" ${bookAttrs} ${detailPage ? `data-detail="${detailPage}"` : ""}>
             <div class="bookCoverColumn">
@@ -708,7 +1355,7 @@ function setupBibliothequePage() {
             </div>
             <div>
               <div class="tagRow">
-                <span class="tag">${escapeHtml(normalizeCategory(b.categorie) || "autre")}</span>
+                <span class="tag">${escapeHtml(normalizeCategory(categoryLabel) || categoryFallback)}</span>
                 ${tags}
               </div>
               <h3>${escapeHtml(b.titre)}</h3>
@@ -735,7 +1382,7 @@ function setupBibliothequePage() {
     const book = event.target instanceof HTMLElement ? event.target.closest("[data-detail]") : null;
     if (!book) return;
     const detailPage = book.getAttribute("data-detail");
-    if (detailPage) window.location.href = detailPage;
+    if (detailPage) window.location.href = appendLangParam(detailPage, lang);
   });
 
   grid.addEventListener("keydown", (event) => {
@@ -744,7 +1391,7 @@ function setupBibliothequePage() {
     if (!book) return;
     event.preventDefault();
     const detailPage = book.getAttribute("data-detail");
-    if (detailPage) window.location.href = detailPage;
+    if (detailPage) window.location.href = appendLangParam(detailPage, lang);
   });
 
   (async () => {
@@ -752,7 +1399,26 @@ function setupBibliothequePage() {
       const resp = await fetch("../data/bibliotheque.json", { cache: "no-store" });
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
-      const livres = Array.isArray(data?.livres) ? data.livres : [];
+      let livres = Array.isArray(data?.livres) ? data.livres : [];
+
+      if (lang === "en") {
+        try {
+          const trResp = await fetch("../data/bibliotheque.en.json", { cache: "no-store" });
+          if (trResp.ok) {
+            const trData = await trResp.json();
+            const translations = Array.isArray(trData?.livres) ? trData.livres : [];
+            const byBd = new Map(translations.map((b) => [String(b?.bd || ""), b]));
+            livres = livres.map((b) => {
+              const key = String(b?.bd || "");
+              if (!key || !byBd.has(key)) return b;
+              return { ...b, ...byBd.get(key) };
+            });
+          }
+        } catch (err) {
+          console.warn("Unable to load English bibliotheque translation.", err);
+        }
+      }
+
       books = livres.map((b) => ({
         titre: String(b.titre || ""),
         auteur: String(b.auteur || ""),
@@ -775,9 +1441,9 @@ function setupBibliothequePage() {
     if (books.length === 0) {
       grid.innerHTML = `
         <article class="infoCard">
-          <h3>Bibliothèque indisponible</h3>
-          <p>Impossible de charger <code>../data/bibliotheque.json</code>.</p>
-          <p class="muted tiny">Astuce : vérifiez que vous servez le dossier du projet (pas seulement <code>pages/</code>).</p>
+          <h3>${t("bibliotheque.unavailableTitle")}</h3>
+          <p>${t("bibliotheque.unavailableBody")}</p>
+          <p class="muted tiny">${t("bibliotheque.unavailableHint")}</p>
         </article>
       `;
     }
@@ -790,13 +1456,14 @@ function setupBookDetailPage() {
   const mount = $("#bookDetailMount");
   if (!mount) return;
 
+  const lang = currentLang;
   const bd = String(document.body.dataset.book || "").trim();
   if (!bd) {
     mount.innerHTML = `
       <article class="infoCard">
-        <h3>Page introuvable</h3>
-        <p>Cette page ne sait pas quel livre afficher.</p>
-        <p class="muted tiny">Astuce : ajoutez <code>data-book</code> sur <code>&lt;body&gt;</code>.</p>
+        <h3>${t("bookDetail.missingTitle")}</h3>
+        <p>${t("bookDetail.missingBody")}</p>
+        <p class="muted tiny">${t("bookDetail.missingHint")}</p>
       </article>
     `;
     return;
@@ -828,6 +1495,7 @@ function setupBookDetailPage() {
     const wikipedia = book.url_wikipedia ? String(book.url_wikipedia) : "";
     const tags = uniqueNormalizedTags(book.tags);
     const categorie = String(book.categorie || "").trim().toLowerCase();
+    const categoryLabel = lang === "en" ? translateCategory(categorie, lang) : categorie;
 
     const why = Array.isArray(book.pourquoi_entrepreneur)
       ? book.pourquoi_entrepreneur.map((p) => String(p)).filter(Boolean)
@@ -836,16 +1504,20 @@ function setupBookDetailPage() {
         : [];
 
     const tagsHtml = [
-      ...(categorie ? [`<span class="tag">${escapeHtml(categorie)}</span>`] : []),
-      ...tags.slice(0, 6).map((t) => `<span class="tag">${escapeHtml(t)}</span>`),
+      ...(categoryLabel ? [`<span class="tag">${escapeHtml(categoryLabel)}</span>`] : []),
+      ...tags.slice(0, 6).map((t) => `<span class="tag">${escapeHtml(lang === "en" ? translateTag(t, lang) : t)}</span>`),
     ].join("");
 
     const links = [
       amazon
-        ? `<a class="detailLink" href="${escapeHtml(amazon)}" target="_blank" rel="noopener noreferrer">Voir sur Amazon</a>`
+        ? `<a class="detailLink" href="${escapeHtml(amazon)}" target="_blank" rel="noopener noreferrer">${t(
+            "bookDetail.amazon"
+          )}</a>`
         : "",
       wikipedia
-        ? `<a class="detailLink" href="${escapeHtml(wikipedia)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>`
+        ? `<a class="detailLink" href="${escapeHtml(wikipedia)}" target="_blank" rel="noopener noreferrer">${t(
+            "bookDetail.wikipedia"
+          )}</a>`
         : "",
     ]
       .filter(Boolean)
@@ -854,7 +1526,7 @@ function setupBookDetailPage() {
     const whyHtml =
       why.length > 0
         ? `
-            <h2>Pourquoi c'est utile pour un entrepreneur</h2>
+            <h2>${t("bookDetail.whyTitle")}</h2>
             <ul>
               ${why.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}
             </ul>
@@ -863,9 +1535,13 @@ function setupBookDetailPage() {
 
     mount.innerHTML = `
       <div class="bookDetail">
-        <div class="bookDetailHeader">
+          <div class="bookDetailHeader">
           <div class="bookDetailCover">
-            ${cover ? `<img src="${escapeHtml(cover)}" alt="Couverture du livre ${escapeHtml(title)}" />` : ""}
+            ${
+              cover
+                ? `<img src="${escapeHtml(cover)}" alt="${escapeHtml(t("bookDetail.coverAlt", { title }))}" />`
+                : ""
+            }
           </div>
           <div class="bookDetailInfo">
             <p class="author">${escapeHtml(title)}${author ? ` — ${escapeHtml(author)}` : ""}</p>
@@ -875,13 +1551,13 @@ function setupBookDetailPage() {
             </div>
             ${book.resume_court ? `<p style="margin-bottom: 1.25rem;">${escapeHtml(String(book.resume_court))}</p>` : ""}
             <div class="bookDetailContent">
-              <h2>Résumé</h2>
+              <h2>${t("bookDetail.summaryTitle")}</h2>
               ${book.resume_long ? `<p>${escapeHtml(String(book.resume_long))}</p>` : ""}
               ${
                 wikipedia
-                  ? `<p class="bookDetailSourceNote">Source complémentaire : <a href="${escapeHtml(
-                      wikipedia
-                    )}" target="_blank" rel="noopener noreferrer">Wikipedia</a>.</p>`
+                  ? `<p class="bookDetailSourceNote">${t("bookDetail.sourceNote", {
+                      source: `<a href="${escapeHtml(wikipedia)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>`,
+                    })}</p>`
                   : ""
               }
               ${whyHtml}
@@ -890,12 +1566,16 @@ function setupBookDetailPage() {
         </div>
 
         <div style="text-align: center; margin-top: 2rem;">
-          <a href="bibliotheque.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">← Retour à la bibliothèque</a>
+          <a href="${appendLangParam("bibliotheque.html", lang)}" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">${t(
+            "bookDetail.back"
+          )}</a>
         </div>
       </div>
     `;
 
     if (title) document.title = `${title} — The Entrepreneur Whisperer`;
+    const meta = $("meta[name='description']");
+    if (meta && book.resume_court) meta.setAttribute("content", String(book.resume_court));
   };
 
   (async () => {
@@ -903,7 +1583,26 @@ function setupBookDetailPage() {
       const resp = await fetch("../data/bibliotheque.json", { cache: "no-store" });
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
-      const livres = Array.isArray(data?.livres) ? data.livres : [];
+      let livres = Array.isArray(data?.livres) ? data.livres : [];
+
+      if (lang === "en") {
+        try {
+          const trResp = await fetch("../data/bibliotheque.en.json", { cache: "no-store" });
+          if (trResp.ok) {
+            const trData = await trResp.json();
+            const translations = Array.isArray(trData?.livres) ? trData.livres : [];
+            const byBd = new Map(translations.map((b) => [String(b?.bd || ""), b]));
+            livres = livres.map((b) => {
+              const key = String(b?.bd || "");
+              if (!key || !byBd.has(key)) return b;
+              return { ...b, ...byBd.get(key) };
+            });
+          }
+        } catch (err) {
+          console.warn("Unable to load English bibliotheque translation.", err);
+        }
+      }
+
       const found = livres.find((b) => String(b?.bd || "") === bd);
       if (!found) throw new Error(`Book not found for bd=${bd}`);
       render(found);
@@ -911,9 +1610,9 @@ function setupBookDetailPage() {
       console.error(e);
       mount.innerHTML = `
         <article class="infoCard">
-          <h3>Livre introuvable</h3>
-          <p>Impossible de charger ce livre depuis <code>../data/bibliotheque.json</code>.</p>
-          <p class="muted tiny">Détail : ${escapeHtml(String(e?.message || e))}</p>
+          <h3>${t("bookDetail.notFoundTitle")}</h3>
+          <p>${t("bookDetail.notFoundBody")}</p>
+          <p class="muted tiny">${t("bookDetail.notFoundDetail", { detail: escapeHtml(String(e?.message || e)) })}</p>
         </article>
       `;
     }
@@ -924,12 +1623,18 @@ function setupPlayPlaceholder() {
   const btn = $(".playButton");
   if (!btn) return;
   btn.addEventListener("click", () => {
-    const message = "Placeholder : remplacez ce bloc par un embed (YouTube/Spotify) ou un lecteur audio/vidéo.";
+    const message = t("playPlaceholder");
     btn.querySelector("span:last-child").textContent = message;
   });
 }
 
 function init() {
+  initLanguage();
+  applyMeta();
+  applyI18n();
+  applyNavI18n();
+  setupLangToggle();
+  updateInternalLinks();
   setYear();
   setupMobileNav();
   setupRevealOnScroll();

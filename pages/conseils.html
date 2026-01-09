@@ -44,9 +44,11 @@
 
       <section class="pageHero" id="contenu">
         <div class="container">
-          <p class="pill">Le coin podcast</p>
-          <h1>Conseils</h1>
-          <p class="lead">Recherche par thèmes. Chaque entrée se lit, s’écoute (voix), et se retient (mini BD).</p>
+          <p class="pill" data-i18n="conseils.pill">Le coin podcast</p>
+          <h1 data-i18n="conseils.title">Conseils</h1>
+          <p class="lead" data-i18n="conseils.lead">
+            Recherche par thèmes. Chaque entrée se lit, s’écoute (voix), et se retient (mini BD).
+          </p>
         </div>
       </section>
     </header>
@@ -55,14 +57,21 @@
       <section class="section">
         <div class="container">
           <div class="toolbar">
-            <label class="srOnly" for="search">Rechercher</label>
-            <input id="search" class="searchInput" type="search" placeholder="Rechercher un conseil (ex: pricing, focus…)" />
-            <div class="filters" role="group" aria-label="Filtres">
-              <button class="chip isActive" type="button" data-filter="all">Tous</button>
-              <button class="chip" type="button" data-filter="produit">Produit</button>
-              <button class="chip" type="button" data-filter="vente">Vente</button>
-              <button class="chip" type="button" data-filter="execution">Exécution</button>
-              <button class="chip" type="button" data-filter="equipe">Équipe</button>
+            <label class="srOnly" for="search" data-i18n="conseils.searchLabel">Rechercher</label>
+            <input
+              id="search"
+              class="searchInput"
+              type="search"
+              placeholder="Rechercher un conseil (ex: pricing, focus…)"
+              data-i18n-key="conseils.searchPlaceholder"
+              data-i18n-attr="placeholder"
+            />
+            <div class="filters" role="group" aria-label="Filtres" data-i18n-key="conseils.filtersLabel" data-i18n-attr="aria-label">
+              <button class="chip isActive" type="button" data-filter="all" data-i18n="conseils.filterAll">Tous</button>
+              <button class="chip" type="button" data-filter="produit" data-i18n="conseils.filterProduct">Produit</button>
+              <button class="chip" type="button" data-filter="vente" data-i18n="conseils.filterSales">Vente</button>
+              <button class="chip" type="button" data-filter="execution" data-i18n="conseils.filterExecution">Exécution</button>
+              <button class="chip" type="button" data-filter="equipe" data-i18n="conseils.filterTeam">Équipe</button>
             </div>
           </div>
 
@@ -72,30 +81,41 @@
         </div>
       </section>
 
-      <dialog class="modal" id="conseilModal" aria-label="Détail du conseil">
+      <dialog class="modal" id="conseilModal" aria-label="Détail du conseil" data-i18n-key="conseils.modalLabel" data-i18n-attr="aria-label">
         <form method="dialog" class="modalShell">
           <div class="modalHeader">
             <div>
               <p class="pill small" id="modalTheme"></p>
               <h2 class="modalTitle" id="modalTitle"></h2>
             </div>
-            <button class="iconButton" value="close" aria-label="Fermer">
+            <button
+              class="iconButton"
+              value="close"
+              aria-label="Fermer"
+              data-i18n-key="common.close"
+              data-i18n-attr="aria-label"
+            >
               <span aria-hidden="true">✕</span>
             </button>
           </div>
           <div class="modalBody">
             <p class="muted" id="modalBody"></p>
             <div class="twoCol">
-              <section class="audioBox" aria-label="Podcast audio">
-                <h3>Podcast audio (voix)</h3>
-                <p class="muted tiny">Lecture via synthèse vocale du navigateur.</p>
+              <section
+                class="audioBox"
+                aria-label="Podcast audio"
+                data-i18n-key="conseils.audioLabel"
+                data-i18n-attr="aria-label"
+              >
+                <h3 data-i18n="conseils.audioTitle">Podcast audio (voix)</h3>
+                <p class="muted tiny" data-i18n="conseils.audioHint">Lecture via synthèse vocale du navigateur.</p>
                 <div class="audioActions">
-                  <button class="button primary" type="button" id="speakBtn">Lire</button>
-                  <button class="button" type="button" id="stopSpeakBtn">Stop</button>
+                  <button class="button primary" type="button" id="speakBtn" data-i18n="conseils.audioPlay">Lire</button>
+                  <button class="button" type="button" id="stopSpeakBtn" data-i18n="conseils.audioStop">Stop</button>
                 </div>
               </section>
-              <section class="comicBox" aria-label="Bande dessinée">
-                <h3>Mini BD</h3>
+              <section class="comicBox" aria-label="Bande dessinée" data-i18n-key="conseils.comicLabel" data-i18n-attr="aria-label">
+                <h3 data-i18n="conseils.comicTitle">Mini BD</h3>
                 <div class="comic" id="comic"></div>
               </section>
             </div>

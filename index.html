@@ -45,25 +45,16 @@
       <section class="hero" id="contenu">
         <div class="heroGrid">
           <div class="heroCopy">
-            <h1 class="displayTitle">Les meilleures pratiques<br />pour Entrepreneurs</h1>
-            <h2 class="heroSubtitle">Des réponses concrètes, des conseils structurés, et une bibliothèque utile.</h2>
-            <p class="lead">
+            <h1 class="displayTitle" data-i18n="home.heroTitle" data-i18n-html="true">Les meilleures pratiques<br />pour Entrepreneurs</h1>
+            <h2 class="heroSubtitle" data-i18n="home.heroSubtitle">
+              Des réponses concrètes, des conseils structurés, et une bibliothèque utile.
+            </h2>
+            <p class="lead" data-i18n="home.heroLead">
               The Entrepreneur Whisperer rassemble une base de connaissance pour entrepreneurs, un assistant IA pour retrouver la
               bonne réponse, et des conseils par thèmes (avec recherche) — le tout dans un format qui se consomme vite.
             </p>
 
-            <div class="heroActions">
-              <a class="button primary" href="pages/assistant-ia.html">Poser une question</a>
-              <a class="button" href="#cadres">Découvrir les rubriques</a>
-            </div>
 
-            <div class="metaRow">
-              <div class="avatarStack" aria-label="Auteur">
-                <div class="avatar" title="tdv">tdv</div>
-                <div class="avatar alt" title="Melcion">M</div>
-              </div>
-              <p class="metaText">Par tdv, avec Melcion. Formats : vidéo ? podcast ? BD ? (MVP prêt à évoluer)</p>
-            </div>
           </div>
 
           <div class="heroMedia" aria-label="Vidéo ou podcast">
@@ -72,14 +63,16 @@
                 <span class="dot red" aria-hidden="true"></span>
                 <span class="dot yellow" aria-hidden="true"></span>
                 <span class="dot green" aria-hidden="true"></span>
-                <span class="mediaLabel">Vidéo / Podcast</span>
+                <span class="mediaLabel" data-i18n="home.mediaLabel">Vidéo / Podcast</span>
               </div>
               <div class="mediaBody">
                 <button class="playButton" type="button">
                   <span class="playIcon" aria-hidden="true"></span>
-                  <span>Ajouter un épisode (placeholder)</span>
+                  <span data-i18n="home.mediaPlaceholder">Ajouter un épisode (placeholder)</span>
                 </button>
-                <p class="mediaHint">Astuce : vous pouvez remplacer ce bloc par un embed YouTube/Spotify.</p>
+                <p class="mediaHint" data-i18n="home.mediaHint">
+                  Astuce : vous pouvez remplacer ce bloc par un embed YouTube/Spotify.
+                </p>
               </div>
             </div>
           </div>
@@ -92,62 +85,26 @@
         <div class="container">
           <div class="split">
             <div>
-              <h2>Un site orienté action</h2>
-              <p class="muted">
+              <h2 data-i18n="home.sectionTitle">Une boîte à idées pour les Entrepreneurs</h2>
+              <p class="muted" data-i18n="home.sectionLead">
                 Trouver une réponse, appliquer une bonne pratique, et passer à l’étape suivante. Chaque contenu est
                 pensé pour être recherché, partagé, et retenu.
               </p>
             </div>
             <div class="infoCards">
-              <article class="infoCard">
-                <h3>Assistant IA</h3>
-                <p>Le coin interactif : réponses formulées à partir de la base de connaissance.</p>
-              </article>
-              <article class="infoCard">
-                <h3>Conseils</h3>
-                <p>Le coin podcast : conseils par thèmes, recherche, + podcast audio et mini-BD.</p>
-              </article>
-              <article class="infoCard">
-                <h3>Bibliothèque</h3>
-                <p>Le coin lecture : recueil de livres recommandés pour entrepreneurs.</p>
-              </article>
+              <a class="infoCard infoCardLink" href="pages/assistant-ia.html">
+                <h3 data-i18n="home.cardAssistantTitle">Assistant IA</h3>
+                <p data-i18n="home.cardAssistantDesc">Le coin interactif : réponses formulées à partir de la base de connaissance.</p>
+              </a>
+              <a class="infoCard infoCardLink" href="pages/conseils.html">
+                <h3 data-i18n="home.cardConseilsTitle">Conseils</h3>
+                <p data-i18n="home.cardConseilsDesc">Le coin podcast : conseils par thèmes, recherche, + podcast audio et mini-BD.</p>
+              </a>
+              <a class="infoCard infoCardLink" href="pages/bibliotheque.html">
+                <h3 data-i18n="home.cardBibliothequeTitle">Bibliothèque</h3>
+                <p data-i18n="home.cardBibliothequeDesc">Le coin lecture : recueil de livres recommandés pour entrepreneurs.</p>
+              </a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section pulse" id="cadres" data-pulse="1" aria-label="Accroches">
-        <div class="container">
-          <div class="pulseHeader">
-            <h2>Des cadres qui vont droit au but</h2>
-            <p class="muted">En scrollant, l’arrière-plan s’anime et révèle des accroches — façon “panneaux”.</p>
-          </div>
-
-          <div class="frames">
-            <article class="frame" data-reveal>
-              <p class="frameKicker">Assistant IA</p>
-              <h3>Pose une question. Obtiens une réponse actionnable.</h3>
-              <p class="muted">Basé sur la base de connaissance “The Entrepreneur Whisperer”.</p>
-              <a class="frameLink" href="pages/assistant-ia.html">Essayer</a>
-            </article>
-            <article class="frame" data-reveal>
-              <p class="frameKicker">Conseils</p>
-              <h3>De bonnes pratiques par thème, recherchables.</h3>
-              <p class="muted">Chaque entrée a un format audio + une mini BD.</p>
-              <a class="frameLink" href="pages/conseils.html">Explorer</a>
-            </article>
-            <article class="frame" data-reveal>
-              <p class="frameKicker">Bibliothèque</p>
-              <h3>Des livres qui changent vraiment ta façon d’exécuter.</h3>
-              <p class="muted">Filtre par objectifs : produit, vente, équipe, focus.</p>
-              <a class="frameLink" href="pages/bibliotheque.html">Voir la liste</a>
-            </article>
-            <article class="frame" data-reveal>
-              <p class="frameKicker">Méthode</p>
-              <h3>Moins de théorie, plus de décisions nettes.</h3>
-              <p class="muted">Règles, checklists, templates — sans bruit.</p>
-              <a class="frameLink" href="pages/conseils.html">Trouver un conseil</a>
-            </article>
           </div>
         </div>
       </section>

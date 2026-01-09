@@ -1,6 +1,7 @@
 {
   "conseils": [
     {
+      "id": "acheter-entreprise-prix",
       "titre": "Acheter une entreprise, ne vous focalisez pas sur le prix d'achat !",
       "tags": ["acquisition", "stratégie", "financement"],
       "nom_image": "img/thumb-2120133801.jpg",
@@ -10,6 +11,7 @@
       "nom_fichier_audio": "audio/Acheter une entreprise, ne vous focalisez pas sur le prix d'achat !.mp3"
     },
     {
+      "id": "augmentation-cadres",
       "titre": "Augmentation des cadres",
       "tags": ["management", "équipe", "négociation"],
       "nom_image": "img/thumb-2120104974.jpg",
@@ -19,6 +21,7 @@
       "nom_fichier_audio": "audio/Augmentation des cadres.mp3"
     },
     {
+      "id": "crise-creativite-griffonnez",
       "titre": "Crise de créativité ？ Griffonnez !",
       "tags": ["créativité", "essentiels", "neurosciences"],
       "nom_image": "img/thumb-2120122491.jpg",
@@ -28,6 +31,7 @@
       "nom_fichier_audio": "audio/Crise de créativité ？ Griffonnez !.mp3"
     },
     {
+      "id": "ouvrir-capital",
       "titre": "Faut il ouvrir son capital ?",
       "tags": ["capital", "stratégie", "actionnariat"],
       "nom_image": "img/thumb-2120142846.jpg",
@@ -37,6 +41,7 @@
       "nom_fichier_audio": "audio/Faut il ouvrir son capital ？.mp3"
     },
     {
+      "id": "prospection-a-froid",
       "titre": "L'art de la prospection à froid",
       "tags": ["marketing", "vente", "prospection"],
       "nom_image": "img/thumb-2120152803.jpg",
@@ -46,6 +51,7 @@
       "nom_fichier_audio": "audio/L'art de la prospection à froid.mp3"
     },
     {
+      "id": "art-negocier",
       "titre": "L'art de négocier",
       "tags": ["management", "négociation", "psychologie"],
       "nom_image": "img/thumb-2120092671.jpg",
@@ -55,6 +61,7 @@
       "nom_fichier_audio": "audio/L'art de négocier.mp3"
     },
     {
+      "id": "creativite-david-lynch",
       "titre": "La créativité selon David Lynch",
       "tags": ["créativité", "essentiels", "inspiration"],
       "nom_image": "img/thumb-2120128680.jpg",
@@ -64,6 +71,7 @@
       "nom_fichier_audio": "audio/La créativité selon David Lynch.mp3"
     },
     {
+      "id": "piege-abscons",
       "titre": "Le Piège Abscons - théorie de l'engagement",
       "tags": ["psychologie", "biais cognitif", "décision"],
       "nom_image": "img/thumb-2120658006.jpg",
@@ -73,6 +81,7 @@
       "nom_fichier_audio": "audio/Le Piège Abscons - théorie de l'engagement.mp3"
     },
     {
+      "id": "conflits-interets",
       "titre": "Les Entrepreneurs baignent dans les conflits d'intérêts",
       "tags": ["stratégie", "éthique", "conflit d'intérêt"],
       "nom_image": "img/thumb-2120079633.jpg",
@@ -82,6 +91,7 @@
       "nom_fichier_audio": "audio/Les Entrepreneurs baignent dans les conflits d'intérêts.mp3"
     },
     {
+      "id": "naviguer-chaos",
       "titre": "Naviguer le chaos Entrepreneurial",
       "tags": ["stratégie", "chaos", "résilience"],
       "nom_image": "img/thumb-2119989429.jpg",
@@ -91,6 +101,7 @@
       "nom_fichier_audio": "audio/Naviguer le chaos Entrepreneurial.mp3"
     },
     {
+      "id": "prendre-bras-droit",
       "titre": "Prenez un bras droit !",
       "tags": ["management", "délégation", "productivité"],
       "nom_image": "img/thumb-2120146968.jpg",

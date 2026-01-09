@@ -185,6 +185,35 @@ input:focus-visible {
   gap: 8px;
 }
 
+.langSwitcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.langOption {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.langOption.isActive {
+  color: var(--text);
+}
+
 .navLink {
   padding: 8px 10px;
   border-radius: 999px;
@@ -571,6 +600,18 @@ input:focus-visible {
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.06);
   padding: 14px 14px 12px;
+}
+
+.infoCardLink {
+  display: block;
+  cursor: pointer;
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.infoCardLink:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .infoCard h3 {
@@ -1278,29 +1319,45 @@ input:focus-visible {
   .brandText {
     font-size: 24px;
   }
+  .nav {
+    top: calc(10px + env(safe-area-inset-top, 0px));
+    margin-top: calc(10px + env(safe-area-inset-top, 0px));
+    min-height: 56px;
+    flex-wrap: wrap;
+  }
 
   .navToggle {
     display: inline-flex;
   }
   .navPanel {
-    position: fixed;
-    inset: 0;
-    padding: 90px 18px 18px;
+    position: static;
+    width: 100%;
+    flex-basis: 100%;
+    margin-top: 0;
+    padding: 0 12px;
     display: grid;
     align-content: start;
     gap: 10px;
     background: rgba(0, 0, 0, 0.72);
     backdrop-filter: blur(16px);
+    border-radius: 18px;
     z-index: 60;
-    transform: translateY(-8px);
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 180ms ease, transform 180ms ease;
+    transition: opacity 180ms ease, max-height 220ms ease, margin-top 180ms ease;
   }
   body.navOpen .navPanel {
     opacity: 1;
-    transform: translateY(0);
+    max-height: 60vh;
+    margin-top: 12px;
+    padding: 12px;
     pointer-events: auto;
+  }
+  .langSwitcher {
+    width: 100%;
+    justify-content: center;
   }
   .navLink,
   .navCta {
@@ -1314,6 +1371,18 @@ input:focus-visible {
   .cardGrid,
   .bookGrid {
     grid-template-columns: 1fr;
+  }
+  .hero,
+  .section,
+  .pageHero,
+  .callout,
+  .split {
+    text-align: left;
+  }
+  .heroActions,
+  .calloutActions,
+  .metaRow {
+    justify-content: flex-start;
   }
 }
 

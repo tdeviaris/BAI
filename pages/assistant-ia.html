@@ -41,9 +41,9 @@
 
       <section class="pageHero" id="contenu">
         <div class="container">
-          <p class="pill">Le coin interactif</p>
-          <h1>Assistant IA</h1>
-          <p class="lead">
+          <p class="pill" data-i18n="assistant.pill">Le coin interactif</p>
+          <h1 data-i18n="assistant.title">Assistant IA</h1>
+          <p class="lead" data-i18n="assistant.lead">
             Réponses formulées à partir de la base de connaissance, via l’API Responses d’OpenAI.
           </p>
         </div>
@@ -56,7 +56,7 @@
           <div class="chatShell" aria-label="Assistant IA">
             <div class="chatStream" id="chatStream" aria-live="polite"></div>
             <form class="chatForm" id="chatForm">
-              <label class="srOnly" for="chatInput">Votre question</label>
+              <label class="srOnly" for="chatInput" data-i18n="assistant.inputLabel">Votre question</label>
               <input
                 id="chatInput"
                 name="q"
@@ -64,9 +64,11 @@
                 type="text"
                 autocomplete="off"
                 placeholder="Ex: Comment prioriser mon roadmap produit ?"
+                data-i18n-key="assistant.inputPlaceholder"
+                data-i18n-attr="placeholder"
                 required
               />
-              <button class="button primary" type="submit">Envoyer</button>
+              <button class="button primary" type="submit" data-i18n="assistant.submit">Envoyer</button>
             </form>
           </div>
         </div>
