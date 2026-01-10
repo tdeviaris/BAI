@@ -905,6 +905,21 @@ function setupAssistantPage() {
           let answer = "";
           let sources = [];
           let meta = null;
+          let renderScheduled = false;
+          const scheduleMarkdownRender = () => {
+            if (renderScheduled) return;
+            renderScheduled = true;
+            const render = () => {
+              renderScheduled = false;
+              const bubble = placeholder.querySelector(".bubbleText");
+              setBubbleMarkdown(bubble, answer || "Je n’ai pas de réponse pour le moment.");
+            };
+            if (typeof window.requestAnimationFrame === "function") {
+              window.requestAnimationFrame(render);
+            } else {
+              window.setTimeout(render, 0);
+            }
+          };
 
           const flushIfDone = () => {
             const sourcesText = "";
@@ -916,7 +931,10 @@ function setupAssistantPage() {
                   )}\n• incomplete: ${String(debug.incomplete_reason || "")}`
                 : "";
             const bubble = placeholder.querySelector(".bubbleText");
-            setBubbleMarkdown(bubble, `${answer || "Je n’ai pas de réponse pour le moment."}${sourcesText}${debugText}`);
+            setBubbleMarkdown(
+              bubble,
+              `${answer || "Je n’ai pas de réponse pour le moment."}${sourcesText}${debugText}`
+            );
           };
 
           for (;;) {
@@ -946,7 +964,7 @@ function setupAssistantPage() {
                   } catch {
                     answer += dataStr;
                   }
-                  setBubblePlain(placeholder.querySelector(".bubbleText"), answer);
+                  scheduleMarkdownRender();
                   continue;
                 }
                 if (currentEvent === "meta") {
