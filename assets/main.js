@@ -780,7 +780,13 @@ function setupAssistantPage() {
     });
   };
 
+  const isNearBottom = (el, threshold = 72) => {
+    const distance = el.scrollHeight - el.scrollTop - el.clientHeight;
+    return distance <= threshold;
+  };
+
   const pushBubble = ({ who, title, text, format = "plain" }) => {
+    const shouldStick = isNearBottom(stream);
     const el = document.createElement("div");
     el.className = `bubble ${who}`;
 
@@ -801,7 +807,7 @@ function setupAssistantPage() {
     el.appendChild(textEl);
 
     stream.appendChild(el);
-    stream.scrollTop = stream.scrollHeight;
+    if (shouldStick) stream.scrollTop = stream.scrollHeight;
     return el;
   };
 
