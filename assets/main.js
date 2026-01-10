@@ -1027,7 +1027,6 @@ function setupAssistantPage() {
       } finally {
         if (submitBtn) submitBtn.disabled = false;
         input.disabled = false;
-        input.focus();
       }
     })();
   });
