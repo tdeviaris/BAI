@@ -1135,7 +1135,7 @@ function setupConseilsPage() {
             <div>
               ${
                 audioSrc
-                  ? `<audio controls preload="none" style="width: 100%; margin-top: 16px;"><source src="${audioSrc}" type="audio/mpeg">${escapeHtml(
+                  ? `<audio controls preload="metadata" style="width: 100%; margin-top: 16px;"><source src="${audioSrc}" type="audio/mpeg">${escapeHtml(
                       t("conseils.audioUnsupported")
                     )}</audio>`
                   : ""
