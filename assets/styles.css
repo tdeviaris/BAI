@@ -491,8 +491,9 @@ input:focus-visible {
 }
 
 .playButton {
-  width: min(360px, 100%);
-  padding: 16px 16px;
+  width: min(440px, 100%);
+  min-height: 84px;
+  padding: 20px 20px;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(0, 0, 0, 0.28);
@@ -501,6 +502,8 @@ input:focus-visible {
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .playButton:hover {
