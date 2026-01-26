@@ -1122,7 +1122,7 @@ function setupConseilsPage() {
         const imageAlt = t("conseils.imageAlt", { title: c.titre || "" });
 
         return `
-          <article class="card" tabindex="0" role="button" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <article class="card" tabindex="0" role="button" data-conseil-id="${escapeHtml(String(c.id || ''))}" style="display: flex; flex-direction: column; justify-content: space-between;">
             <div>
               <h3>${escapeHtml(c.titre)}</h3>
               ${
@@ -1135,7 +1135,7 @@ function setupConseilsPage() {
             <div>
               ${
                 audioSrc
-                  ? `<audio controls preload="metadata" style="width: 100%; margin-top: 16px;"><source src="${audioSrc}" type="audio/mpeg">${escapeHtml(
+                  ? `<audio controls preload="metadata" style="width: 100%; margin-top: 16px;" data-audio-card><source src="${audioSrc}" type="audio/mpeg">${escapeHtml(
                       t("conseils.audioUnsupported")
                     )}</audio>`
                   : ""
@@ -1177,6 +1177,159 @@ function setupConseilsPage() {
   });
 
   search.addEventListener("input", render);
+
+  // Global audio state management
+  let currentAudio = null; // Currently playing HTML5 audio element
+  let currentSpeech = null; // Currently active speech synthesis
+
+  const pauseAllAudio = () => {
+    // Pause all HTML5 audio elements
+    $$("audio[data-audio-card]").forEach((audio) => {
+      if (!audio.paused) {
+        audio.pause();
+      }
+    });
+
+    // Stop speech synthesis
+    if (window.speechSynthesis && window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+    }
+
+    currentAudio = null;
+    currentSpeech = null;
+  };
+
+  // Handle audio element play events
+  grid.addEventListener("play", (event) => {
+    const target = event.target;
+    if (target instanceof HTMLAudioElement && target.hasAttribute("data-audio-card")) {
+      // Pause any currently playing audio
+      if (currentAudio && currentAudio !== target) {
+        currentAudio.pause();
+      }
+      // Stop speech synthesis
+      if (window.speechSynthesis && window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+      }
+      currentAudio = target;
+      currentSpeech = null;
+    }
+  }, true);
+
+  // Modal functionality
+  const modal = $("#conseilModal");
+  const modalTitle = $("#modalTitle");
+  const modalTheme = $("#modalTheme");
+  const modalBody = $("#modalBody");
+  const speakBtn = $("#speakBtn");
+  const stopSpeakBtn = $("#stopSpeakBtn");
+  const comic = $("#comic");
+
+  let currentConseil = null;
+
+  // Only set up modal if all elements exist
+  if (modal && modalTitle && modalBody && speakBtn && stopSpeakBtn) {
+
+  const openModal = (conseil) => {
+    currentConseil = conseil;
+
+    // Pause all audio when opening modal
+    pauseAllAudio();
+
+    if (modalTitle) modalTitle.textContent = conseil.titre || "";
+    if (modalTheme) modalTheme.textContent = (conseil.tags && conseil.tags[0]) || "";
+    if (modalBody) modalBody.textContent = conseil.descriptif_long || conseil.resume_long || conseil.resume_court || "";
+
+    // Comic/BD
+    if (comic) {
+      comic.innerHTML = "";
+      const bdPanels = Array.isArray(conseil.bd) ? conseil.bd : [];
+      if (bdPanels.length > 0) {
+        bdPanels.forEach((panel) => {
+          const panelDiv = document.createElement("div");
+          panelDiv.className = "comicPanel";
+
+          if (panel.image) {
+            const img = document.createElement("img");
+            img.src = `../${panel.image}`;
+            img.alt = "";
+            img.style.maxWidth = "100%";
+            img.style.borderRadius = "4px";
+            panelDiv.appendChild(img);
+          }
+
+          const p = document.createElement("p");
+          p.textContent = String(panel.texte || "");
+          panelDiv.appendChild(p);
+
+          comic.appendChild(panelDiv);
+        });
+      }
+    }
+
+    modal.showModal();
+  };
+
+  // Click handler for cards
+  grid.addEventListener("click", (event) => {
+    const card = event.target instanceof HTMLElement ? event.target.closest("[data-conseil-id]") : null;
+    if (!card) return;
+
+    // Don't open modal if clicking on audio controls
+    if (event.target instanceof HTMLElement && event.target.closest("audio")) {
+      return;
+    }
+
+    const conseilId = card.getAttribute("data-conseil-id");
+    const conseil = conseils.find((c) => String(c.id || "") === conseilId);
+    if (conseil) openModal(conseil);
+  });
+
+  // Keyboard handler for cards
+  grid.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const card = event.target instanceof HTMLElement ? event.target.closest("[data-conseil-id]") : null;
+    if (!card) return;
+    event.preventDefault();
+    const conseilId = card.getAttribute("data-conseil-id");
+    const conseil = conseils.find((c) => String(c.id || "") === conseilId);
+    if (conseil) openModal(conseil);
+  });
+
+  // Speech synthesis handlers
+  speakBtn.addEventListener("click", () => {
+    if (!currentConseil) return;
+
+    // Pause all audio before starting speech
+    pauseAllAudio();
+
+    const textToSpeak = currentConseil.descriptif_long || currentConseil.resume_long || currentConseil.resume_court || "";
+    if (!textToSpeak || !window.speechSynthesis) return;
+
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    utterance.lang = currentLang === "en" ? "en-US" : "fr-FR";
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+
+    currentSpeech = utterance;
+    window.speechSynthesis.speak(utterance);
+  });
+
+  stopSpeakBtn.addEventListener("click", () => {
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      currentSpeech = null;
+    }
+  });
+
+  // Clean up when modal closes
+  modal.addEventListener("close", () => {
+    if (window.speechSynthesis && window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+    }
+    currentSpeech = null;
+  });
+  }
 
   (async () => {
     try {
