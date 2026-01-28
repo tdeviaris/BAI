@@ -13,3 +13,7 @@ node_modules/
 .env.local
 .vercel
 .env*.local
+
+# local files
+Videos_Melcion.xlsx
+temp.csv
