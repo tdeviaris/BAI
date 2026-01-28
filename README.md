@@ -1,6 +1,6 @@
-# The Entrepreneur Whisperer
+# Entrepreneur & IA
 
-Site statique (HTML/CSS/JS) pour “The Entrepreneur Whisperer”, inspiré de l’esprit visuel très coloré de mindmarket.
+Site statique (HTML/CSS/JS) pour “Entrepreneur & IA”, inspiré de l’esprit visuel très coloré de mindmarket.
 
 ## Lancer en local
 

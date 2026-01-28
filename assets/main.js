@@ -168,6 +168,7 @@ const CATEGORY_TRANSLATIONS = {
 
 const I18N = {
   fr: {
+    brand: "Entrepreneur & IA",
     langLabel: "Langue",
     skip: "Aller au contenu",
     menu: {
@@ -191,7 +192,7 @@ const I18N = {
       heroTitle: "Les meilleures pratiques<br />pour Entrepreneurs",
       heroSubtitle: "Des réponses concrètes, des conseils structurés, et une bibliothèque utile.",
       heroLead:
-        "The Entrepreneur Whisperer rassemble une base de connaissance pour entrepreneurs, un assistant IA pour retrouver la bonne réponse, et des conseils par thèmes (avec recherche) — le tout dans un format qui se consomme vite.",
+        "Entrepreneur & IA rassemble une base de connaissance pour entrepreneurs, un assistant IA pour retrouver la bonne réponse, et des conseils par thèmes (avec recherche) — le tout dans un format qui se consomme vite.",
       mediaLabel: "Vidéo / Podcast",
       mediaPlaceholder: "Ajouter un épisode (placeholder)",
       mediaHint: "Astuce : vous pouvez remplacer ce bloc par un embed YouTube/Spotify.",
@@ -297,7 +298,7 @@ const I18N = {
       lead: "Présentation de l’auteur, de la démarche, et de Melcion.",
       tdvRole: "Entrepreneur • produit • exécution",
       tdvText:
-        "The Entrepreneur Whisperer est un espace de synthèse : extraire les meilleures pratiques, les structurer, et les rendre faciles à retrouver.",
+        "Entrepreneur & IA est un espace de synthèse : extraire les meilleures pratiques, les structurer, et les rendre faciles à retrouver.",
       melcionRole: "Co-pilote • structure • clarté",
       melcionText: "Melcion aide à transformer l’expérience en contenu opérationnel : checklists, templates, et réponses nettes.",
     },
@@ -319,36 +320,37 @@ const I18N = {
     },
     meta: {
       home: {
-        title: "The Entrepreneur Whisperer — Les meilleures pratiques pour Entrepreneurs",
+        title: "Entrepreneur & IA — Les meilleures pratiques pour Entrepreneurs",
         description:
-          "The Entrepreneur Whisperer : Les meilleures pratiques pour Entrepreneurs. Assistant IA, conseils actionnables, bibliothèque de livres recommandés.",
+          "Entrepreneur & IA : Les meilleures pratiques pour Entrepreneurs. Assistant IA, conseils actionnables, bibliothèque de livres recommandés.",
       },
       assistant: {
-        title: "Assistant IA — The Entrepreneur Whisperer",
+        title: "Assistant IA — Entrepreneur & IA",
         description: "Assistant IA : Le coin interactif, formulé à partir de la base de connaissance.",
       },
       conseils: {
-        title: "Conseils — The Entrepreneur Whisperer",
+        title: "Conseils — Entrepreneur & IA",
         description:
           "Le coin podcast : conseils par thèmes avec recherche. Chaque entrée a un format audio et une mini bande dessinée.",
       },
       bibliotheque: {
-        title: "Bibliothèque — The Entrepreneur Whisperer",
+        title: "Bibliothèque — Entrepreneur & IA",
         description: "Recueil de livres recommandés pour les entrepreneurs.",
       },
       apropos: {
-        title: "À propos — The Entrepreneur Whisperer",
+        title: "À propos — Entrepreneur & IA",
         description: "Présentation de l’auteur et de Melcion.",
       },
       mentions: {
-        title: "Mentions légales — The Entrepreneur Whisperer",
-        description: "Mentions légales du site The Entrepreneur Whisperer.",
+        title: "Mentions légales — Entrepreneur & IA",
+        description: "Mentions légales du site Entrepreneur & IA.",
       },
     },
     playPlaceholder:
       "Placeholder : remplacez ce bloc par un embed (YouTube/Spotify) ou un lecteur audio/vidéo.",
   },
   en: {
+    brand: "Entrepreneur & AI",
     langLabel: "Language",
     skip: "Skip to content",
     menu: {
@@ -372,7 +374,7 @@ const I18N = {
       heroTitle: "Best practices<br />for entrepreneurs",
       heroSubtitle: "Concrete answers, structured advice, and a useful library.",
       heroLead:
-        "The Entrepreneur Whisperer brings together a knowledge base for entrepreneurs, an AI assistant to find the right answer, and theme-based advice (with search) — all in a fast, digestible format.",
+        "Entrepreneur & AI brings together a knowledge base for entrepreneurs, an AI assistant to find the right answer, and theme-based advice (with search) — all in a fast, digestible format.",
       mediaLabel: "Video / Podcast",
       mediaPlaceholder: "Add an episode (placeholder)",
       mediaHint: "Tip: you can replace this block with a YouTube/Spotify embed.",
@@ -478,7 +480,7 @@ const I18N = {
       lead: "Overview of the author, the approach, and Melcion.",
       tdvRole: "Entrepreneur • product • execution",
       tdvText:
-        "The Entrepreneur Whisperer is a synthesis space: extract best practices, structure them, and make them easy to retrieve.",
+        "Entrepreneur & AI is a synthesis space: extract best practices, structure them, and make them easy to retrieve.",
       melcionRole: "Co-pilot • structure • clarity",
       melcionText: "Melcion helps turn experience into operational content: checklists, templates, and clear answers.",
     },
@@ -500,30 +502,30 @@ const I18N = {
     },
     meta: {
       home: {
-        title: "The Entrepreneur Whisperer — Best practices for entrepreneurs",
+        title: "Entrepreneur & AI — Best practices for entrepreneurs",
         description:
-          "The Entrepreneur Whisperer: best practices for entrepreneurs. AI assistant, actionable advice, curated book library.",
+          "Entrepreneur & AI: best practices for entrepreneurs. AI assistant, actionable advice, curated book library.",
       },
       assistant: {
-        title: "AI Assistant — The Entrepreneur Whisperer",
+        title: "AI Assistant — Entrepreneur & AI",
         description: "AI Assistant: the interactive corner powered by the knowledge base.",
       },
       conseils: {
-        title: "Advice — The Entrepreneur Whisperer",
+        title: "Advice — Entrepreneur & AI",
         description:
           "Podcast corner: theme-based advice with search. Each entry includes audio and a mini comic strip.",
       },
       bibliotheque: {
-        title: "Library — The Entrepreneur Whisperer",
+        title: "Library — Entrepreneur & AI",
         description: "Collection of recommended books for entrepreneurs.",
       },
       apropos: {
-        title: "About — The Entrepreneur Whisperer",
+        title: "About — Entrepreneur & AI",
         description: "Overview of the author and Melcion.",
       },
       mentions: {
-        title: "Legal notice — The Entrepreneur Whisperer",
-        description: "Legal notice for The Entrepreneur Whisperer.",
+        title: "Legal notice — Entrepreneur & AI",
+        description: "Legal notice for Entrepreneur & AI.",
       },
     },
     playPlaceholder: "Placeholder: replace this block with a YouTube/Spotify embed or an audio/video player.",
@@ -607,6 +609,22 @@ const updateInternalLinks = (lang = currentLang) => {
 const applyNavI18n = () => {
   const skip = $(".skipLink");
   if (skip) skip.textContent = t("skip");
+
+  const brandName = t("brand");
+  if (brandName) {
+    $$(".brandText").forEach((el) => {
+      el.textContent = brandName;
+    });
+    $$(".brand").forEach((el) => {
+      el.setAttribute("aria-label", `${brandName} (${t("nav.home")})`);
+    });
+    $$(".footer .muted").forEach((el) => {
+      const yearSpan = el.querySelector("[data-year]");
+      if (!yearSpan) return;
+      el.textContent = "";
+      el.append("© ", yearSpan, " ", brandName);
+    });
+  }
 
   $$(".navLink").forEach((link) => {
     const href = link.getAttribute("href") || "";
@@ -1818,7 +1836,7 @@ function setupBookDetailPage() {
       </div>
     `;
 
-    if (title) document.title = `${title} — The Entrepreneur Whisperer`;
+    if (title) document.title = `${title} — ${t("brand", {}, "Entrepreneur & IA")}`;
     const meta = $("meta[name='description']");
     if (meta && book.resume_court) meta.setAttribute("content", String(book.resume_court));
   };

@@ -221,7 +221,7 @@ const pageTemplate = ({ bd, titre, resume_court }) => `<!doctype html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${escapeHtml(titre)} — The Entrepreneur Whisperer</title>
+    <title>${escapeHtml(titre)} — Entrepreneur & IA</title>
     <meta name="description" content="${escapeHtml(resume_court || `Présentation du livre ${titre}.`)}" />
     <link rel="icon" type="image/png" href="../img/founder_hacks_compass_refined_v2_1024.png" />
     <link rel="stylesheet" href="../assets/styles.css" />
@@ -231,7 +231,7 @@ const pageTemplate = ({ bd, titre, resume_court }) => `<!doctype html>
 
     <header class="siteHeader" data-surface="page">
       <nav class="nav" aria-label="Menu principal">
-        <a class="brand" href="../index.html" aria-label="The Entrepreneur Whisperer (Accueil)">
+        <a class="brand" href="../index.html" aria-label="Entrepreneur & IA (Accueil)">
           <img
             class="brandMark"
             src="../img/founder_hacks_compass_refined_v4_1024.png"
@@ -240,7 +240,7 @@ const pageTemplate = ({ bd, titre, resume_court }) => `<!doctype html>
             height="34"
             loading="eager"
           />
-          <span class="brandText">The Entrepreneur Whisperer</span>
+          <span class="brandText">Entrepreneur & IA</span>
         </a>
 
         <button class="navToggle" type="button" aria-expanded="false" aria-controls="navPanel">
@@ -272,7 +272,7 @@ const pageTemplate = ({ bd, titre, resume_court }) => `<!doctype html>
 
     <footer class="footer">
       <div class="container footerRow">
-        <p class="muted">© <span data-year></span> The Entrepreneur Whisperer</p>
+        <p class="muted">© <span data-year></span> Entrepreneur & IA</p>
         <a class="footerLegal" href="mentions-legales.html">Mentions légales</a>
       </div>
     </footer>

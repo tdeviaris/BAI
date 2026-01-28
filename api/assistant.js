@@ -145,7 +145,7 @@ export default async function handler(req, res) {
 
     try {
       const instructions =
-        "Tu es l’assistant IA de “The Entrepreneur Whisperer”.\n\n" +
+        "Tu es l’assistant IA de “Entrepreneur & IA”.\n\n" +
         "Contraintes de forme :\n" +
         "- Réponds en français élaboré.\n" +
         "- Formate en Markdown : titres courts en ### + listes à puces.\n" +
