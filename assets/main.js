@@ -681,20 +681,31 @@ const setupLangToggle = () => {
   wrapper.setAttribute("role", "group");
   wrapper.setAttribute("aria-label", t("langLabel"));
 
-  const makeButton = (lang, label) => {
+  const makeButton = (lang, label, flag) => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "langOption";
     btn.dataset.lang = lang;
-    btn.textContent = label;
+    btn.setAttribute("aria-label", label);
     btn.setAttribute("aria-pressed", lang === currentLang ? "true" : "false");
     if (lang === currentLang) btn.classList.add("isActive");
+    const flagSpan = document.createElement("span");
+    flagSpan.className = "langFlag";
+    flagSpan.textContent = flag;
+    flagSpan.setAttribute("aria-hidden", "true");
+    const textSpan = document.createElement("span");
+    textSpan.className = "srOnly";
+    textSpan.textContent = label;
+    btn.append(flagSpan, textSpan);
     return btn;
   };
 
-  wrapper.appendChild(makeButton("fr", "FR"));
-  wrapper.appendChild(document.createTextNode("/"));
-  wrapper.appendChild(makeButton("en", "EN"));
+  wrapper.appendChild(makeButton("fr", "Français", "🇫🇷"));
+  const divider = document.createElement("span");
+  divider.className = "langDivider";
+  divider.setAttribute("aria-hidden", "true");
+  wrapper.appendChild(divider);
+  wrapper.appendChild(makeButton("en", "English", "🇺🇸"));
 
   wrapper.addEventListener("click", (event) => {
     const btn = event.target instanceof HTMLElement ? event.target.closest("button[data-lang]") : null;
