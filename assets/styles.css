@@ -333,7 +333,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 28px;
-  align-items: center;
+  align-items: start;
 }
 
 .heroCopy h1 {
@@ -466,6 +466,8 @@ input:focus-visible {
 .heroMedia {
   justify-self: end;
   width: 100%;
+  align-self: start;
+  margin-top: 4px;
 }
 
 .mediaCard {
@@ -521,13 +523,13 @@ input:focus-visible {
 }
 
 .mediaEmbed {
-  width: min(680px, 100%);
+  width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 18px;
+  border-radius: 0;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(0, 0, 0, 0.35);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  border: 0;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: none;
 }
 
 .mediaEmbed iframe {
@@ -535,6 +537,24 @@ input:focus-visible {
   height: 100%;
   border: 0;
   display: block;
+}
+
+.whitepaperSection {
+  margin-top: 32px;
+}
+
+.whitepaperTitle {
+  margin: 0 0 10px;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+
+.whitepaperLink {
+  color: inherit;
+}
+
+.whitepaperLink:hover {
+  text-decoration: underline;
 }
 
 .playButton {
