@@ -223,7 +223,7 @@ const pageTemplate = ({ bd, titre, resume_court }) => `<!doctype html>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>${escapeHtml(titre)} — Entrepreneur & IA</title>
     <meta name="description" content="${escapeHtml(resume_court || `Présentation du livre ${titre}.`)}" />
-    <link rel="icon" type="image/png" href="../img/founder_hacks_compass_refined_v2_1024.png" />
+    <link rel="icon" type="image/svg+xml" href="../img/favicon-ai.svg" />
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
   <body data-page="book-detail" data-book="${escapeHtml(bd)}">
