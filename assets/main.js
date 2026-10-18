@@ -202,7 +202,7 @@ const I18N = {
       cardAssistantTitle: "Assistant IA",
       cardAssistantDesc: "Le coin interactif : réponses formulées à partir de la base de connaissance.",
       cardConseilsTitle: "Conseils",
-      cardConseilsDesc: "Le coin podcast : conseils par thèmes, recherche, + podcast audio et mini-BD.",
+      cardConseilsDesc: "Le coin podcast : conseils par thèmes, recherche, + podcast audio et illustration.",
       cardBibliothequeTitle: "Bibliothèque",
       cardBibliothequeDesc: "Le coin lecture : recueil de livres recommandés pour entrepreneurs.",
     },
@@ -234,7 +234,7 @@ const I18N = {
     conseils: {
       pill: "Le coin podcast",
       title: "Conseils",
-      lead: "Recherche par thèmes. Chaque entrée se lit, s’écoute (voix), et se retient (mini BD).",
+      lead: "Recherche par thèmes. Chaque entrée se lit, s’écoute (podcast) et s’illustre.",
       searchLabel: "Rechercher",
       searchPlaceholder: "Rechercher un conseil (ex: pricing, focus…)",
       filtersLabel: "Filtres",
@@ -245,7 +245,7 @@ const I18N = {
       filterTeam: "Équipe",
       modalLabel: "Détail du conseil",
       audioLabel: "Podcast audio",
-      audioTitle: "Podcast audio (voix)",
+      audioTitle: "Podcast audio",
       audioHint: "Lecture via synthèse vocale du navigateur.",
       audioPlay: "Lire",
       audioStop: "Stop",
@@ -331,7 +331,7 @@ const I18N = {
       conseils: {
         title: "Conseils — Entrepreneur & IA",
         description:
-          "Le coin podcast : conseils par thèmes avec recherche. Chaque entrée a un format audio et une mini bande dessinée.",
+          "Le coin podcast : conseils par thèmes avec recherche. Chaque entrée a un podcast audio et une illustration.",
       },
       bibliotheque: {
         title: "Bibliothèque — Entrepreneur & IA",
@@ -384,7 +384,7 @@ const I18N = {
       cardAssistantTitle: "AI Assistant",
       cardAssistantDesc: "Interactive corner: answers formulated from the knowledge base.",
       cardConseilsTitle: "Advice",
-      cardConseilsDesc: "Podcast corner: theme-based advice, search, + audio and mini comic.",
+      cardConseilsDesc: "Podcast corner: theme-based advice, search, + audio podcast and illustration.",
       cardBibliothequeTitle: "Library",
       cardBibliothequeDesc: "Reading corner: a collection of recommended books for entrepreneurs.",
     },
@@ -416,7 +416,7 @@ const I18N = {
     conseils: {
       pill: "Podcast corner",
       title: "Advice",
-      lead: "Search by theme. Each entry can be read, listened to (voice), and remembered (mini comic).",
+      lead: "Search by theme. Each entry can be read, listened to (podcast), and comes with an illustration.",
       searchLabel: "Search",
       searchPlaceholder: "Search a tip (e.g., pricing, focus…)",
       filtersLabel: "Filters",
@@ -427,7 +427,7 @@ const I18N = {
       filterTeam: "Team",
       modalLabel: "Advice details",
       audioLabel: "Audio podcast",
-      audioTitle: "Audio podcast (voice)",
+      audioTitle: "Audio podcast",
       audioHint: "Playback via your browser’s text-to-speech.",
       audioPlay: "Play",
       audioStop: "Stop",
@@ -513,7 +513,7 @@ const I18N = {
       conseils: {
         title: "Advice — Entrepreneur & AI",
         description:
-          "Podcast corner: theme-based advice with search. Each entry includes audio and a mini comic strip.",
+          "Podcast corner: theme-based advice with search. Each entry includes an audio podcast and an illustration.",
       },
       bibliotheque: {
         title: "Library — Entrepreneur & AI",
@@ -1250,14 +1250,14 @@ function setupConseilsPage() {
   const modalTitle = $("#modalTitle");
   const modalTheme = $("#modalTheme");
   const modalBody = $("#modalBody");
-  const speakBtn = $("#speakBtn");
-  const stopSpeakBtn = $("#stopSpeakBtn");
-  const comic = $("#comic");
+  const modalImage = $("#modalImage");
+  const modalFigure = $("#modalFigure");
+  const modalAudio = $("#modalAudio");
 
   let currentConseil = null;
 
   // Only set up modal if all elements exist
-  if (modal && modalTitle && modalBody && speakBtn && stopSpeakBtn) {
+  if (modal && modalTitle && modalBody) {
 
   const openModal = (conseil) => {
     currentConseil = conseil;
@@ -1269,30 +1269,27 @@ function setupConseilsPage() {
     if (modalTheme) modalTheme.textContent = (conseil.tags && conseil.tags[0]) || "";
     if (modalBody) modalBody.textContent = conseil.descriptif_long || conseil.resume_long || conseil.resume_court || "";
 
-    // Comic/BD
-    if (comic) {
-      comic.innerHTML = "";
-      const bdPanels = Array.isArray(conseil.bd) ? conseil.bd : [];
-      if (bdPanels.length > 0) {
-        bdPanels.forEach((panel) => {
-          const panelDiv = document.createElement("div");
-          panelDiv.className = "comicPanel";
+    // Illustration
+    if (modalImage && modalFigure) {
+      if (conseil.nom_image) {
+        modalImage.src = `../${conseil.nom_image}`;
+        modalImage.alt = t("conseils.imageAlt", { title: conseil.titre || "" });
+        modalFigure.hidden = false;
+      } else {
+        modalImage.removeAttribute("src");
+        modalFigure.hidden = true;
+      }
+    }
 
-          if (panel.image) {
-            const img = document.createElement("img");
-            img.src = `../${panel.image}`;
-            img.alt = "";
-            img.style.maxWidth = "100%";
-            img.style.borderRadius = "4px";
-            panelDiv.appendChild(img);
-          }
-
-          const p = document.createElement("p");
-          p.textContent = String(panel.texte || "");
-          panelDiv.appendChild(p);
-
-          comic.appendChild(panelDiv);
-        });
+    // Podcast audio
+    if (modalAudio) {
+      modalAudio.pause();
+      if (conseil.nom_fichier_audio) {
+        modalAudio.src = `../${conseil.nom_fichier_audio}`;
+        modalAudio.closest(".audioBox").hidden = false;
+      } else {
+        modalAudio.removeAttribute("src");
+        modalAudio.closest(".audioBox").hidden = true;
       }
     }
 
@@ -1325,38 +1322,10 @@ function setupConseilsPage() {
     if (conseil) openModal(conseil);
   });
 
-  // Speech synthesis handlers
-  speakBtn.addEventListener("click", () => {
-    if (!currentConseil) return;
-
-    // Pause all audio before starting speech
-    pauseAllAudio();
-
-    const textToSpeak = currentConseil.descriptif_long || currentConseil.resume_long || currentConseil.resume_court || "";
-    if (!textToSpeak || !window.speechSynthesis) return;
-
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
-    utterance.lang = currentLang === "en" ? "en-US" : "fr-FR";
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-
-    currentSpeech = utterance;
-    window.speechSynthesis.speak(utterance);
-  });
-
-  stopSpeakBtn.addEventListener("click", () => {
-    if (window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-      currentSpeech = null;
-    }
-  });
-
   // Clean up when modal closes
   modal.addEventListener("close", () => {
-    if (window.speechSynthesis && window.speechSynthesis.speaking) {
-      window.speechSynthesis.cancel();
-    }
-    currentSpeech = null;
+    if (modalAudio) modalAudio.pause();
+    currentAudio = null;
   });
   }
 

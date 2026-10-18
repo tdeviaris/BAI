@@ -6,7 +6,7 @@
     <title>Conseils — Entrepreneur & IA</title>
     <meta
       name="description"
-      content="Le coin podcast : conseils par thèmes avec recherche. Chaque entrée a un format audio et une mini bande dessinée."
+      content="Le coin podcast : conseils par thèmes avec recherche. Chaque entrée a un podcast audio et une illustration."
     />
     <link rel="icon" type="image/svg+xml" href="../img/favicon-ai.svg" />
     <link rel="stylesheet" href="../assets/styles.css" />
@@ -47,7 +47,7 @@
           <p class="pill" data-i18n="conseils.pill">Le coin podcast</p>
           <h1 data-i18n="conseils.title">Conseils</h1>
           <p class="lead" data-i18n="conseils.lead">
-            Recherche par thèmes. Chaque entrée se lit, s’écoute (voix), et se retient (mini BD).
+            Recherche par thèmes. Chaque entrée se lit, s’écoute (podcast) et s’illustre.
           </p>
         </div>
       </section>
@@ -100,23 +100,18 @@
           </div>
           <div class="modalBody">
             <p class="muted" id="modalBody"></p>
-            <div class="twoCol">
+            <div class="twoCol modalMedia">
+              <figure class="modalFigure" id="modalFigure">
+                <img id="modalImage" alt="" />
+              </figure>
               <section
                 class="audioBox"
                 aria-label="Podcast audio"
                 data-i18n-key="conseils.audioLabel"
                 data-i18n-attr="aria-label"
               >
-                <h3 data-i18n="conseils.audioTitle">Podcast audio (voix)</h3>
-                <p class="muted tiny" data-i18n="conseils.audioHint">Lecture via synthèse vocale du navigateur.</p>
-                <div class="audioActions">
-                  <button class="button primary" type="button" id="speakBtn" data-i18n="conseils.audioPlay">Lire</button>
-                  <button class="button" type="button" id="stopSpeakBtn" data-i18n="conseils.audioStop">Stop</button>
-                </div>
-              </section>
-              <section class="comicBox" aria-label="Bande dessinée" data-i18n-key="conseils.comicLabel" data-i18n-attr="aria-label">
-                <h3 data-i18n="conseils.comicTitle">Mini BD</h3>
-                <div class="comic" id="comic"></div>
+                <h3 data-i18n="conseils.audioTitle">Podcast audio</h3>
+                <audio id="modalAudio" controls preload="metadata" data-audio-card></audio>
               </section>
             </div>
           </div>
