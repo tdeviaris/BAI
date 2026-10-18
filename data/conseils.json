@@ -153,6 +153,20 @@
       "resume_long": "L'entrepreneur est souvent le point le plus faible de son système, le goulot par lequel toutes les décisions s'écoulent. Si vos équipes attendent votre feu vert, vous empêchez l'organisation d'avancer. La solution est de gagner en productivité en déléguant. Confiez à l'extérieur tout ce qui peut être fait par quelqu'un avec un taux horaire inférieur, ou ce qui consomme votre énergie et ce que vous n'aimez pas faire. Déléguer est un art : c'est 'trust and track' (faire confiance et suivre), pas 'fire and forget' ni 'command and control'.",
       "descriptif_long": "Quand il reste des missions à forte composante cognitive mais à valeur moyenne, le bras droit est une solution. Le profil typique est une personne jeune (25-27 ans) issue d'une excellente formation, curieuse, qui veut accélérer sa carrière en étant au quotidien à côté d'un entrepreneur. Après trois ans, on peut lui confier une Business Unit. Cette expérience terrain est essentielle pour former les futurs dirigeants et créer une compréhension mutuelle dans l'entreprise. Votre capacité à déléguer mesure la capacité de production de votre entreprise. Le bras droit est une excellente solution pour cesser d'être le goulot.",
       "nom_fichier_audio": "audio/prenez-un-bras-droit.mp3"
+    },
+    {
+      "id": "modele-scarf",
+      "titre": "Qu'est-ce que le modèle SCARF ?",
+      "tags": [
+        "management",
+        "neurosciences",
+        "équipe"
+      ],
+      "nom_image": "img/thumb-modele-scarf.jpg",
+      "resume_court": "Statut, Certitude, Autonomie, Relation, Équité : cinq besoins sociaux qui, menacés, mettent le cerveau en mode défense. Une grille simple pour comprendre et accompagner ses équipes.",
+      "resume_long": "Le modèle SCARF, de David Rock et du NeuroLeadership Institute, part d'un constat des neurosciences : notre cerveau réagit aux menaces sociales comme à un danger physique. Face à une menace, réelle ou perçue, on fuit, on se fige ou on se bat, et notre capacité à résoudre des problèmes, à décider et à collaborer s'effondre. Cinq besoins sont en jeu : le Statut (ma place aux yeux des autres), la Certitude (la visibilité sur l'avenir), l'Autonomie (le sentiment d'avoir prise sur les décisions), la Relation (l'appartenance au groupe) et l'Équité (la justesse des échanges). Ces besoins varient selon les personnes et les moments : c'est une clé de lecture, pas une vérité absolue.",
+      "descriptif_long": "Pour l'entrepreneur, l'outil a trois usages. Pour soi-même d'abord : passer une situation inconfortable au crible du SCARF permet de mettre le doigt sur ce qui inquiète vraiment, de relativiser et de reprendre le contrôle, ou de relire après coup une crise. Avec ses collaborateurs ensuite : plutôt que de juger une réaction irrationnelle, chercher quel besoin a été touché. Un dirigeant qui affichait une certitude totale passait pour arrogant ; en révélant l'incertitude externe et en expliquant que son rôle était d'en protéger l'entreprise, il a rassuré ses équipes et libéré leurs initiatives. Dans les changements collectifs enfin : le SCARF aide à préparer une annonce et à comprendre pourquoi elle a été mal reçue. L'acronyme est mnémotechnique : arracher l'écharpe (scarf) de quelqu'un dans la rue est vécu comme une agression ; rétrograder un directeur général en directeur commercial touche de même son statut. Avant de toucher à l'une de ces dimensions, il faut l'accompagner avec précision. Et ne jamais utiliser l'outil pour manipuler.",
+      "nom_fichier_audio": "audio/qu-est-ce-que-le-modele-scarf.mp3"
     }
   ]
 }
