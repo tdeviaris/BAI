@@ -115,6 +115,13 @@ const LANG_STORAGE_KEY = "bai.lang";
 const SUPPORTED_LANGS = ["fr", "en"];
 
 const TAG_TRANSLATIONS = {
+  finance: "finance",
+  gestion: "operations",
+  gouvernance: "governance",
+  "modèles mentaux": "mental models",
+  transmission: "succession",
+  "trésorerie": "cash flow",
+  valorisation: "valuation",
   "biais cognitifs": "cognitive biases",
   "biais cognitif": "cognitive bias",
   "décision": "decision-making",
