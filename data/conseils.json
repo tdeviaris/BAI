@@ -433,6 +433,76 @@
       "resume_long": "Un avocat fiscaliste explique pourquoi « est-ce que tu as ta holding ? » est une vraie question pour tout dirigeant détenant plus de 5 % de sa société d'exploitation. Grâce aux quotes-parts de frais et charges, la holding à l'IS encaisse dividendes et plus-values de cession presque sans impôt, là où la personne physique paie 31,4 %. Elle permet aussi de cumuler la souplesse de la SAS et le statut social de TNS. Mais tout se joue sur le timing : simple au départ, plus lourde en régime de croisière, encore possible juste avant une vente via l'apport-cession, au prix d'une obligation de réinvestir.",
       "descriptif_long": "Le régime : dividendes exonérés hors quote-part de 5 % (soit 1,25 % d'IS) et plus-values sur titres détenus plus de deux ans exonérées hors quote-part de 12 % (soit 3 %), dès 5 % du capital. Les sous restent dans la holding (pas question d'abus de bien social) mais servent à racheter, créer, investir en immobilier ou en Bourse. Côté social, une SARL holding dont on est gérant majoritaire peut présider la SAS d'exploitation : on garde la SAS (statuts libres, BSPCE, actions gratuites) et le statut TNS, environ 75-80 de coût pour 50 net contre 105-110 en assimilé salarié. Coût d'une holding : 3 000 à 5 000 € par an. Créée au départ, elle ne pose aucun problème de valeur. Plus tard, il faut apporter les titres à leur valeur de marché (sous-évaluer est une libéralité taxée à 25 %), avec un commissaire aux apports en SARL ou SAS ; la plus-value d'apport est mise en report (art. 150-0 B ter) et tombe si la holding vend dans les trois ans, sauf réinvestissement de 60 % du prix dans une activité économique. Pièges : céder moins de deux ans après l'apport, déficit inutilisable sans intégration fiscale (95 %), holding créée avant une donation suivie d'une cession, départ de France et exit tax. Idée-force : le plus tôt est le mieux, idéalement trois ans avant tout projet de vente.",
       "nom_fichier_audio": "audio/holding-is.mp3"
+    },
+    {
+      "id": "tarifs-devis",
+      "titre": "Comment établir ses tarifs et ses devis",
+      "tags": [
+        "vente",
+        "stratégie",
+        "gestion"
+      ],
+      "nom_image": "img/thumb-tarifs-devis.jpg",
+      "resume_court": "Trop bas, l'entreprise n'est pas rentable ; trop haut, elle piétine. Connaître ses coûts, bâtir sa grille, savoir refuser un devis puis en faire un vrai outil de vente : la méthode, et l'art d'assumer son prix.",
+      "resume_long": "« Je n'arrive pas à facturer assez cher », « mes clients me trouvent trop cher », « faire un devis est un casse-tête » : ces phrases reviennent sans cesse chez les entrepreneurs. La pérennité de l'entreprise en dépend. La chronique part des coûts (fixes, variables, cachés) et de la marge visée pour modéliser son business, puis construit la grille tarifaire par allers-retours entre proposition de valeur, marché, demandes des clients et coûts. Le devis, lui, n'est pas qu'un document administratif : c'est d'abord un outil de vente. Encore faut-il bien questionner le client, et savoir parfois ne pas en faire.",
+      "descriptif_long": "Inventoriez les coûts en repartant du compte d'exploitation : fixes (salaires chargés, locaux, fonctionnement), variables (matières, jours-homme) et cachés (amortissements, frais financiers, temps de prospection). Visez par exemple un coefficient de 2 à 2,5 dans le commerce, une marge nette de 30 % en production, et noyez les imprévus (environ 15 %) dans les lignes du devis plutôt que dans une ligne dédiée. Avant tout devis, qualifiez le besoin : quoi, pourquoi, depuis quand, quelles alternatives, quelle urgence, et seulement à la fin le budget. Refusez quand vous n'y croyez pas, quand vous serviriez de lièvre face à un concurrent déjà choisi ou de premier prestataire qui éduque gratuitement un prospect au projet pas mûr. À la question « combien ? », donnez une fourchette : un prix sec crée un ancrage trop bas ou dissuasif. Détaillez la prestation (pré-étude, tests, maintenance, livraison, garantie), gonflez là où se niche votre valeur ajoutée, gardez une marge de négociation limitée, proposez plusieurs formules (bois massif ou non pour des meubles sur mesure), indiquez délais, validité (un mois), conditions de paiement et « bon pour accord ». Puis présentez sans regarder vos chaussures, relancez selon un calendrier et demandez un feedback en cas de refus. L'idée-force : un devis préparé avec soin se défend sans se justifier.",
+      "nom_fichier_audio": "audio/tarifs-devis.mp3"
+    },
+    {
+      "id": "compte-exploitation-previsionnel",
+      "titre": "Le compte d'exploitation prévisionnel… à quoi ça sert ?",
+      "tags": [
+        "gestion",
+        "finance",
+        "stratégie"
+      ],
+      "nom_image": "img/thumb-compte-exploitation-previsionnel.jpg",
+      "resume_court": "Rebutant, toujours démenti par les faits, réservé aux grosses boîtes ? Le prévisionnel n'est pas un business plan pour faire rêver les investisseurs, mais une carte qui s'affine avec le temps et le b.a.-ba du pilotage de l'entrepreneur.",
+      "resume_long": "Faire un prévisionnel semble contraire à l'effectuation chère aux entrepreneurs : pourquoi prévoir un avenir qu'on préfère créer ? Parce que le compte d'exploitation prévisionnel n'est pas un business plan destiné à justifier la plus grosse levée de fonds sur la plus grosse valorisation. C'est un outil simple : vérifier que le chiffre d'affaires prévu couvre les dépenses prévues et que la rentabilité permettra de se rémunérer, voire d'investir. Point de départ des soldes intermédiaires de gestion, de la trésorerie, du financement et des tableaux de bord, il convainc aussi banquiers et partenaires, à condition d'être sincère et réaliste. Et il évolue avec l'entreprise.",
+      "descriptif_long": "Au démarrage, partez de zéro plutôt que des modèles trouvés sur internet, trop compliqués : alignez quelques hypothèses de revenus, les coûts qu'elles engendrent, et cherchez l'équation qui s'équilibre. En phase de structuration, l'entreprise devient un système stable et profitable dont on fait évoluer les paramètres, avec un associé, un ami DAF ou l'expert-comptable. En phase de scaling, s'appuyant sur le levier bancaire, on passe à des outils plus complexes et à une ou deux révisions budgétaires par exercice, toujours sous le contrôle de l'entrepreneur. Construisez à partir des revenus (récurrence, churn) ou des coûts fixes existants, testez hypothèses haute et basse, itérez. La théorie des contraintes de Goldratt aide : modélisez à partir du goulot d'étranglement, puis prévoyez comment l'élargir ; en throughput accounting, si le four est le goulot, une heure de four perdue est une heure de l'entreprise perdue. Suivez le réalisé contre le prévu : un chiffre d'affaires conforme peut cacher plus de ventes à prix moyen inférieur. Utilisez la moyenne mobile sur 3 ou 12 mois pour lisser saisonnalité et aléas. Méfiez-vous de la magie d'Excel : un prévisionnel totalement à côté de la plaque signale souvent qu'il est trop tôt. Le prévisionnel est une carte qui s'affine avec le temps.",
+      "nom_fichier_audio": "audio/compte-exploitation-previsionnel.mp3"
+    },
+    {
+      "id": "loi-de-parkinson",
+      "titre": "Loi de Parkinson : optimiser la gestion de votre temps",
+      "tags": [
+        "productivité",
+        "gestion",
+        "management"
+      ],
+      "nom_image": "img/thumb-loi-de-parkinson.jpg",
+      "resume_court": "Plus on a de temps pour une tâche, plus elle en prend. La loi de Parkinson explique nos journées qui filent et nos réunions sans fin ; timeboxing, Pomodoro et deadlines non négociables permettent de reprendre la main.",
+      "resume_long": "Un historien britannique, M. Parkinson, a formulé une loi simple : le travail s'étale sur tout le temps dont on dispose. Deux façons de l'étaler : procrastiner longtemps puis devenir très efficace dans l'urgence, après avoir perdu du temps au départ ; ou, plus grave, répartir l'effort sur toute la durée, avec moins de productivité et d'efficacité. Sa petite sœur montre que plus on a de temps, plus on en consacre à des sujets secondaires au détriment des vrais sujets, d'où les réunions qui s'éternisent. Corinne da Costa en tire des méthodes concrètes pour planifier, se concentrer et se mettre enfin à la tâche qu'on repousse.",
+      "descriptif_long": "Exemple d'origine : une dame dispose d'une journée pour envoyer une carte, travail d'une demi-heure ; elle passe la journée à en acheter une autre, la choisir, chercher un timbre, réfléchir au texte. Première parade : pour chaque mission, un plan avec objectifs, liste des tâches, ressources matérielles et humaines, points d'étape, délai de restitution, et qui fait quoi. Deuxième : le timeboxing, un bloc de temps fixe (minutes, heures, jours) avec un résultat défini d'avance et une deadline tenue ; en équipe, créneaux et objectifs annoncés à tous et ajustements en continu, pas aux trois quarts du délai. Troisième : le Pomodoro, une liste de tâches classées, 25 minutes de travail, 5 minutes de pause (un café ou un verre d'eau, pas la boîte mail), une vraie pause de 15 à 30 minutes après quatre cycles, et le plaisir de barrer la tâche faite. Quatre règles : traiter d'abord la priorité, même déplaisante ; fixer une deadline non négociable, comme le devoir à rendre lundi matin ; se parler en équipe ; savoir dire non. Pour démarrer : bloquer la tâche dans l'agenda comme une réunion, tout couper, se promettre une récompense, ou entrer dans un rituel, comme on enfile ses chaussures de sport. Un délai court rend efficace.",
+      "nom_fichier_audio": "audio/loi-de-parkinson.mp3"
+    },
+    {
+      "id": "chance-competence",
+      "titre": "Faire de la chance une compétence",
+      "tags": [
+        "psychologie",
+        "effectuation",
+        "modèles mentaux"
+      ],
+      "nom_image": "img/thumb-chance-competence.jpg",
+      "resume_court": "Post-it, Velcro, pénicilline : derrière ces « coups de chance », il y a surtout des gens qui ont su voir et agir. La chance, comme les trains : tout le monde peut les voir, seuls certains décident de monter dedans.",
+      "resume_long": "La chance n'est pas qu'une affaire de hasard. Les travaux du psychologue Richard Wiseman montrent que la capacité à repérer les éléments favorables et à saisir les opportunités varie fortement d'un individu à l'autre, alors que ce sont les mêmes choses qui passent : c'est l'attitude qui favorise les événements heureux. La sérendipité – trouver ce que l'on ne cherchait pas – relève moins du hasard que de la curiosité et de la disponibilité au réel. Relue au filtre de l'effectuation, la chance devient une compétence qui se travaille : accueillir les surprises, choisir l'action, multiplier les rencontres.",
+      "descriptif_long": "Patrice Viot Coster part des grands hasards devenus des succès – le Post-it né d'une colle ratée, le Nutella issu d'une ganache transformée par la chaleur, le Velcro inspiré de chardons accrochés à des vêtements, la pénicilline – pour montrer que leurs bénéficiaires ont surtout su voir. La manière de se raconter compte aussi : sept accidents de voiture peuvent être une malchance ou une chance phénoménale de n'avoir jamais été blessé. Trois principes de l'effectuation font de la chance une compétence. Accueillir les surprises : regarder les citrons que la vie apporte et y chercher la limonade, l'opportunité cachée derrière le problème. Choisir l'action : être le pilote dans l'avion, pas en pilote automatique. Le patchwork fou : l'entrepreneuriat est une activité sociale ; une rencontre faite à un séminaire où l'on a failli ne pas aller peut, des années plus tard, déboucher sur un projet commun, et chaque engagement apporte de nouveaux moyens et de nouveaux buts. Comme la conduite, cela s'apprend : d'abord pénible, l'attention devient un automatisme du système 1 de Kahneman. Faites-en une routine : la chance se travaille et reste avant tout une question de confiance.",
+      "nom_fichier_audio": "audio/chance-competence.mp3"
+    },
+    {
+      "id": "prevenir-conflits-associes",
+      "titre": "S'associer : comment prévenir les conflits",
+      "tags": [
+        "actionnariat",
+        "gouvernance",
+        "décision"
+      ],
+      "nom_image": "img/thumb-prevenir-conflits-associes.jpg",
+      "resume_court": "Entre 50 et 80 % des associations d'entrepreneurs finissent mal. Mieux vaut rester seul à bord ; si vous vous associez, faites-le pour de bonnes raisons, videz les sujets qui fâchent avant de signer et mettez tout par écrit.",
+      "resume_long": "L'entrepreneur combine deux besoins : se réaliser et rester maître de son destin. Un associé peut nourrir le premier, mais il entame forcément le second : tout seul on va plus vite, à plusieurs plus loin, mais tout seul on fait exactement ce qu'on veut. Et les associations échouent plus souvent que les mariages, entre 50 et 80 % selon des études américaines : divergences de vision, pertes de confiance, rivalités d'ego, tâches mal réparties, intérêts qui se désalignent avec le temps. La chronique, tirée de l'expérience d'un médiateur de conflits entre associés, identifie les cas où s'associer reste justifié, les sept questions à trancher avant de se lancer et les trois documents qui encadrent l'association.",
+      "descriptif_long": "Trois cas justifient de s'associer : un ami vous embarque dans son projet ; vous avez besoin d'une compétence rare et clé (technologie, brevet, réseau) dont le détenteur refuse d'être simple salarié ; vous ne vous sentez pas les épaules de porter seul le projet. Avant de signer, tranchez sept questions. Objectifs financiers : besoins minimaux de chacun, autres revenus, espérance de sortie et horizon. Temps investi : week-ends, soirées, vacances. Valeur des apports, pour éviter le « le succès, c'est moi » quelques années plus tard. Prise des décisions d'actionnaires, surtout à 50/50 : tiers de confiance, médiateur ? Gestion des désaccords. Plan de développement : indépendance ou fonds, vitesse. Horizon de chacun : l'entreprise d'une vie ou un coup sur trois ou quatre ans. Les écarts se compensent par des arrangements, comme ce rachat à 50/50 payé moitié comptant, moitié deux ans plus tard. Puis écrivez tout : statuts (apports, plus de compte courant que de capital, objet social, gouvernance), pacte d'associés sous seing privé (droits de vote, agrément, préemption, sortie conjointe, non-concurrence, clause pénale) et atelier de vision partagée. Pour des conjoints associés : contrat de mariage, et prévoir l'échec du couple comme celui de l'association. Les sujets qui fâchent se règlent avant de s'associer, jamais après.",
+      "nom_fichier_audio": "audio/prevenir-conflits-associes.mp3"
     }
   ]
 }
